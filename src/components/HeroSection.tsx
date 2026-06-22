@@ -1,7 +1,37 @@
 import { Button } from "@/components/ui/button"
-import { WhatsappLogo, ArrowDown } from "@phosphor-icons/react"
+import { WhatsappLogo, ArrowDown, Users, Clipboard } from "@phosphor-icons/react"
+import { useEffect, useState } from "react"
 
 export default function HeroSection() {
+  const [studentsCount, setStudentsCount] = useState(0)
+  const [coachesCount, setCoachesCount] = useState(0)
+
+  useEffect(() => {
+    const studentsTarget = 287
+    const coachesTarget = 12
+    const duration = 2000
+    const steps = 60
+
+    const studentsIncrement = studentsTarget / steps
+    const coachesIncrement = coachesTarget / steps
+
+    let currentStep = 0
+
+    const interval = setInterval(() => {
+      currentStep++
+      if (currentStep <= steps) {
+        setStudentsCount(Math.floor(studentsIncrement * currentStep))
+        setCoachesCount(Math.floor(coachesIncrement * currentStep))
+      } else {
+        setStudentsCount(studentsTarget)
+        setCoachesCount(coachesTarget)
+        clearInterval(interval)
+      }
+    }, duration / steps)
+
+    return () => clearInterval(interval)
+  }, [])
+
   const openWhatsApp = () => {
     const phoneNumber = "963982035983"
     const message = encodeURIComponent("مرحباً، أريد التسجيل في أكاديمية المواهب لكرة القدم")
@@ -53,6 +83,40 @@ export default function HeroSection() {
             >
               اكتشف المزيد
             </Button>
+          </div>
+
+          <div className="pt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            <div className="glass-effect rounded-3xl p-8 shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-white/30">
+              <div className="flex flex-col items-center gap-4">
+                <div className="bg-white/20 p-6 rounded-2xl backdrop-blur-sm">
+                  <Users size={48} weight="bold" className="text-white" />
+                </div>
+                <div className="text-center">
+                  <div className="text-6xl font-black text-white mb-2">
+                    {studentsCount}+
+                  </div>
+                  <div className="text-xl font-bold text-white/90">
+                    طالب مسجل
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="glass-effect rounded-3xl p-8 shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-white/30">
+              <div className="flex flex-col items-center gap-4">
+                <div className="bg-white/20 p-6 rounded-2xl backdrop-blur-sm">
+                  <Clipboard size={48} weight="bold" className="text-white" />
+                </div>
+                <div className="text-center">
+                  <div className="text-6xl font-black text-white mb-2">
+                    {coachesCount}+
+                  </div>
+                  <div className="text-xl font-bold text-white/90">
+                    مدرب معتمد
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="pt-12 flex justify-center">
