@@ -21,15 +21,16 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-effect shadow-[0_10px_40px_rgba(0,0,0,0.1)] border-b border-white/30">
+    <nav className="fixed top-0 left-0 right-0 z-[100] glass-effect shadow-[0_10px_40px_rgba(0,0,0,0.1)] border-b border-white/30">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-28">
           <div className="flex items-center gap-5 cursor-pointer" onClick={() => scrollToSection('home')}>
-            <div className="relative">
-              <Avatar className="w-20 h-20 border-3 border-white shadow-2xl ring-4 ring-white/40 relative">
+            <div className="relative z-[101]">
+              <Avatar className="w-20 h-20 border-3 border-white shadow-2xl ring-4 ring-white/40 relative transform-none will-change-auto">
                 <AvatarImage 
                   src="https://api.dicebear.com/7.x/identicon/svg?seed=TalentAcademy&backgroundColor=8b5cf6,ec4899&scale=90" 
                   alt="أكاديمية المواهب"
+                  className="transform-none will-change-auto"
                 />
                 <AvatarFallback className="bg-gradient-to-br from-primary via-secondary to-accent text-white font-black text-3xl">
                   أم

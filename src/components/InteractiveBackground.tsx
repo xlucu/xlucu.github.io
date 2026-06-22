@@ -1,18 +1,6 @@
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
 
 export default function InteractiveBackground() {
-  const [scrollY, setScrollY] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
     <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
       <motion.div
@@ -25,16 +13,12 @@ export default function InteractiveBackground() {
         }}
         animate={{
           scale: [1, 1.05, 1],
-          y: scrollY * 0.3,
         }}
         transition={{
           scale: {
             duration: 20,
             repeat: Infinity,
             ease: "easeInOut"
-          },
-          y: {
-            duration: 0
           }
         }}
       />
