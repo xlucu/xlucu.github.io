@@ -22,25 +22,45 @@ function App() {
   const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    let ticking = false
+    
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY)
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
     const updateHeight = () => {
       if (contentRef.current) {
-        setDocumentHeight(contentRef.current.scrollHeight)
+        const newHeight = Math.max(
+          contentRef.current.scrollHeight,
+          document.documentElement.scrollHeight,
+          document.body.scrollHeight
+        )
+        setDocumentHeight(newHeight)
       }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', updateHeight)
     
-    const observer = new ResizeObserver(updateHeight)
+    const observer = new ResizeObserver(() => {
+      window.requestAnimationFrame(updateHeight)
+    })
+    
     if (contentRef.current) {
       observer.observe(contentRef.current)
     }
 
     updateHeight()
+    
+    setTimeout(updateHeight, 100)
+    setTimeout(updateHeight, 500)
+    setTimeout(updateHeight, 1000)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
@@ -85,100 +105,52 @@ function App() {
 
   const backgroundImages = [
     {
-      url: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=2400&auto=format&fit=crop",
+      url: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1920&auto=format&fit=crop",
       position: 0,
-      speed: 0.5,
+      speed: 0.3,
       overlay: "from-primary/85 via-secondary/80 to-accent/75"
     },
     {
-      url: "https://images.unsplash.com/photo-1577223625816-7546f73e8b5b?q=80&w=2400&auto=format&fit=crop",
-      position: 800,
-      speed: 0.48,
+      url: "https://images.unsplash.com/photo-1577223625816-7546f73e8b5b?q=80&w=1920&auto=format&fit=crop",
+      position: 1200,
+      speed: 0.28,
       overlay: "from-accent/83 via-primary/78 to-secondary/80"
     },
     {
-      url: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=2400&auto=format&fit=crop",
-      position: 1600,
-      speed: 0.46,
+      url: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1920&auto=format&fit=crop",
+      position: 2400,
+      speed: 0.26,
       overlay: "from-secondary/85 via-accent/79 to-primary/82"
     },
     {
-      url: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=2400&auto=format&fit=crop",
-      position: 2400,
-      speed: 0.44,
+      url: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=1920&auto=format&fit=crop",
+      position: 3600,
+      speed: 0.24,
       overlay: "from-primary/82 via-secondary/77 to-accent/79"
     },
     {
-      url: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=2400&auto=format&fit=crop",
-      position: 3200,
-      speed: 0.42,
+      url: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=1920&auto=format&fit=crop",
+      position: 4800,
+      speed: 0.22,
       overlay: "from-accent/80 via-primary/75 to-secondary/82"
     },
     {
-      url: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2400&auto=format&fit=crop",
-      position: 4000,
-      speed: 0.40,
+      url: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1920&auto=format&fit=crop",
+      position: 6000,
+      speed: 0.20,
       overlay: "from-secondary/83 via-accent/76 to-primary/80"
     },
     {
-      url: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=2400&auto=format&fit=crop",
-      position: 4800,
-      speed: 0.38,
+      url: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=1920&auto=format&fit=crop",
+      position: 7200,
+      speed: 0.18,
       overlay: "from-primary/80 via-secondary/74 to-accent/78"
     },
     {
-      url: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=2400&auto=format&fit=crop",
-      position: 5600,
-      speed: 0.36,
+      url: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop",
+      position: 8400,
+      speed: 0.16,
       overlay: "from-accent/82 via-primary/76 to-secondary/79"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=2400&auto=format&fit=crop",
-      position: 6400,
-      speed: 0.34,
-      overlay: "from-secondary/81 via-accent/75 to-primary/81"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2400&auto=format&fit=crop",
-      position: 7200,
-      speed: 0.32,
-      overlay: "from-primary/83 via-secondary/77 to-accent/80"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=2400&auto=format&fit=crop",
-      position: 8000,
-      speed: 0.30,
-      overlay: "from-accent/81 via-primary/74 to-secondary/78"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=2400&auto=format&fit=crop",
-      position: 8800,
-      speed: 0.28,
-      overlay: "from-secondary/82 via-accent/73 to-primary/79"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=2400&auto=format&fit=crop",
-      position: 9600,
-      speed: 0.26,
-      overlay: "from-primary/84 via-accent/77 to-secondary/81"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1611318418045-b94e4ae6a69b?q=80&w=2400&auto=format&fit=crop",
-      position: 10400,
-      speed: 0.24,
-      overlay: "from-accent/83 via-secondary/78 to-primary/82"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2400&auto=format&fit=crop",
-      position: 11200,
-      speed: 0.22,
-      overlay: "from-secondary/84 via-primary/79 to-accent/81"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?q=80&w=2400&auto=format&fit=crop",
-      position: 12000,
-      speed: 0.20,
-      overlay: "from-primary/82 via-accent/76 to-secondary/79"
     }
   ]
 
@@ -226,14 +198,14 @@ function App() {
       )}
       
       <div 
-        className="absolute top-0 left-0 w-full -z-10"
-        style={{ height: documentHeight > 0 ? `${documentHeight}px` : '100%' }}
+        className="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden"
       >
         <div 
-          className="absolute top-0 left-0 w-full h-full transition-opacity duration-[600ms] ease-out"
+          className="absolute top-0 left-0 w-full h-full will-change-transform"
           style={{
             transform: `translateY(${scrollY * activeBackground.speed}px) scale(${1 + scrollY * 0.00003})`,
             opacity: nextBackground ? 1 - transitionProgress : 1,
+            transition: 'opacity 600ms ease-out',
           }}
         >
           <img 
@@ -243,15 +215,16 @@ function App() {
             loading="eager"
             decoding="async"
           />
-          <div className={`absolute inset-0 bg-gradient-to-br ${activeBackground.overlay} transition-all duration-[600ms]`}></div>
+          <div className={`absolute inset-0 bg-gradient-to-br ${activeBackground.overlay}`} style={{ transition: 'all 600ms' }}></div>
         </div>
 
         {nextBackground && (
           <div 
-            className="absolute top-0 left-0 w-full h-full transition-opacity duration-[600ms] ease-out"
+            className="absolute top-0 left-0 w-full h-full will-change-transform"
             style={{
               transform: `translateY(${scrollY * nextBackground.speed}px) scale(${1 + scrollY * 0.00003})`,
               opacity: transitionProgress,
+              transition: 'opacity 600ms ease-out',
             }}
           >
             <img 
@@ -261,7 +234,7 @@ function App() {
               loading="eager"
               decoding="async"
             />
-            <div className={`absolute inset-0 bg-gradient-to-br ${nextBackground.overlay} transition-all duration-[600ms]`}></div>
+            <div className={`absolute inset-0 bg-gradient-to-br ${nextBackground.overlay}`} style={{ transition: 'all 600ms' }}></div>
           </div>
         )}
 
