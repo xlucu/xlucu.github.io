@@ -81,22 +81,6 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      <div className="fixed inset-0 -z-10">
-        <img 
-          src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=2000&auto=format&fit=crop"
-          alt="Soccer Training Background"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-secondary/90 to-accent/85"></div>
-        <div className="absolute inset-0 field-pattern opacity-20"></div>
-      </div>
-      
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[10%] right-[15%] w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[15%] left-[10%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[130px]"></div>
-        <div className="absolute top-[40%] left-[45%] w-[550px] h-[550px] bg-secondary/15 rounded-full blur-[140px]"></div>
-      </div>
-      
       <div className="container mx-auto px-4 py-32 relative z-10">
         <div className="max-w-5xl mx-auto text-center text-white space-y-12">
           <div className="inline-block px-12 py-6 glass-card rounded-full shadow-[0_20px_80px_rgba(132,71,221,0.3)] mb-10 scale-in animate-in">
@@ -177,18 +161,6 @@ export default function HeroSection() {
               <ArrowDown size={56} weight="bold" className="text-white/80" />
             </div>
           </div>
-        </div>
-      </div>
-      
-      <div 
-        className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none overflow-hidden"
-      >
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-primary/40 via-secondary/30 to-transparent">
-          <img 
-            src="https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=1920&auto=format&fit=crop"
-            alt="Soccer Action"
-            className="w-full h-full object-cover object-center opacity-60 brightness-110 contrast-125"
-          />
         </div>
       </div>
       
