@@ -26,87 +26,129 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const sections = [
+  const backgroundImages = [
     {
-      start: 0,
-      end: 1000,
-      image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=2400&auto=format&fit=crop",
-      overlay: "from-primary/95 via-secondary/90 to-accent/85"
+      url: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=2400&auto=format&fit=crop",
+      position: 0,
+      speed: 0.5,
+      overlay: "from-primary/90 via-secondary/85 to-accent/80"
     },
     {
-      start: 1000,
-      end: 2500,
-      image: "https://images.unsplash.com/photo-1577223625816-7546f73e8b5b?q=80&w=2400&auto=format&fit=crop",
-      overlay: "from-accent/92 via-primary/88 to-secondary/90"
+      url: "https://images.unsplash.com/photo-1577223625816-7546f73e8b5b?q=80&w=2400&auto=format&fit=crop",
+      position: 800,
+      speed: 0.45,
+      overlay: "from-accent/88 via-primary/83 to-secondary/85"
     },
     {
-      start: 2500,
-      end: 4000,
-      image: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=2400&auto=format&fit=crop",
-      overlay: "from-secondary/93 via-accent/89 to-primary/91"
+      url: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=2400&auto=format&fit=crop",
+      position: 1800,
+      speed: 0.4,
+      overlay: "from-secondary/90 via-accent/84 to-primary/86"
     },
     {
-      start: 4000,
-      end: 5500,
-      image: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=2400&auto=format&fit=crop",
-      overlay: "from-primary/94 via-secondary/90 to-accent/86"
+      url: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=2400&auto=format&fit=crop",
+      position: 2800,
+      speed: 0.42,
+      overlay: "from-primary/87 via-secondary/82 to-accent/83"
     },
     {
-      start: 5500,
-      end: 7000,
-      image: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=2400&auto=format&fit=crop",
-      overlay: "from-accent/91 via-primary/87 to-secondary/92"
+      url: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=2400&auto=format&fit=crop",
+      position: 3800,
+      speed: 0.38,
+      overlay: "from-accent/85 via-primary/80 to-secondary/87"
     },
     {
-      start: 7000,
-      end: 999999,
-      image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2400&auto=format&fit=crop",
-      overlay: "from-secondary/92 via-accent/88 to-primary/90"
+      url: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2400&auto=format&fit=crop",
+      position: 4800,
+      speed: 0.35,
+      overlay: "from-secondary/88 via-accent/81 to-primary/84"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=2400&auto=format&fit=crop",
+      position: 5800,
+      speed: 0.32,
+      overlay: "from-primary/85 via-secondary/79 to-accent/82"
     }
   ]
 
-  const getCurrentSection = () => {
-    return sections.find(section => scrollY >= section.start && scrollY < section.end) || sections[sections.length - 1]
+  const getActiveBackground = () => {
+    for (let i = backgroundImages.length - 1; i >= 0; i--) {
+      if (scrollY >= backgroundImages[i].position) {
+        return backgroundImages[i]
+      }
+    }
+    return backgroundImages[0]
   }
 
-  const currentSection = getCurrentSection()
+  const getNextBackground = () => {
+    const currentIndex = backgroundImages.findIndex(bg => bg === getActiveBackground())
+    return backgroundImages[currentIndex + 1] || null
+  }
+
+  const activeBackground = getActiveBackground()
+  const nextBackground = getNextBackground()
+  const transitionProgress = nextBackground 
+    ? Math.min((scrollY - activeBackground.position) / (nextBackground.position - activeBackground.position), 1)
+    : 0
 
   return (
     <div className="min-h-screen select-none relative">
-      <div 
-        className="fixed inset-0 -z-10 transition-opacity duration-1000"
-        style={{
-          transform: `translateY(${scrollY * 0.4}px)`,
-        }}
-      >
-        <img 
-          src={currentSection.image}
-          alt="Soccer Background"
-          className="w-full h-[200vh] object-cover transition-all duration-1000"
-        />
-        <div className={`absolute inset-0 bg-gradient-to-br ${currentSection.overlay} transition-all duration-1000`}></div>
-        <div className="absolute inset-0 field-pattern opacity-20"></div>
+      <div className="fixed inset-0 -z-10">
+        <div 
+          className="absolute inset-0 transition-opacity duration-[1200ms] ease-in-out"
+          style={{
+            transform: `translateY(${scrollY * activeBackground.speed}px) scale(${1 + scrollY * 0.00005})`,
+            opacity: nextBackground ? 1 - transitionProgress : 1,
+          }}
+        >
+          <img 
+            src={activeBackground.url}
+            alt="Soccer Background"
+            className="w-full h-[140vh] object-cover"
+          />
+          <div className={`absolute inset-0 bg-gradient-to-br ${activeBackground.overlay} transition-all duration-[1200ms]`}></div>
+        </div>
+
+        {nextBackground && (
+          <div 
+            className="absolute inset-0 transition-opacity duration-[1200ms] ease-in-out"
+            style={{
+              transform: `translateY(${scrollY * nextBackground.speed}px) scale(${1 + scrollY * 0.00005})`,
+              opacity: transitionProgress,
+            }}
+          >
+            <img 
+              src={nextBackground.url}
+              alt="Soccer Background"
+              className="w-full h-[140vh] object-cover"
+            />
+            <div className={`absolute inset-0 bg-gradient-to-br ${nextBackground.overlay} transition-all duration-[1200ms]`}></div>
+          </div>
+        )}
+
+        <div className="absolute inset-0 field-pattern opacity-15"></div>
       </div>
 
       <div 
-        className="fixed inset-0 -z-10 pointer-events-none"
+        className="fixed inset-0 -z-10 pointer-events-none opacity-60"
         style={{
-          transform: `translateY(${scrollY * 0.25}px)`,
+          transform: `translateY(${scrollY * 0.2}px) rotate(${scrollY * 0.02}deg)`,
         }}
       >
-        <div className="absolute top-[10%] right-[15%] w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[15%] left-[10%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[130px]"></div>
-        <div className="absolute top-[40%] left-[45%] w-[550px] h-[550px] bg-secondary/15 rounded-full blur-[140px]"></div>
+        <div className="absolute top-[8%] right-[12%] w-[600px] h-[600px] bg-accent/25 rounded-full blur-[140px] animate-pulse"></div>
+        <div className="absolute bottom-[12%] left-[8%] w-[700px] h-[700px] bg-primary/25 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-[45%] left-[50%] w-[650px] h-[650px] bg-secondary/20 rounded-full blur-[160px] animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
       
       <div 
-        className="fixed inset-0 -z-10 pointer-events-none"
+        className="fixed inset-0 -z-10 pointer-events-none opacity-50"
         style={{
-          transform: `translateY(${scrollY * 0.15}px)`,
+          transform: `translateY(${scrollY * 0.12}px) scale(${1 + scrollY * 0.00008})`,
         }}
       >
-        <div className="absolute top-[60%] right-[25%] w-[450px] h-[450px] bg-primary/15 rounded-full blur-[110px]"></div>
-        <div className="absolute bottom-[30%] left-[20%] w-[500px] h-[500px] bg-accent/15 rounded-full blur-[120px]"></div>
+        <div className="absolute top-[55%] right-[20%] w-[550px] h-[550px] bg-primary/18 rounded-full blur-[130px]"></div>
+        <div className="absolute bottom-[25%] left-[15%] w-[600px] h-[600px] bg-accent/18 rounded-full blur-[140px]"></div>
+        <div className="absolute top-[75%] left-[60%] w-[500px] h-[500px] bg-secondary/16 rounded-full blur-[120px]"></div>
       </div>
 
       <Navbar />

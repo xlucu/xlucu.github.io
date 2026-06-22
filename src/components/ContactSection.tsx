@@ -218,6 +218,8 @@ export default function ContactSection() {
           </Card>
         </div>
       </div>
+      
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-foreground/30 via-foreground/10 to-transparent pointer-events-none"></div>
     </section>
   )
 }

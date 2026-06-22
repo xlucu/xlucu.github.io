@@ -79,21 +79,29 @@
 
 .field-pattern {
   background-image: 
-    radial-gradient(circle at 20% 30%, oklch(0.45 0.18 155 / 0.08) 0%, transparent 60%),
-    radial-gradient(circle at 80% 70%, oklch(0.55 0.20 145 / 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 15% 25%, oklch(0.45 0.18 155 / 0.12) 0%, transparent 55%),
+    radial-gradient(circle at 85% 75%, oklch(0.55 0.20 145 / 0.12) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, oklch(0.35 0.15 160 / 0.08) 0%, transparent 70%),
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 100px,
-      oklch(0.45 0.18 155 / 0.03) 100px,
-      oklch(0.45 0.18 155 / 0.03) 102px
+      transparent 80px,
+      oklch(0.45 0.18 155 / 0.06) 80px,
+      oklch(0.45 0.18 155 / 0.06) 82px
     ),
     repeating-linear-gradient(
       90deg,
       transparent,
-      transparent 100px,
-      oklch(0.45 0.18 155 / 0.03) 100px,
-      oklch(0.45 0.18 155 / 0.03) 102px
+      transparent 80px,
+      oklch(0.55 0.20 145 / 0.06) 80px,
+      oklch(0.55 0.20 145 / 0.06) 82px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 150px,
+      oklch(0.35 0.15 160 / 0.04) 150px,
+      oklch(0.35 0.15 160 / 0.04) 151px
     );
 }
 
@@ -421,4 +429,56 @@
   100% {
     filter: hue-rotate(360deg);
   }
+}
+
+@keyframes background-fade {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes parallax-drift {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  33% {
+    transform: translateY(-20px) translateX(15px);
+  }
+  66% {
+    transform: translateY(20px) translateX(-15px);
+  }
+}
+
+@keyframes ambient-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.background-layer {
+  animation: background-fade 1.2s ease-in-out;
+}
+
+.ambient-orb {
+  animation: ambient-glow 8s ease-in-out infinite, parallax-drift 15s ease-in-out infinite;
+}
+
+.ambient-orb-delayed {
+  animation: ambient-glow 10s ease-in-out infinite, parallax-drift 20s ease-in-out infinite;
+  animation-delay: 2s, 3s;
+}
+
+.smooth-transition {
+  transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
