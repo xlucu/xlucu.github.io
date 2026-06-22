@@ -76,10 +76,10 @@ export default function Navbar() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover/link:w-full transition-all duration-300"></span>
             </button>
             <button 
-              onClick={() => scrollToSection('stars')}
+              onClick={() => scrollToSection('testimonials')}
               className="text-foreground font-bold hover:text-primary transition-all hover:scale-110 relative group/link"
             >
-              نجومنا
+              آراء الأهالي
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover/link:w-full transition-all duration-300"></span>
             </button>
             <button 
@@ -135,10 +135,10 @@ export default function Navbar() {
               المعرض
             </button>
             <button 
-              onClick={() => scrollToSection('stars')}
+              onClick={() => scrollToSection('testimonials')}
               className="block w-full text-right py-4 px-6 text-foreground font-bold hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 rounded-xl transition-all"
             >
-              نجومنا
+              آراء الأهالي
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
