@@ -67,8 +67,13 @@ export default function ContactSection() {
                   <div className="p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-colors">
                     <WhatsappLogo size={28} weight="fill" className="text-primary" />
                   </div>
-                  <div>
-                    <h4 className="font-bold text-lg mb-1">رقم واتساب</h4>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between gap-3 mb-2">
+                      <h4 className="font-bold text-lg">رقم واتساب</h4>
+                      <div className="px-3 py-1 bg-primary/20 rounded-full">
+                        <span className="text-sm font-bold text-primary">الكابتن فراس حجو</span>
+                      </div>
+                    </div>
                     <p className="text-muted-foreground font-semibold" dir="ltr">+963 982 035 983</p>
                   </div>
                 </div>

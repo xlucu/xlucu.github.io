@@ -68,16 +68,29 @@ export default function TrainingCategories() {
 
   return (
     <section id="categories" className="py-48 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2400&auto=format&fit=crop"
+          alt="Soccer Background"
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/92 via-muted/88 to-background/92"></div>
+        <div className="absolute inset-0 field-pattern opacity-15"></div>
+      </div>
+      
+      <div className="absolute top-1/4 right-[15%] w-[40rem] h-[40rem] bg-primary/12 rounded-full blur-[130px] animate-pulse" style={{ animationDuration: '9s' }}></div>
+      <div className="absolute bottom-1/4 left-[15%] w-[45rem] h-[45rem] bg-accent/12 rounded-full blur-[135px] animate-pulse" style={{ animationDuration: '11s', animationDelay: '2s' }}></div>
+      
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-28 space-y-10 reveal-up">
           <div className="inline-flex items-center gap-4 px-10 py-5 glass-effect rounded-full shadow-2xl">
-            <Users size={32} weight="bold" className="text-white" />
-            <span className="text-xl font-black text-white/95">تدريب لكل الأعمار</span>
+            <Users size={32} weight="bold" className="text-primary" />
+            <span className="text-xl font-black text-primary">تدريب لكل الأعمار</span>
           </div>
-          <h2 className="text-7xl md:text-9xl font-black text-white leading-tight drop-shadow-[0_10px_50px_rgba(0,0,0,0.5)]">
+          <h2 className="text-7xl md:text-9xl font-black text-foreground leading-tight drop-shadow-[0_10px_50px_rgba(0,0,0,0.2)]">
             الفئات التدريبية
           </h2>
-          <p className="text-3xl md:text-4xl text-white/90 max-w-4xl mx-auto font-bold leading-relaxed drop-shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+          <p className="text-3xl md:text-4xl text-muted-foreground max-w-4xl mx-auto font-bold leading-relaxed">
             اختر الفئة المناسبة لعمر اللاعب وابدأ رحلة الاحتراف
           </p>
         </div>

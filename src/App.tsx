@@ -170,6 +170,24 @@ function App() {
       position: 15300,
       speed: 0.11,
       overlay: "from-secondary/83 via-accent/77 to-primary/81"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?q=80&w=2400&auto=format&fit=crop",
+      position: 16200,
+      speed: 0.09,
+      overlay: "from-primary/84 via-secondary/78 to-accent/82"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1628779238951-90c8182dc33f?q=80&w=2400&auto=format&fit=crop",
+      position: 17100,
+      speed: 0.07,
+      overlay: "from-accent/82 via-primary/77 to-secondary/81"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?q=80&w=2400&auto=format&fit=crop",
+      position: 18000,
+      speed: 0.05,
+      overlay: "from-secondary/85 via-accent/79 to-primary/83"
     }
   ]
 
