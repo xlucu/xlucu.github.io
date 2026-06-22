@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar"
 import HeroSection from "@/components/HeroSection"
+import AchievementsSection from "@/components/AchievementsSection"
 import TrainingCategories from "@/components/TrainingCategories"
 import WhatWeOffer from "@/components/WhatWeOffer"
 import Gallery from "@/components/Gallery"
@@ -12,6 +13,7 @@ function App() {
     <div className="min-h-screen">
       <Navbar />
       <HeroSection />
+      <AchievementsSection />
       <TrainingCategories />
       <WhatWeOffer />
       <Gallery />
