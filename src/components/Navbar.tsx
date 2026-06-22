@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { List, X, WhatsappLogo } from "@phosphor-icons/react"
 
 export default function Navbar() {
@@ -26,16 +25,32 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-28">
           <div className="flex items-center gap-5 cursor-pointer" onClick={() => scrollToSection('home')}>
             <div className="relative z-[101]">
-              <Avatar className="w-20 h-20 border-3 border-white shadow-2xl ring-4 ring-white/40 relative transform-none will-change-auto">
-                <AvatarImage 
-                  src="https://api.dicebear.com/7.x/identicon/svg?seed=TalentAcademy&backgroundColor=8b5cf6,ec4899&scale=90" 
-                  alt="أكاديمية المواهب"
-                  className="transform-none will-change-auto"
-                />
-                <AvatarFallback className="bg-gradient-to-br from-primary via-secondary to-accent text-white font-black text-3xl">
-                  أم
-                </AvatarFallback>
-              </Avatar>
+              <div className="w-20 h-20 flex items-center justify-center">
+                <svg viewBox="0 0 1200 800" className="w-full h-full drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="600" cy="500" rx="350" ry="350" fill="url(#grad1)" stroke="#0d5e4a" strokeWidth="15"/>
+                  <polygon points="600,250 650,400 800,420 700,520 730,670 600,590 470,670 500,520 400,420 550,400" fill="url(#grad2)" stroke="#0d5e4a" strokeWidth="8"/>
+                  <path d="M 850,280 Q 950,350 1000,450 Q 1050,550 1100,650" stroke="url(#grad3)" strokeWidth="40" fill="none" strokeLinecap="round"/>
+                  <path d="M 870,300 Q 970,370 1020,470 Q 1070,570 1120,670" stroke="#ffd700" strokeWidth="20" fill="none" strokeLinecap="round"/>
+                  <path d="M 890,330 Q 990,400 1040,500 Q 1090,600 1130,690" stroke="#fff" strokeWidth="10" fill="none" strokeLinecap="round"/>
+                  <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#2d8a6e', stopOpacity: 1}} />
+                      <stop offset="50%" style={{stopColor: '#1a6b52', stopOpacity: 1}} />
+                      <stop offset="100%" style={{stopColor: '#0d5e4a', stopOpacity: 1}} />
+                    </linearGradient>
+                    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#ffd700', stopOpacity: 1}} />
+                      <stop offset="50%" style={{stopColor: '#ffed4e', stopOpacity: 1}} />
+                      <stop offset="100%" style={{stopColor: '#ffd700', stopOpacity: 1}} />
+                    </linearGradient>
+                    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#0d5e4a', stopOpacity: 1}} />
+                      <stop offset="50%" style={{stopColor: '#1a6b52', stopOpacity: 1}} />
+                      <stop offset="100%" style={{stopColor: '#2d8a6e', stopOpacity: 1}} />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
             </div>
             
             <div>
