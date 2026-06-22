@@ -26,29 +26,92 @@ export default function Navbar() {
           <div className="flex items-center gap-5 cursor-pointer" onClick={() => scrollToSection('home')}>
             <div className="relative z-[101]">
               <div className="w-20 h-20 flex items-center justify-center">
-                <svg viewBox="0 0 1200 800" className="w-full h-full drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]" xmlns="http://www.w3.org/2000/svg">
-                  <ellipse cx="600" cy="500" rx="350" ry="350" fill="url(#grad1)" stroke="#0d5e4a" strokeWidth="15"/>
-                  <polygon points="600,250 650,400 800,420 700,520 730,670 600,590 470,670 500,520 400,420 550,400" fill="url(#grad2)" stroke="#0d5e4a" strokeWidth="8"/>
-                  <path d="M 850,280 Q 950,350 1000,450 Q 1050,550 1100,650" stroke="url(#grad3)" strokeWidth="40" fill="none" strokeLinecap="round"/>
-                  <path d="M 870,300 Q 970,370 1020,470 Q 1070,570 1120,670" stroke="#ffd700" strokeWidth="20" fill="none" strokeLinecap="round"/>
-                  <path d="M 890,330 Q 990,400 1040,500 Q 1090,600 1130,690" stroke="#fff" strokeWidth="10" fill="none" strokeLinecap="round"/>
+                <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_6px_20px_rgba(0,0,0,0.4)]" xmlns="http://www.w3.org/2000/svg">
                   <defs>
-                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{stopColor: '#2d8a6e', stopOpacity: 1}} />
-                      <stop offset="50%" style={{stopColor: '#1a6b52', stopOpacity: 1}} />
-                      <stop offset="100%" style={{stopColor: '#0d5e4a', stopOpacity: 1}} />
+                    <radialGradient id="ballGradient" cx="35%" cy="35%">
+                      <stop offset="0%" style={{stopColor: '#4ade80', stopOpacity: 1}} />
+                      <stop offset="40%" style={{stopColor: '#22c55e', stopOpacity: 1}} />
+                      <stop offset="70%" style={{stopColor: '#16a34a', stopOpacity: 1}} />
+                      <stop offset="100%" style={{stopColor: '#15803d', stopOpacity: 1}} />
+                    </radialGradient>
+                    <linearGradient id="starGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#fbbf24', stopOpacity: 1}} />
+                      <stop offset="50%" style={{stopColor: '#fcd34d', stopOpacity: 1}} />
+                      <stop offset="100%" style={{stopColor: '#fbbf24', stopOpacity: 1}} />
                     </linearGradient>
-                    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{stopColor: '#ffd700', stopOpacity: 1}} />
-                      <stop offset="50%" style={{stopColor: '#ffed4e', stopOpacity: 1}} />
-                      <stop offset="100%" style={{stopColor: '#ffd700', stopOpacity: 1}} />
+                    <linearGradient id="wingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#15803d', stopOpacity: 1}} />
+                      <stop offset="50%" style={{stopColor: '#16a34a', stopOpacity: 1}} />
+                      <stop offset="100%" style={{stopColor: '#22c55e', stopOpacity: 1}} />
                     </linearGradient>
-                    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{stopColor: '#0d5e4a', stopOpacity: 1}} />
-                      <stop offset="50%" style={{stopColor: '#1a6b52', stopOpacity: 1}} />
-                      <stop offset="100%" style={{stopColor: '#2d8a6e', stopOpacity: 1}} />
-                    </linearGradient>
+                    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                      <feOffset dx="0" dy="2" result="offsetblur"/>
+                      <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.5"/>
+                      </feComponentTransfer>
+                      <feMerge>
+                        <feMergeNode/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
                   </defs>
+                  
+                  <circle cx="200" cy="200" r="140" fill="url(#ballGradient)" stroke="#15803d" strokeWidth="8" filter="url(#shadow)"/>
+                  
+                  <path d="M 200,100 L 230,160 L 295,170 L 240,215 L 255,280 L 200,245 L 145,280 L 160,215 L 105,170 L 170,160 Z" 
+                        fill="url(#starGradient)" 
+                        stroke="#b45309" 
+                        strokeWidth="4"
+                        filter="url(#shadow)"/>
+                  
+                  <path d="M 290,120 Q 330,145 360,180 Q 385,210 395,250" 
+                        stroke="url(#wingGradient)" 
+                        strokeWidth="22" 
+                        fill="none" 
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        filter="url(#shadow)"/>
+                  <path d="M 295,135 Q 335,160 365,195 Q 390,225 398,265" 
+                        stroke="#fbbf24" 
+                        strokeWidth="12" 
+                        fill="none" 
+                        strokeLinecap="round"
+                        strokeLinejoin="round"/>
+                  <path d="M 300,150 Q 340,175 370,210 Q 393,238 399,278" 
+                        stroke="rgba(255,255,255,0.7)" 
+                        strokeWidth="6" 
+                        fill="none" 
+                        strokeLinecap="round"
+                        strokeLinejoin="round"/>
+                  
+                  <path d="M 290,145 Q 330,170 360,205 Q 385,235 395,275" 
+                        stroke="url(#wingGradient)" 
+                        strokeWidth="18" 
+                        fill="none" 
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        filter="url(#shadow)"/>
+                  <path d="M 295,158 Q 335,183 365,218 Q 390,248 398,288" 
+                        stroke="#fbbf24" 
+                        strokeWidth="10" 
+                        fill="none" 
+                        strokeLinecap="round"
+                        strokeLinejoin="round"/>
+                  <path d="M 300,170 Q 340,195 370,230 Q 393,258 399,298" 
+                        stroke="rgba(255,255,255,0.6)" 
+                        strokeWidth="5" 
+                        fill="none" 
+                        strokeLinecap="round"
+                        strokeLinejoin="round"/>
+                  
+                  <path d="M 110,185 L 135,155 M 150,230 L 125,215 M 290,185 L 265,155 M 250,230 L 275,215" 
+                        stroke="#15803d" 
+                        strokeWidth="5" 
+                        strokeLinecap="round"/>
+                  
+                  <ellipse cx="165" cy="175" rx="8" ry="10" fill="rgba(255,255,255,0.4)" transform="rotate(-20 165 175)"/>
+                  <ellipse cx="180" cy="165" rx="5" ry="6" fill="rgba(255,255,255,0.3)" transform="rotate(-20 180 165)"/>
                 </svg>
               </div>
             </div>
