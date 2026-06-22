@@ -118,9 +118,10 @@ export default function TrainingCategories() {
                   <span className="font-black text-2xl">{category.days}</span>
                 </div>
                 
-                <div className={`flex items-center justify-center gap-5 py-8 px-10 bg-gradient-to-r ${category.color} bg-opacity-10 rounded-[2rem] shadow-xl group-hover:shadow-2xl transition-all duration-500`}>
-                  <CurrencyCircleDollar size={52} weight="bold" className="text-white" />
-                  <span className={`text-6xl font-black bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}>
+                <div className={`flex items-center justify-center gap-5 py-8 px-10 rounded-[2rem] shadow-2xl group-hover:shadow-[0_30px_100px_rgba(0,0,0,0.2)] transition-all duration-500 relative overflow-hidden`}>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-90`}></div>
+                  <CurrencyCircleDollar size={52} weight="bold" className="text-white relative z-10 drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]" />
+                  <span className="text-6xl font-black text-white relative z-10 drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
                     {category.price}
                   </span>
                 </div>

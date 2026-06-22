@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button"
 import { WhatsappLogo, ArrowDown, Users, Clipboard } from "@phosphor-icons/react"
 import { useEffect, useState } from "react"
 import { useKV } from '@github/spark/hooks'
-import { useParallax } from "@/hooks/use-parallax"
 
 type HeroData = {
   title: string
@@ -25,8 +24,6 @@ type ContactData = {
 }
 
 export default function HeroSection() {
-  const parallaxOffset = useParallax()
-  
   const [heroData] = useKV<HeroData>('admin-hero', {
     title: 'اصنع من موهبتك بطل ملعب',
     subtitle: 'تدريب كرة قدم احترافي لجميع الأعمار مع مدربين معتمدين',
@@ -84,12 +81,7 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      <div 
-        className="absolute inset-0 transition-transform duration-100 ease-out"
-        style={{
-          transform: `translate(${parallaxOffset.x * 0.02}px, ${parallaxOffset.y * 0.02}px)`
-        }}
-      >
+      <div className="fixed inset-0 -z-10">
         <img 
           src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=2000&auto=format&fit=crop"
           alt="Soccer Training Background"
@@ -99,12 +91,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 field-pattern opacity-20"></div>
       </div>
       
-      <div 
-        className="absolute inset-0"
-        style={{
-          transform: `translate(${parallaxOffset.x * 0.05}px, ${parallaxOffset.y * 0.05}px)`
-        }}
-      >
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[10%] right-[15%] w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px]"></div>
         <div className="absolute bottom-[15%] left-[10%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[130px]"></div>
         <div className="absolute top-[40%] left-[45%] w-[550px] h-[550px] bg-secondary/15 rounded-full blur-[140px]"></div>
@@ -119,8 +106,10 @@ export default function HeroSection() {
             </p>
           </div>
           
-          <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-black leading-[0.9] tracking-tighter drop-shadow-[0_10px_50px_rgba(0,0,0,0.5)] text-shimmer relative">
-            {heroData?.title || 'اصنع من موهبتك بطل ملعب'}
+          <h1 className="text-6xl md:text-8xl lg:text-[8rem] font-black leading-[1.1] tracking-tight drop-shadow-[0_10px_50px_rgba(0,0,0,0.5)] pb-4">
+            <span className="bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent">
+              {heroData?.title || 'اصنع من موهبتك بطل ملعب'}
+            </span>
           </h1>
           
           <p className="text-2xl md:text-4xl font-bold text-white/95 max-w-3xl mx-auto leading-relaxed drop-shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
@@ -192,16 +181,15 @@ export default function HeroSection() {
       </div>
       
       <div 
-        className="absolute bottom-8 right-8 w-32 h-32 md:w-48 md:h-48 opacity-30 pointer-events-none"
-        style={{
-          transform: `translate(${parallaxOffset.x * -0.1}px, ${parallaxOffset.y * -0.1}px)`
-        }}
+        className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none overflow-hidden"
       >
-        <img 
-          src="https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=400&auto=format&fit=crop"
-          alt="Soccer Boot Kicking Ball"
-          className="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.6)] brightness-125 contrast-125"
-        />
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-primary/40 via-secondary/30 to-transparent">
+          <img 
+            src="https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=1920&auto=format&fit=crop"
+            alt="Soccer Action"
+            className="w-full h-full object-cover object-center opacity-60 brightness-110 contrast-125"
+          />
+        </div>
       </div>
       
       <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-transparent to-transparent pointer-events-none"></div>
