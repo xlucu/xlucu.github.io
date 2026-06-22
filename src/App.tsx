@@ -16,6 +16,8 @@ const AdminLogin = lazy(() => import("@/components/AdminLogin"))
 
 function App() {
   const [scrollY, setScrollY] = useState(0)
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+  const [loadingProgress, setLoadingProgress] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,40 @@ function App() {
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const imageUrls = backgroundImages.map(bg => bg.url)
+    let loadedCount = 0
+    const totalImages = imageUrls.length
+
+    const preloadImage = (url: string) => {
+      return new Promise<void>((resolve, reject) => {
+        const img = new Image()
+        img.onload = () => resolve()
+        img.onerror = () => reject()
+        img.src = url
+      })
+    }
+
+    const preloadAllImages = async () => {
+      const promises = imageUrls.map(url => 
+        preloadImage(url).then(() => {
+          loadedCount++
+          setLoadingProgress(Math.round((loadedCount / totalImages) * 100))
+        }).catch(() => {
+          loadedCount++
+          setLoadingProgress(Math.round((loadedCount / totalImages) * 100))
+        })
+      )
+
+      await Promise.all(promises)
+      setTimeout(() => {
+        setImagesLoaded(true)
+      }, 300)
+    }
+
+    preloadAllImages()
   }, [])
 
   const backgroundImages = [
@@ -93,6 +129,26 @@ function App() {
 
   return (
     <div className="min-h-screen select-none relative">
+      {!imagesLoaded && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent transition-opacity duration-500">
+          <div className="text-center space-y-6">
+            <div className="relative">
+              <LoadingSpinner />
+            </div>
+            <div className="space-y-2">
+              <p className="text-white text-xl font-bold animate-pulse">جاري تحميل الأكاديمية...</p>
+              <div className="w-64 h-2 bg-white/20 rounded-full overflow-hidden mx-auto">
+                <div 
+                  className="h-full bg-white rounded-full transition-all duration-300 ease-out"
+                  style={{ width: `${loadingProgress}%` }}
+                />
+              </div>
+              <p className="text-white/80 text-sm font-medium">{loadingProgress}%</p>
+            </div>
+          </div>
+        </div>
+      )}
+      
       <div className="fixed inset-0 -z-10">
         <div 
           className="absolute inset-0 transition-opacity duration-[1200ms] ease-in-out"
@@ -105,6 +161,8 @@ function App() {
             src={activeBackground.url}
             alt="Soccer Background"
             className="w-full h-[140vh] object-cover"
+            loading="eager"
+            decoding="async"
           />
           <div className={`absolute inset-0 bg-gradient-to-br ${activeBackground.overlay} transition-all duration-[1200ms]`}></div>
         </div>
@@ -121,6 +179,8 @@ function App() {
               src={nextBackground.url}
               alt="Soccer Background"
               className="w-full h-[140vh] object-cover"
+              loading="eager"
+              decoding="async"
             />
             <div className={`absolute inset-0 bg-gradient-to-br ${nextBackground.overlay} transition-all duration-[1200ms]`}></div>
           </div>
