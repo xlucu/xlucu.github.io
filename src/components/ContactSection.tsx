@@ -3,23 +3,26 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Clock, WhatsappLogo } from "@phosphor-icons/react"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { MapPin, Clock, WhatsappLogo, Users, CalendarBlank } from "@phosphor-icons/react"
 
 export default function ContactSection() {
   const [playerName, setPlayerName] = useState("")
   const [playerAge, setPlayerAge] = useState("")
   const [parentPhone, setParentPhone] = useState("")
+  const [ageCategory, setAgeCategory] = useState("")
+  const [preferredTime, setPreferredTime] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     
-    if (!playerName || !playerAge || !parentPhone) {
+    if (!playerName || !playerAge || !parentPhone || !ageCategory || !preferredTime) {
       return
     }
 
     const phoneNumber = "963982035983"
     const message = encodeURIComponent(
-      `مرحباً، أريد التسجيل في أكاديمية المواهب\n\nاسم اللاعب: ${playerName}\nالعمر: ${playerAge}\nرقم ولي الأمر: ${parentPhone}`
+      `مرحباً، أريد التسجيل في أكاديمية المواهب\n\nاسم اللاعب: ${playerName}\nالعمر: ${playerAge}\nالفئة العمرية: ${ageCategory}\nالوقت المفضل: ${preferredTime}\nرقم ولي الأمر: ${parentPhone}`
     )
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
   }
@@ -100,7 +103,7 @@ export default function ContactSection() {
               <CardDescription className="text-lg">أرسل بياناتك وسنتواصل معك فوراً</CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="space-y-2">
                   <Label htmlFor="player-name" className="text-lg font-bold">اسم اللاعب</Label>
                   <Input
@@ -126,6 +129,56 @@ export default function ContactSection() {
                     max="99"
                     className="text-lg py-6 border-2 focus:border-primary transition-colors"
                   />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="age-category" className="text-lg font-bold flex items-center gap-2">
+                    <Users size={20} weight="fill" className="text-primary" />
+                    الفئة العمرية
+                  </Label>
+                  <Select value={ageCategory} onValueChange={setAgeCategory} required>
+                    <SelectTrigger id="age-category" className="text-lg py-6 border-2 focus:border-primary transition-colors">
+                      <SelectValue placeholder="اختر الفئة العمرية" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="البراعم (6-10 سنوات)" className="text-lg py-3">
+                        <div className="flex flex-col items-start">
+                          <span className="font-bold">البراعم</span>
+                          <span className="text-sm text-muted-foreground">6-10 سنوات</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="الناشئين (11-15 سنة)" className="text-lg py-3">
+                        <div className="flex flex-col items-start">
+                          <span className="font-bold">الناشئين</span>
+                          <span className="text-sm text-muted-foreground">11-15 سنة</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="الشباب (16+ سنة)" className="text-lg py-3">
+                        <div className="flex flex-col items-start">
+                          <span className="font-bold">الشباب</span>
+                          <span className="text-sm text-muted-foreground">16+ سنة</span>
+                        </div>
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="preferred-time" className="text-lg font-bold flex items-center gap-2">
+                    <CalendarBlank size={20} weight="fill" className="text-accent" />
+                    الوقت المفضل للتدريب
+                  </Label>
+                  <Select value={preferredTime} onValueChange={setPreferredTime} required>
+                    <SelectTrigger id="preferred-time" className="text-lg py-6 border-2 focus:border-primary transition-colors">
+                      <SelectValue placeholder="اختر الوقت المفضل" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="4:00 - 5:30 عصراً" className="text-lg py-2">4:00 - 5:30 عصراً</SelectItem>
+                      <SelectItem value="5:30 - 7:00 مساءً" className="text-lg py-2">5:30 - 7:00 مساءً</SelectItem>
+                      <SelectItem value="7:00 - 8:00 مساءً" className="text-lg py-2">7:00 - 8:00 مساءً</SelectItem>
+                      <SelectItem value="أي وقت متاح" className="text-lg py-2">أي وقت متاح</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 <div className="space-y-2">
