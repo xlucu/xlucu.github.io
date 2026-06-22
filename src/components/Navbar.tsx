@@ -26,92 +26,88 @@ export default function Navbar() {
           <div className="flex items-center gap-5 cursor-pointer" onClick={() => scrollToSection('home')}>
             <div className="relative z-[101]">
               <div className="w-20 h-20 flex items-center justify-center">
-                <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_6px_20px_rgba(0,0,0,0.4)]" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)]" xmlns="http://www.w3.org/2000/svg">
                   <defs>
-                    <radialGradient id="ballGradient" cx="35%" cy="35%">
+                    <radialGradient id="shieldGradient" cx="50%" cy="40%">
                       <stop offset="0%" style={{stopColor: '#4ade80', stopOpacity: 1}} />
-                      <stop offset="40%" style={{stopColor: '#22c55e', stopOpacity: 1}} />
-                      <stop offset="70%" style={{stopColor: '#16a34a', stopOpacity: 1}} />
+                      <stop offset="60%" style={{stopColor: '#22c55e', stopOpacity: 1}} />
                       <stop offset="100%" style={{stopColor: '#15803d', stopOpacity: 1}} />
                     </radialGradient>
-                    <linearGradient id="starGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <linearGradient id="crownGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" style={{stopColor: '#fbbf24', stopOpacity: 1}} />
-                      <stop offset="50%" style={{stopColor: '#fcd34d', stopOpacity: 1}} />
-                      <stop offset="100%" style={{stopColor: '#fbbf24', stopOpacity: 1}} />
+                      <stop offset="50%" style={{stopColor: '#f59e0b', stopOpacity: 1}} />
+                      <stop offset="100%" style={{stopColor: '#d97706', stopOpacity: 1}} />
                     </linearGradient>
-                    <linearGradient id="wingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{stopColor: '#15803d', stopOpacity: 1}} />
-                      <stop offset="50%" style={{stopColor: '#16a34a', stopOpacity: 1}} />
-                      <stop offset="100%" style={{stopColor: '#22c55e', stopOpacity: 1}} />
+                    <linearGradient id="innerShield" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#ffffff', stopOpacity: 0.3}} />
+                      <stop offset="100%" style={{stopColor: '#ffffff', stopOpacity: 0.05}} />
                     </linearGradient>
-                    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-                      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-                      <feOffset dx="0" dy="2" result="offsetblur"/>
+                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+                      <feOffset dx="0" dy="0" result="offsetblur"/>
                       <feComponentTransfer>
-                        <feFuncA type="linear" slope="0.5"/>
+                        <feFuncA type="linear" slope="1.2"/>
                       </feComponentTransfer>
                       <feMerge>
                         <feMergeNode/>
                         <feMergeNode in="SourceGraphic"/>
                       </feMerge>
                     </filter>
+                    <filter id="innerShadow">
+                      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                      <feOffset dx="0" dy="2"/>
+                      <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowDiff"/>
+                      <feFlood floodColor="#000000" floodOpacity="0.3"/>
+                      <feComposite in2="shadowDiff" operator="in"/>
+                      <feComposite in2="SourceGraphic" operator="over"/>
+                    </filter>
                   </defs>
                   
-                  <circle cx="200" cy="200" r="140" fill="url(#ballGradient)" stroke="#15803d" strokeWidth="8" filter="url(#shadow)"/>
-                  
-                  <path d="M 200,100 L 230,160 L 295,170 L 240,215 L 255,280 L 200,245 L 145,280 L 160,215 L 105,170 L 170,160 Z" 
-                        fill="url(#starGradient)" 
-                        stroke="#b45309" 
-                        strokeWidth="4"
-                        filter="url(#shadow)"/>
-                  
-                  <path d="M 290,120 Q 330,145 360,180 Q 385,210 395,250" 
-                        stroke="url(#wingGradient)" 
-                        strokeWidth="22" 
-                        fill="none" 
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        filter="url(#shadow)"/>
-                  <path d="M 295,135 Q 335,160 365,195 Q 390,225 398,265" 
-                        stroke="#fbbf24" 
-                        strokeWidth="12" 
-                        fill="none" 
-                        strokeLinecap="round"
-                        strokeLinejoin="round"/>
-                  <path d="M 300,150 Q 340,175 370,210 Q 393,238 399,278" 
-                        stroke="rgba(255,255,255,0.7)" 
-                        strokeWidth="6" 
-                        fill="none" 
-                        strokeLinecap="round"
-                        strokeLinejoin="round"/>
-                  
-                  <path d="M 290,145 Q 330,170 360,205 Q 385,235 395,275" 
-                        stroke="url(#wingGradient)" 
-                        strokeWidth="18" 
-                        fill="none" 
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        filter="url(#shadow)"/>
-                  <path d="M 295,158 Q 335,183 365,218 Q 390,248 398,288" 
-                        stroke="#fbbf24" 
-                        strokeWidth="10" 
-                        fill="none" 
-                        strokeLinecap="round"
-                        strokeLinejoin="round"/>
-                  <path d="M 300,170 Q 340,195 370,230 Q 393,258 399,298" 
-                        stroke="rgba(255,255,255,0.6)" 
-                        strokeWidth="5" 
-                        fill="none" 
-                        strokeLinecap="round"
-                        strokeLinejoin="round"/>
-                  
-                  <path d="M 110,185 L 135,155 M 150,230 L 125,215 M 290,185 L 265,155 M 250,230 L 275,215" 
+                  <path d="M 200,60 L 340,110 L 340,200 Q 340,280 280,330 Q 240,360 200,380 Q 160,360 120,330 Q 60,280 60,200 L 60,110 Z" 
+                        fill="url(#shieldGradient)" 
                         stroke="#15803d" 
-                        strokeWidth="5" 
-                        strokeLinecap="round"/>
+                        strokeWidth="6" 
+                        filter="url(#glow)"/>
                   
-                  <ellipse cx="165" cy="175" rx="8" ry="10" fill="rgba(255,255,255,0.4)" transform="rotate(-20 165 175)"/>
-                  <ellipse cx="180" cy="165" rx="5" ry="6" fill="rgba(255,255,255,0.3)" transform="rotate(-20 180 165)"/>
+                  <path d="M 200,80 L 320,120 L 320,200 Q 320,270 265,315 Q 230,340 200,358 Q 170,340 135,315 Q 80,270 80,200 L 80,120 Z" 
+                        fill="url(#innerShield)" 
+                        stroke="rgba(255,255,255,0.3)" 
+                        strokeWidth="2"/>
+                  
+                  <circle cx="200" cy="220" r="80" 
+                          fill="white" 
+                          stroke="#16a34a" 
+                          strokeWidth="5"
+                          filter="url(#innerShadow)"/>
+                  
+                  <path d="M 140,220 L 140,210 Q 140,160 200,140 Q 260,160 260,210 L 260,220 M 155,240 Q 155,280 200,295 Q 245,280 245,240" 
+                        stroke="#16a34a" 
+                        strokeWidth="4" 
+                        fill="none" 
+                        strokeLinecap="round"/>
+                  <path d="M 175,210 L 175,195 Q 175,175 200,165 Q 225,175 225,195 L 225,210" 
+                        stroke="#16a34a" 
+                        strokeWidth="3" 
+                        fill="none" 
+                        strokeLinecap="round"/>
+                  <circle cx="175" cy="225" r="4" fill="#16a34a"/>
+                  <circle cx="200" cy="230" r="4" fill="#16a34a"/>
+                  <circle cx="225" cy="225" r="4" fill="#16a34a"/>
+                  
+                  <path d="M 150,75 L 170,115 L 200,100 L 230,115 L 250,75 L 230,90 L 200,75 L 170,90 Z" 
+                        fill="url(#crownGradient)" 
+                        stroke="#b45309" 
+                        strokeWidth="3"
+                        filter="url(#glow)"/>
+                  
+                  <circle cx="150" cy="75" r="8" fill="#fbbf24" stroke="#b45309" strokeWidth="2"/>
+                  <circle cx="200" cy="70" r="10" fill="#fbbf24" stroke="#b45309" strokeWidth="2"/>
+                  <circle cx="250" cy="75" r="8" fill="#fbbf24" stroke="#b45309" strokeWidth="2"/>
+                  
+                  <path d="M 200,65 L 202,60 L 200,55 L 198,60 Z" fill="#fff" opacity="0.8"/>
+                  
+                  <ellipse cx="180" cy="200" rx="6" ry="8" fill="rgba(255,255,255,0.5)" transform="rotate(-20 180 200)"/>
+                  <ellipse cx="160" cy="180" rx="4" ry="5" fill="rgba(255,255,255,0.4)" transform="rotate(-20 160 180)"/>
                 </svg>
               </div>
             </div>
