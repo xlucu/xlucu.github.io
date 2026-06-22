@@ -1,27 +1,36 @@
 import { Card, CardContent } from "@/components/ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Star, Trophy } from "@phosphor-icons/react"
 
 interface Player {
   name: string
   achievement: string
   club: string
+  avatar: string
+  initials: string
 }
 
 const players: Player[] = [
   {
     name: "محمد الأحمد",
     achievement: "انتقل للعب في",
-    club: "نادي الاتحاد"
+    club: "نادي الاتحاد",
+    avatar: "https://i.pravatar.cc/300?img=12",
+    initials: "م.أ"
   },
   {
     name: "علي العمر",
     achievement: "انتقل للعب في",
-    club: "نادي الجيش"
+    club: "نادي الجيش",
+    avatar: "https://i.pravatar.cc/300?img=33",
+    initials: "ع.ع"
   },
   {
     name: "خالد المحمد",
     achievement: "انتقل للعب في",
-    club: "نادي الوحدة"
+    club: "نادي الوحدة",
+    avatar: "https://i.pravatar.cc/300?img=52",
+    initials: "خ.م"
   }
 ]
 
@@ -55,12 +64,12 @@ export default function OurStars() {
               <div className="relative h-72 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20 flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 group-hover:scale-110 transition-transform duration-500"></div>
                 
-                <div className="relative w-40 h-40 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center border-4 border-white shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                  <svg viewBox="0 0 24 24" fill="none" className="w-20 h-20 text-white">
-                    <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.2"/>
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="currentColor"/>
-                  </svg>
-                </div>
+                <Avatar className="relative w-40 h-40 border-4 border-white shadow-2xl group-hover:scale-110 transition-transform duration-500 ring-4 ring-primary/20">
+                  <AvatarImage src={player.avatar} alt={player.name} className="object-cover" />
+                  <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-white text-3xl font-black">
+                    {player.initials}
+                  </AvatarFallback>
+                </Avatar>
                 
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
                   <Star size={24} weight="fill" className="text-accent" />
