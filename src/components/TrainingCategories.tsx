@@ -74,7 +74,7 @@ export default function TrainingCategories() {
           alt="Soccer Background"
           className="w-full h-full object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/92 via-muted/88 to-background/92"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-background/75 via-muted/70 to-background/75"></div>
         <div className="absolute inset-0 field-pattern opacity-15"></div>
       </div>
       

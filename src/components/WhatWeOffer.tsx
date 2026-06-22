@@ -43,7 +43,7 @@ export default function WhatWeOffer() {
           alt="Soccer Field"
           className="w-full h-full object-cover opacity-15"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/98 via-muted/95 to-background/98"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-background/75 via-muted/70 to-background/75"></div>
         <div className="absolute inset-0 field-pattern opacity-20"></div>
       </div>
       

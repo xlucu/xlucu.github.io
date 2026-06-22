@@ -116,6 +116,15 @@ export default function Gallery() {
 
   return (
     <section id="gallery" className="py-48 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=2400&auto=format&fit=crop"
+          alt="Soccer Background"
+          className="w-full h-full object-cover opacity-12"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/75 via-muted/70 to-background/75"></div>
+        <div className="absolute inset-0 field-pattern opacity-15"></div>
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 space-y-6 reveal-up">

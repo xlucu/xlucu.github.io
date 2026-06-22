@@ -138,7 +138,7 @@ export default function TestimonialsSection() {
           alt="Soccer Background"
           className="w-full h-full object-cover opacity-10"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/97 via-muted/94 to-background/97"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-background/75 via-muted/70 to-background/75"></div>
         <div className="absolute inset-0 field-pattern opacity-20"></div>
       </div>
       <div className="absolute top-0 right-1/3 w-[45rem] h-[45rem] bg-secondary/15 rounded-full blur-[140px]"></div>

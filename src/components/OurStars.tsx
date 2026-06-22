@@ -44,7 +44,7 @@ export default function OurStars() {
           alt="Soccer Background"
           className="w-full h-full object-cover opacity-12"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/97 via-muted/94 to-background/97"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-background/75 via-muted/70 to-background/75"></div>
         <div className="absolute inset-0 field-pattern opacity-15"></div>
       </div>
       <div className="absolute top-0 right-1/4 w-[40rem] h-[40rem] bg-yellow-400/15 rounded-full blur-[130px]"></div>

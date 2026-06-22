@@ -103,7 +103,7 @@ export default function AchievementsSection() {
           alt="Soccer Background"
           className="w-full h-full object-cover opacity-12"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/96 via-muted/93 to-background/96"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-background/75 via-muted/70 to-background/75"></div>
         <div className="absolute inset-0 field-pattern opacity-15"></div>
       </div>
       <div className="absolute top-20 left-1/4 w-[40rem] h-[40rem] bg-primary/15 rounded-full blur-[130px]"></div>
