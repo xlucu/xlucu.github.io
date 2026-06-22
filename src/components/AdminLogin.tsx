@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Lock, Eye, EyeSlash, EnvelopeSimple, ArrowLeft, Key } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 import AdminPanel from './AdminPanel'
+import emailjs from '@emailjs/browser'
 
 const ADMIN_EMAIL = 'mohamadyahia209@gmail.com'
 const INITIAL_ADMIN_PASSWORD = 'Mm12345#'
@@ -77,7 +78,7 @@ export default function AdminLogin() {
     }
   }
 
-  const handleForgotPassword = (e: React.FormEvent) => {
+  const handleForgotPassword = async (e: React.FormEvent) => {
     e.preventDefault()
     
     const trimmedEmail = email.trim()
@@ -92,13 +93,40 @@ export default function AdminLogin() {
     
     setGeneratedResetCode(code)
     setResetCodeExpiry(expiry)
-    
-    toast.success(`رمز إعادة التعيين: ${code}`, {
-      description: 'صالح لمدة 15 دقيقة',
-      duration: 10000
-    })
-    
-    setViewMode('reset-password')
+
+    toast.loading('جاري إرسال رمز التحقق...')
+
+    try {
+      const templateParams = {
+        to_email: trimmedEmail,
+        reset_code: code,
+        expiry_time: '15 دقيقة',
+        app_name: 'أكاديمية المواهب'
+      }
+
+      await emailjs.send(
+        'service_w0d1htn',
+        'template_h9ioq0p',
+        templateParams,
+        'ux0ovdWrTOZLPqjXv'
+      )
+
+      toast.dismiss()
+      toast.success('تم إرسال رمز التحقق إلى بريدك الإلكتروني', {
+        description: 'يرجى التحقق من صندوق الوارد الخاص بك',
+        duration: 5000
+      })
+      
+      setViewMode('reset-password')
+    } catch (error) {
+      console.error('Error sending email:', error)
+      toast.dismiss()
+      toast.error('فشل إرسال البريد الإلكتروني', {
+        description: `سيتم عرض الرمز هنا: ${code}`,
+        duration: 10000
+      })
+      setViewMode('reset-password')
+    }
   }
 
   const handleResetPassword = (e: React.FormEvent) => {
