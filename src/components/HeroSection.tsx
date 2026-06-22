@@ -1,14 +1,55 @@
 import { Button } from "@/components/ui/button"
 import { WhatsappLogo, ArrowDown, Users, Clipboard } from "@phosphor-icons/react"
 import { useEffect, useState } from "react"
+import { useKV } from '@github/spark/hooks'
+
+type HeroData = {
+  title: string
+  subtitle: string
+  ctaText: string
+}
+
+type AchievementsData = {
+  students: number
+  championships: number
+  coaches: number
+  satisfaction: number
+}
+
+type ContactData = {
+  whatsapp: string
+  location: string
+  schedule: string
+  mapUrl: string
+}
 
 export default function HeroSection() {
+  const [heroData] = useKV<HeroData>('admin-hero', {
+    title: 'اصنع من موهبتك بطل ملعب',
+    subtitle: 'تدريب كرة قدم احترافي لجميع الأعمار مع مدربين معتمدين',
+    ctaText: 'سجل الآن'
+  })
+
+  const [achievementsData] = useKV<AchievementsData>('admin-achievements', {
+    students: 500,
+    championships: 15,
+    coaches: 12,
+    satisfaction: 98
+  })
+
+  const [contactData] = useKV<ContactData>('admin-contact', {
+    whatsapp: '0982035983',
+    location: 'Maarret el Mesrine, Idlib',
+    schedule: '4 العصر لـ 8 بالليل، كل الأيام عدا الجمعة',
+    mapUrl: ''
+  })
+
   const [studentsCount, setStudentsCount] = useState(0)
   const [coachesCount, setCoachesCount] = useState(0)
 
   useEffect(() => {
-    const studentsTarget = 287
-    const coachesTarget = 12
+    const studentsTarget = achievementsData?.students || 287
+    const coachesTarget = achievementsData?.coaches || 12
     const duration = 2000
     const steps = 60
 
@@ -30,10 +71,10 @@ export default function HeroSection() {
     }, duration / steps)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [achievementsData])
 
   const openWhatsApp = () => {
-    const phoneNumber = "963982035983"
+    const phoneNumber = `963${(contactData?.whatsapp || '0982035983').replace(/^0+/, '')}`
     const message = encodeURIComponent("مرحباً، أريد التسجيل في أكاديمية المواهب لكرة القدم")
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
   }
@@ -54,14 +95,11 @@ export default function HeroSection() {
           </div>
           
           <h1 className="text-6xl md:text-8xl font-black leading-tight tracking-tight drop-shadow-2xl">
-            اصنع من موهبتك
-            <span className="block bg-gradient-to-r from-white via-accent to-white bg-clip-text text-transparent mt-4 float-animation">
-              بطل ملعب
-            </span>
+            {heroData?.title || 'اصنع من موهبتك بطل ملعب'}
           </h1>
           
           <p className="text-2xl md:text-3xl font-bold text-white/95 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
-            تدريب كرة قدم احترافي لجميع الأعمار مع مدربين معتمدين ومنهج تدريبي عالمي
+            {heroData?.subtitle || 'تدريب كرة قدم احترافي لجميع الأعمار مع مدربين معتمدين ومنهج تدريبي عالمي'}
           </p>
           
           <div className="pt-8 flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -71,7 +109,7 @@ export default function HeroSection() {
               className="bg-white hover:bg-white/90 text-primary font-black text-2xl px-16 py-8 rounded-2xl shadow-2xl hover:scale-110 transition-all duration-300 hover:shadow-white/30"
             >
               <WhatsappLogo size={36} weight="fill" className="ml-3" />
-              سجل الآن
+              {heroData?.ctaText || 'سجل الآن'}
             </Button>
             <Button 
               size="lg"
