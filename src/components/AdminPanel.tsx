@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { X, FloppyDisk, Trash, Plus } from '@phosphor-icons/react'
+import { X, FloppyDisk, Trash, Plus, Image as ImageIcon } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 
 interface AdminPanelProps {
@@ -67,6 +67,13 @@ type Testimonial = {
   name: string
   text: string
   rating: number
+}
+
+type GalleryImage = {
+  id: number
+  src: string
+  alt: string
+  category: "academy" | "field" | "training"
 }
 
 export default function AdminPanel({ onClose }: AdminPanelProps) {
@@ -193,6 +200,63 @@ export default function AdminPanel({ onClose }: AdminPanelProps) {
     }
   ])
 
+  const [galleryData, setGalleryData] = useKV<GalleryImage[]>('admin-gallery', [
+    {
+      id: 1,
+      src: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=800&h=600&fit=crop",
+      alt: "ملعب الأكاديمية - منظر عام",
+      category: "field"
+    },
+    {
+      id: 2,
+      src: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=600&fit=crop",
+      alt: "تدريب البراعم",
+      category: "training"
+    },
+    {
+      id: 3,
+      src: "https://images.unsplash.com/photo-1459865264687-595d652de67e?w=800&h=600&fit=crop",
+      alt: "الملعب العشبي الطبيعي",
+      category: "field"
+    },
+    {
+      id: 4,
+      src: "https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=800&h=600&fit=crop",
+      alt: "تدريب الناشئين",
+      category: "training"
+    },
+    {
+      id: 5,
+      src: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=800&h=600&fit=crop",
+      alt: "مبنى الأكاديمية",
+      category: "academy"
+    },
+    {
+      id: 6,
+      src: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800&h=600&fit=crop",
+      alt: "مباراة ودية",
+      category: "training"
+    },
+    {
+      id: 7,
+      src: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800&h=600&fit=crop",
+      alt: "الملعب ليلاً",
+      category: "field"
+    },
+    {
+      id: 8,
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&h=600&fit=crop",
+      alt: "تدريب جماعي",
+      category: "training"
+    },
+    {
+      id: 9,
+      src: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800&h=600&fit=crop",
+      alt: "مرافق الأكاديمية",
+      category: "academy"
+    }
+  ])
+
   const handleSave = (message: string) => {
     toast.success(message)
   }
@@ -287,6 +351,28 @@ export default function AdminPanel({ onClose }: AdminPanelProps) {
     toast.success('تم حذف التقييم بنجاح')
   }
 
+  const addGalleryImage = () => {
+    setGalleryData((current) => [...(current || []), {
+      id: Date.now(),
+      src: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=800&h=600&fit=crop',
+      alt: 'صورة جديدة',
+      category: 'field'
+    }])
+  }
+
+  const updateGalleryImage = (index: number, field: keyof GalleryImage, value: string | number) => {
+    setGalleryData((current) => {
+      const updated = [...(current || [])]
+      updated[index] = { ...updated[index], [field]: value }
+      return updated
+    })
+  }
+
+  const deleteGalleryImage = (index: number) => {
+    setGalleryData((current) => (current || []).filter((_, i) => i !== index))
+    toast.success('تم حذف الصورة بنجاح')
+  }
+
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm">
       <div className="fixed right-0 top-0 h-full w-full md:w-[800px] bg-background shadow-2xl overflow-y-auto">
@@ -302,11 +388,12 @@ export default function AdminPanel({ onClose }: AdminPanelProps) {
 
         <div className="p-6 space-y-6">
           <Tabs defaultValue="hero" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8 mb-6">
+            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-9 mb-6">
               <TabsTrigger value="hero">البطل</TabsTrigger>
               <TabsTrigger value="achievements">الإنجازات</TabsTrigger>
               <TabsTrigger value="categories">الفئات</TabsTrigger>
               <TabsTrigger value="offerings">المميزات</TabsTrigger>
+              <TabsTrigger value="gallery">الصور</TabsTrigger>
               <TabsTrigger value="stars">النجوم</TabsTrigger>
               <TabsTrigger value="testimonials">التقييمات</TabsTrigger>
               <TabsTrigger value="contact">التواصل</TabsTrigger>
@@ -607,6 +694,87 @@ export default function AdminPanel({ onClose }: AdminPanelProps) {
                 <Plus className="ml-2" /> إضافة تقييم جديد
               </Button>
               <Button onClick={() => handleSave('تم حفظ التغييرات على التقييمات')} className="w-full">
+                <FloppyDisk className="ml-2" /> حفظ كل التغييرات
+              </Button>
+            </TabsContent>
+
+            <TabsContent value="gallery" className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <ImageIcon size={24} weight="fill" />
+                    إدارة معرض الصور
+                  </CardTitle>
+                  <CardDescription>تعديل الصور في معرض الأكاديمية - رابط الصورة، الوصف، والتصنيف</CardDescription>
+                </CardHeader>
+              </Card>
+              
+              {(galleryData || []).map((image, index) => (
+                <Card key={image.id}>
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-base">{image.alt}</CardTitle>
+                      <Button variant="destructive" size="icon" onClick={() => deleteGalleryImage(index)}>
+                        <Trash className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="space-y-2">
+                      <Label>رابط الصورة</Label>
+                      <Input
+                        value={image.src}
+                        onChange={(e) => updateGalleryImage(index, 'src', e.target.value)}
+                        placeholder="https://example.com/image.jpg"
+                        dir="ltr"
+                      />
+                      <p className="text-xs text-muted-foreground">
+                        استخدم روابط من Unsplash أو أي مصدر آخر
+                      </p>
+                    </div>
+                    
+                    {image.src && (
+                      <div className="relative aspect-video rounded-lg overflow-hidden border-2 border-border">
+                        <img 
+                          src={image.src} 
+                          alt={image.alt}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.currentTarget.src = 'https://via.placeholder.com/800x600?text=خطأ+في+تحميل+الصورة'
+                          }}
+                        />
+                      </div>
+                    )}
+                    
+                    <div className="space-y-2">
+                      <Label>وصف الصورة</Label>
+                      <Input
+                        value={image.alt}
+                        onChange={(e) => updateGalleryImage(index, 'alt', e.target.value)}
+                        placeholder="ملعب الأكاديمية - منظر عام"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label>التصنيف</Label>
+                      <select
+                        value={image.category}
+                        onChange={(e) => updateGalleryImage(index, 'category', e.target.value as "academy" | "field" | "training")}
+                        className="w-full rounded-md border border-input bg-background px-3 py-2"
+                      >
+                        <option value="field">الملاعب</option>
+                        <option value="training">التدريبات</option>
+                        <option value="academy">المرافق</option>
+                      </select>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+              
+              <Button onClick={addGalleryImage} variant="outline" className="w-full">
+                <Plus className="ml-2" /> إضافة صورة جديدة
+              </Button>
+              <Button onClick={() => handleSave('تم حفظ التغييرات على المعرض')} className="w-full">
                 <FloppyDisk className="ml-2" /> حفظ كل التغييرات
               </Button>
             </TabsContent>

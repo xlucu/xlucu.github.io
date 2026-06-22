@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useKV } from '@github/spark/hooks'
 import { Card } from "@/components/ui/card"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Camera, X, ArrowLeft, ArrowRight } from "@phosphor-icons/react"
@@ -11,7 +12,7 @@ interface GalleryImage {
   category: "academy" | "field" | "training"
 }
 
-const galleryImages: GalleryImage[] = [
+const defaultGalleryImages: GalleryImage[] = [
   {
     id: 1,
     src: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=800&h=600&fit=crop",
@@ -69,12 +70,13 @@ const galleryImages: GalleryImage[] = [
 ]
 
 export default function Gallery() {
+  const [galleryImages] = useKV<GalleryImage[]>('admin-gallery', defaultGalleryImages)
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [filter, setFilter] = useState<"all" | "academy" | "field" | "training">("all")
 
   const filteredImages = filter === "all" 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === filter)
+    ? (galleryImages || defaultGalleryImages)
+    : (galleryImages || defaultGalleryImages).filter(img => img.category === filter)
 
   const openImage = (id: number) => {
     setSelectedImage(id)
@@ -99,7 +101,7 @@ export default function Gallery() {
     setSelectedImage(filteredImages[newIndex].id)
   }
 
-  const currentImage = galleryImages.find(img => img.id === selectedImage)
+  const currentImage = (galleryImages || defaultGalleryImages).find(img => img.id === selectedImage)
 
   const filterButtons = [
     { value: "all" as const, label: "الكل" },
