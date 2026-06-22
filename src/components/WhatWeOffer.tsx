@@ -36,29 +36,29 @@ const offers: Offer[] = [
 
 export default function WhatWeOffer() {
   return (
-    <section id="offers" className="py-40 bg-gradient-to-br from-background via-muted/40 to-background relative overflow-hidden">
-      <div className="absolute top-0 left-1/4 w-[30rem] h-[30rem] bg-accent/15 rounded-full blur-[100px]"></div>
-      <div className="absolute bottom-0 right-1/4 w-[30rem] h-[30rem] bg-primary/15 rounded-full blur-[100px]"></div>
+    <section id="offers" className="py-48 bg-gradient-to-br from-background via-muted/40 to-background relative overflow-hidden">
+      <div className="absolute top-0 left-1/4 w-[35rem] h-[35rem] bg-accent/15 rounded-full blur-[120px]"></div>
+      <div className="absolute bottom-0 right-1/4 w-[35rem] h-[35rem] bg-primary/15 rounded-full blur-[120px]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-24 space-y-8">
-          <div className="inline-flex items-center gap-4 px-8 py-4 glass-effect rounded-full shadow-xl">
-            <Sparkle size={28} weight="fill" className="text-accent" />
-            <span className="text-lg font-black text-accent">خدمات احترافية متكاملة</span>
+        <div className="text-center mb-28 space-y-10">
+          <div className="inline-flex items-center gap-4 px-10 py-5 glass-effect rounded-full shadow-2xl reveal-up">
+            <Sparkle size={32} weight="fill" className="text-accent" />
+            <span className="text-xl font-black text-accent">خدمات احترافية متكاملة</span>
           </div>
-          <h2 className="text-6xl md:text-8xl font-black text-foreground">
+          <h2 className="text-7xl md:text-9xl font-black text-foreground">
             ماذا نقدم
           </h2>
-          <p className="text-3xl text-muted-foreground max-w-4xl mx-auto font-bold leading-relaxed">
+          <p className="text-3xl md:text-4xl text-muted-foreground max-w-4xl mx-auto font-bold leading-relaxed">
             خدمات متكاملة لصناعة أبطال المستقبل
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
           {offers.map((offer, index) => (
             <div 
               key={index}
-              className="group relative bg-white p-10 rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.15)] transition-all duration-700 hover:-translate-y-8 text-center space-y-8 overflow-hidden"
+              className="group relative bg-white p-12 rounded-[2.5rem] shadow-[0_15px_50px_rgba(0,0,0,0.1)] hover:shadow-[0_25px_80px_rgba(0,0,0,0.18)] transition-all duration-700 hover:-translate-y-10 text-center space-y-10 overflow-hidden hover-lift"
               style={{
                 animationDelay: `${index * 100}ms`
               }}
@@ -66,17 +66,17 @@ export default function WhatWeOffer() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               
               <div className="relative">
-                <div className={`inline-flex p-8 bg-gradient-to-br ${offer.gradient} rounded-[1.5rem] shadow-2xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-700 relative overflow-hidden`}>
+                <div className={`inline-flex p-10 bg-gradient-to-br ${offer.gradient} rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.3)] group-hover:scale-125 group-hover:rotate-12 transition-all duration-700 relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-white/20 group-hover:bg-white/30 transition-all duration-700"></div>
                   <div className="relative z-10">{offer.icon}</div>
                 </div>
               </div>
               
-              <h3 className="text-2xl font-black text-foreground leading-tight relative">
+              <h3 className="text-3xl font-black text-foreground leading-tight relative">
                 {offer.title}
               </h3>
               
-              <p className="text-muted-foreground leading-relaxed text-lg font-bold relative">
+              <p className="text-muted-foreground leading-relaxed text-2xl font-bold relative">
                 {offer.description}
               </p>
               

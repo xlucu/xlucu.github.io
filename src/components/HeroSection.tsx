@@ -81,37 +81,41 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-secondary to-accent gradient-animate pt-20">
-      <div className="absolute inset-0 field-pattern opacity-50"></div>
+      <div className="absolute inset-0 field-pattern opacity-30"></div>
       
-      <div className="absolute top-20 right-10 w-96 h-96 bg-accent/25 rounded-full blur-[100px] animate-pulse"></div>
-      <div className="absolute bottom-20 left-10 w-[30rem] h-[30rem] bg-primary/25 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-secondary/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute inset-0">
+        <div className="absolute top-[10%] right-[15%] w-[500px] h-[500px] bg-accent/30 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-[15%] left-[10%] w-[600px] h-[600px] bg-primary/30 rounded-full blur-[130px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-[40%] left-[45%] w-[550px] h-[550px] bg-secondary/25 rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-[60%] right-[20%] w-[400px] h-[400px] bg-accent/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+      </div>
       
       <div className="container mx-auto px-4 py-32 relative z-10">
-        <div className="max-w-5xl mx-auto text-center text-white space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-          <div className="inline-block px-10 py-5 glass-effect rounded-full shadow-2xl mb-8 scale-in pulse-glow">
-            <p className="text-lg font-black text-white/95 flex items-center justify-center gap-3">
-              <span className="text-2xl">🏆</span>
+        <div className="max-w-5xl mx-auto text-center text-white space-y-12">
+          <div className="inline-block px-12 py-6 glass-effect rounded-full shadow-[0_20px_80px_rgba(132,71,221,0.5)] mb-10 scale-in pulse-glow animate-in">
+            <p className="text-xl font-black text-white/95 flex items-center justify-center gap-3">
+              <span className="text-3xl animate-bounce">🏆</span>
               الأكاديمية الرائدة في التدريب الكروي الاحترافي
             </p>
           </div>
           
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-tight tracking-tight drop-shadow-2xl shine-effect">
-            {heroData?.title || 'اصنع من موهبتك بطل ملعب'}
+          <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-black leading-[0.9] tracking-tighter drop-shadow-[0_10px_50px_rgba(0,0,0,0.5)] text-shimmer relative">
+            <span className="block">{heroData?.title || 'اصنع من موهبتك'}</span>
+            <span className="block text-shadow-glow">بطل ملعب</span>
           </h1>
           
-          <p className="text-2xl md:text-3xl font-bold text-white/95 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
+          <p className="text-2xl md:text-4xl font-bold text-white/95 max-w-3xl mx-auto leading-relaxed drop-shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
             {heroData?.subtitle || 'تدريب كرة قدم احترافي لجميع الأعمار مع مدربين معتمدين ومنهج تدريبي عالمي'}
           </p>
           
-          <div className="pt-10 flex flex-col sm:flex-row gap-8 justify-center items-center">
+          <div className="pt-12 flex flex-col sm:flex-row gap-10 justify-center items-center">
             <Button 
               size="lg"
               onClick={openWhatsApp}
-              className="bg-white hover:bg-white/95 text-primary font-black text-2xl px-20 py-10 rounded-3xl shadow-[0_20px_50px_rgba(132,71,221,0.4)] hover:shadow-[0_25px_60px_rgba(132,71,221,0.5)] hover:scale-110 transition-all duration-500 group relative overflow-hidden"
+              className="bg-white hover:bg-white/95 text-primary font-black text-3xl px-24 py-12 rounded-[2rem] shadow-[0_25px_80px_rgba(255,255,255,0.4)] hover:shadow-[0_30px_100px_rgba(255,255,255,0.5)] hover:scale-110 transition-all duration-700 group relative overflow-hidden border-4 border-white/50"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-              <WhatsappLogo size={40} weight="fill" className="ml-4 relative z-10" />
+              <span className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></span>
+              <WhatsappLogo size={48} weight="fill" className="ml-4 relative z-10 group-hover:rotate-12 transition-transform duration-500" />
               <span className="relative z-10">{heroData?.ctaText || 'سجل الآن'}</span>
             </Button>
             <Button 
@@ -120,39 +124,39 @@ export default function HeroSection() {
                 const element = document.getElementById('categories')
                 element?.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="glass-effect text-white font-black text-2xl px-20 py-10 rounded-3xl shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)] hover:scale-110 transition-all duration-500 border-3 border-white/50 hover:border-white/70"
+              className="glass-effect text-white font-black text-3xl px-24 py-12 rounded-[2rem] shadow-[0_20px_80px_rgba(0,0,0,0.3)] hover:shadow-[0_25px_100px_rgba(255,255,255,0.4)] hover:scale-110 transition-all duration-700 border-4 border-white/50 hover:border-white/80 hover-lift"
             >
               اكتشف المزيد
             </Button>
           </div>
 
-          <div className="pt-24 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-            <div className="glass-effect rounded-[2rem] p-10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:scale-110 hover:shadow-[0_25px_60px_rgba(0,0,0,0.2)] transition-all duration-500 border-3 border-white/40 group">
-              <div className="flex flex-col items-center gap-6">
-                <div className="bg-white/30 p-8 rounded-3xl backdrop-blur-sm group-hover:rotate-12 transition-transform duration-500">
-                  <Users size={56} weight="bold" className="text-white" />
+          <div className="pt-28 grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <div className="glass-effect rounded-[2.5rem] p-12 shadow-[0_25px_80px_rgba(0,0,0,0.2)] hover:scale-110 hover:shadow-[0_30px_100px_rgba(132,71,221,0.4)] transition-all duration-700 border-4 border-white/50 group hover-lift">
+              <div className="flex flex-col items-center gap-8">
+                <div className="bg-white/40 p-10 rounded-[2rem] backdrop-blur-sm group-hover:rotate-12 group-hover:scale-110 transition-all duration-700">
+                  <Users size={72} weight="bold" className="text-white" />
                 </div>
                 <div className="text-center">
-                  <div className="text-7xl font-black text-white mb-3 drop-shadow-lg">
+                  <div className="text-8xl font-black text-white mb-4 drop-shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
                     {studentsCount}+
                   </div>
-                  <div className="text-2xl font-bold text-white/95">
+                  <div className="text-3xl font-bold text-white/95">
                     طالب مسجل
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="glass-effect rounded-[2rem] p-10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:scale-110 hover:shadow-[0_25px_60px_rgba(0,0,0,0.2)] transition-all duration-500 border-3 border-white/40 group">
-              <div className="flex flex-col items-center gap-6">
-                <div className="bg-white/30 p-8 rounded-3xl backdrop-blur-sm group-hover:rotate-12 transition-transform duration-500">
-                  <Clipboard size={56} weight="bold" className="text-white" />
+            <div className="glass-effect rounded-[2.5rem] p-12 shadow-[0_25px_80px_rgba(0,0,0,0.2)] hover:scale-110 hover:shadow-[0_30px_100px_rgba(236,72,153,0.4)] transition-all duration-700 border-4 border-white/50 group hover-lift">
+              <div className="flex flex-col items-center gap-8">
+                <div className="bg-white/40 p-10 rounded-[2rem] backdrop-blur-sm group-hover:rotate-12 group-hover:scale-110 transition-all duration-700">
+                  <Clipboard size={72} weight="bold" className="text-white" />
                 </div>
                 <div className="text-center">
-                  <div className="text-7xl font-black text-white mb-3 drop-shadow-lg">
+                  <div className="text-8xl font-black text-white mb-4 drop-shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
                     {coachesCount}+
                   </div>
-                  <div className="text-2xl font-bold text-white/95">
+                  <div className="text-3xl font-bold text-white/95">
                     مدرب معتمد
                   </div>
                 </div>
@@ -160,9 +164,9 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="pt-12 flex justify-center">
+          <div className="pt-16 flex justify-center">
             <div className="animate-bounce">
-              <ArrowDown size={40} weight="bold" className="text-white/70" />
+              <ArrowDown size={56} weight="bold" className="text-white/80" />
             </div>
           </div>
         </div>

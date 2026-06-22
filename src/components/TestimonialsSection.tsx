@@ -131,25 +131,25 @@ export default function TestimonialsSection() {
   const totalFamilies = 150 + (userTestimonials || []).length
 
   return (
-    <section id="testimonials" className="py-20 px-4 field-pattern">
+    <section id="testimonials" className="py-28 px-4 field-pattern">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16 animate-in">
-          <h2 className="text-5xl md:text-6xl font-black mb-4 bg-gradient-to-l from-primary via-secondary to-accent bg-clip-text text-transparent">
+        <div className="text-center mb-20 reveal-up">
+          <h2 className="text-6xl md:text-8xl font-black mb-6 bg-gradient-to-l from-primary via-secondary to-accent bg-clip-text text-transparent">
             شهادات الأهالي
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-2xl md:text-3xl text-muted-foreground max-w-2xl mx-auto font-bold">
             آراء وتجارب حقيقية من أهالي لاعبينا
           </p>
         </div>
 
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-16">
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button 
                 size="lg"
-                className="bg-gradient-to-r from-primary via-secondary to-accent text-white font-bold text-lg px-8 py-6 rounded-full shadow-2xl hover:shadow-primary/50 hover:scale-105 transition-all duration-300"
+                className="bg-gradient-to-r from-primary via-secondary to-accent text-white font-black text-2xl px-12 py-8 rounded-full shadow-[0_20px_60px_rgba(132,71,221,0.4)] hover:shadow-[0_25px_80px_rgba(132,71,221,0.5)] hover:scale-110 transition-all duration-500"
               >
-                <Plus size={24} weight="bold" className="ml-2" />
+                <Plus size={32} weight="bold" className="ml-2" />
                 أضف تقييمك
               </Button>
             </DialogTrigger>

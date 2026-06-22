@@ -111,30 +111,31 @@ export default function Gallery() {
   ]
 
   return (
-    <section id="gallery" className="py-24 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
+    <section id="gallery" className="py-32 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
       <div className="absolute inset-0 field-pattern opacity-5"></div>
+      <div className="absolute top-10 left-1/3 w-[35rem] h-[35rem] bg-accent/15 rounded-full blur-[120px]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12 space-y-4">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Camera size={36} weight="fill" className="text-primary" />
-            <h2 className="text-4xl md:text-5xl font-black text-foreground">
+        <div className="text-center mb-16 space-y-6 reveal-up">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <Camera size={44} weight="fill" className="text-primary" />
+            <h2 className="text-6xl md:text-7xl font-black text-foreground">
               معرض الصور
             </h2>
           </div>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-2xl text-muted-foreground max-w-2xl mx-auto font-bold">
             استعرض صور الأكاديمية والملاعب والتدريبات
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
           {filterButtons.map((btn) => (
             <button
               key={btn.value}
               onClick={() => setFilter(btn.value)}
-              className={`px-6 py-3 rounded-xl font-bold text-lg transition-all duration-300 ${
+              className={`px-10 py-5 rounded-2xl font-black text-2xl transition-all duration-300 ${
                 filter === btn.value
-                  ? "bg-primary text-primary-foreground shadow-lg scale-105"
+                  ? "bg-primary text-primary-foreground shadow-[0_10px_40px_rgba(132,71,221,0.4)] scale-110"
                   : "bg-card hover:bg-muted text-foreground border-2 border-border hover:border-primary/50 hover:scale-105"
               }`}
             >
