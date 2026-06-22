@@ -48,11 +48,18 @@ export default function AdminLogin() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
     
-    if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+    const trimmedEmail = email.trim()
+    const trimmedPassword = password.trim()
+    
+    if (trimmedEmail === ADMIN_EMAIL && trimmedPassword === ADMIN_PASSWORD) {
       setIsAuthenticated(true)
       toast.success('تم تسجيل الدخول بنجاح!')
     } else {
-      toast.error('البريد الإلكتروني أو كلمة المرور غير صحيحة')
+      if (trimmedEmail !== ADMIN_EMAIL) {
+        toast.error('البريد الإلكتروني غير صحيح')
+      } else {
+        toast.error('كلمة المرور غير صحيحة')
+      }
       setPassword('')
     }
   }
