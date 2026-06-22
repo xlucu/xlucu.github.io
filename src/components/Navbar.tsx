@@ -23,10 +23,10 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-[100] glass-effect shadow-[0_10px_40px_rgba(0,0,0,0.1)] border-b border-white/30">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-28">
-          <div className="flex items-center gap-5 cursor-pointer" onClick={() => scrollToSection('home')}>
+          <div className="flex items-center gap-5 cursor-pointer group/logo" onClick={() => scrollToSection('home')}>
             <div className="relative z-[101]">
               <div className="w-20 h-20 flex items-center justify-center">
-                <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)]" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover/logo:scale-110 group-hover/logo:rotate-[8deg] group-hover/logo:drop-shadow-[0_12px_40px_rgba(34,197,94,0.8)]" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <radialGradient id="shieldGradient" cx="50%" cy="40%">
                       <stop offset="0%" style={{stopColor: '#4ade80', stopOpacity: 1}} />
@@ -67,7 +67,8 @@ export default function Navbar() {
                         fill="url(#shieldGradient)" 
                         stroke="#15803d" 
                         strokeWidth="6" 
-                        filter="url(#glow)"/>
+                        filter="url(#glow)"
+                        className="transition-all duration-700 group-hover/logo:stroke-[8] group-hover/logo:opacity-100"/>
                   
                   <path d="M 200,80 L 320,120 L 320,200 Q 320,270 265,315 Q 230,340 200,358 Q 170,340 135,315 Q 80,270 80,200 L 80,120 Z" 
                         fill="url(#innerShield)" 
@@ -78,7 +79,8 @@ export default function Navbar() {
                           fill="white" 
                           stroke="#16a34a" 
                           strokeWidth="5"
-                          filter="url(#innerShadow)"/>
+                          filter="url(#innerShadow)"
+                          className="transition-all duration-700 group-hover/logo:stroke-[8] group-hover/logo:r-[85]"/>
                   
                   <path d="M 140,220 L 140,210 Q 140,160 200,140 Q 260,160 260,210 L 260,220 M 155,240 Q 155,280 200,295 Q 245,280 245,240" 
                         stroke="#16a34a" 
@@ -98,25 +100,37 @@ export default function Navbar() {
                         fill="url(#crownGradient)" 
                         stroke="#b45309" 
                         strokeWidth="3"
-                        filter="url(#glow)"/>
+                        filter="url(#glow)"
+                        className="transition-all duration-700 group-hover/logo:-translate-y-2 origin-center"
+                        style={{transformBox: 'fill-box'}}/>
                   
-                  <circle cx="150" cy="75" r="8" fill="#fbbf24" stroke="#b45309" strokeWidth="2"/>
-                  <circle cx="200" cy="70" r="10" fill="#fbbf24" stroke="#b45309" strokeWidth="2"/>
-                  <circle cx="250" cy="75" r="8" fill="#fbbf24" stroke="#b45309" strokeWidth="2"/>
+                  <circle cx="150" cy="75" r="8" fill="#fbbf24" stroke="#b45309" strokeWidth="2" 
+                          className="transition-all duration-700 group-hover/logo:-translate-y-2 group-hover/logo:r-[10]"
+                          style={{transformBox: 'fill-box'}}/>
+                  <circle cx="200" cy="70" r="10" fill="#fbbf24" stroke="#b45309" strokeWidth="2" 
+                          className="transition-all duration-700 group-hover/logo:-translate-y-3 group-hover/logo:r-[12]"
+                          style={{transformBox: 'fill-box'}}/>
+                  <circle cx="250" cy="75" r="8" fill="#fbbf24" stroke="#b45309" strokeWidth="2" 
+                          className="transition-all duration-700 group-hover/logo:-translate-y-2 group-hover/logo:r-[10]"
+                          style={{transformBox: 'fill-box'}}/>
                   
-                  <path d="M 200,65 L 202,60 L 200,55 L 198,60 Z" fill="#fff" opacity="0.8"/>
+                  <path d="M 200,65 L 202,60 L 200,55 L 198,60 Z" fill="#fff" opacity="0.8"
+                        className="transition-all duration-700 group-hover/logo:-translate-y-4 group-hover/logo:opacity-100 group-hover/logo:scale-125"
+                        style={{transformBox: 'fill-box'}}/>
                   
-                  <ellipse cx="180" cy="200" rx="6" ry="8" fill="rgba(255,255,255,0.5)" transform="rotate(-20 180 200)"/>
-                  <ellipse cx="160" cy="180" rx="4" ry="5" fill="rgba(255,255,255,0.4)" transform="rotate(-20 160 180)"/>
+                  <ellipse cx="180" cy="200" rx="6" ry="8" fill="rgba(255,255,255,0.5)" transform="rotate(-20 180 200)"
+                           className="transition-all duration-700 group-hover/logo:opacity-80 group-hover/logo:rx-[8] group-hover/logo:ry-[10]"/>
+                  <ellipse cx="160" cy="180" rx="4" ry="5" fill="rgba(255,255,255,0.4)" transform="rotate(-20 160 180)"
+                           className="transition-all duration-700 group-hover/logo:opacity-70 group-hover/logo:rx-[6] group-hover/logo:ry-[7]"/>
                 </svg>
               </div>
             </div>
             
             <div>
-              <h1 className="text-3xl md:text-4xl font-black text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)] leading-none">
+              <h1 className="text-3xl md:text-4xl font-black text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)] leading-none transition-all duration-700 group-hover/logo:scale-105 group-hover/logo:drop-shadow-[0_4px_12px_rgba(255,255,255,0.4)]">
                 أكاديمية المواهب
               </h1>
-              <p className="text-base text-white/90 font-black mt-1.5 drop-shadow-[0_1px_4px_rgba(0,0,0,0.2)]">اصنع من موهبتك بطل ملعب</p>
+              <p className="text-base text-white/90 font-black mt-1.5 drop-shadow-[0_1px_4px_rgba(0,0,0,0.2)] transition-all duration-700 group-hover/logo:text-white">اصنع من موهبتك بطل ملعب</p>
             </div>
           </div>
 
