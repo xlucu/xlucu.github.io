@@ -22,7 +22,7 @@ const categories: Category[] = [
     price: "40$",
     description: "تدريب أساسي للمهارات الحركية والتحكم بالكرة مع التركيز على المتعة والتطور",
     color: "from-emerald-500 via-green-500 to-teal-500",
-    image: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=800&auto=format&fit=crop",
     icon: 'baby'
   },
   {
@@ -113,10 +113,10 @@ export default function TrainingCategories() {
               </div>
               
               <CardHeader className="text-center space-y-6 pb-8 pt-10 relative">
-                <CardTitle className="text-5xl font-black text-foreground leading-tight">
+                <CardTitle className="text-5xl font-black text-foreground leading-tight px-4">
                   {category.title}
                 </CardTitle>
-                <CardDescription className="text-3xl font-black text-foreground/70">
+                <CardDescription className="text-3xl font-black text-foreground/70 px-4">
                   {category.ageRange}
                 </CardDescription>
               </CardHeader>
@@ -127,13 +127,13 @@ export default function TrainingCategories() {
                   <span className="font-black text-2xl text-foreground">{category.days}</span>
                 </div>
                 
-                <div className={`flex items-center justify-center gap-5 py-8 px-10 rounded-[2rem] shadow-2xl group-hover:shadow-[0_30px_100px_rgba(0,0,0,0.25)] transition-all duration-500 relative overflow-hidden`}>
-                  <div className={`absolute inset-0 bg-gradient-to-r ${category.color}`}></div>
-                  <CurrencyCircleDollar size={48} weight="bold" className="text-white relative z-10 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]" />
-                  <span className="text-6xl font-black text-white relative z-10 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+                <div className={`flex flex-wrap items-center justify-center gap-4 py-10 px-8 rounded-[2rem] shadow-2xl group-hover:shadow-[0_30px_100px_rgba(0,0,0,0.25)] transition-all duration-500 relative overflow-hidden`}>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-100`}></div>
+                  <CurrencyCircleDollar size={56} weight="bold" className="text-white relative z-10 drop-shadow-[0_6px_20px_rgba(0,0,0,0.8)]" />
+                  <span className="text-7xl font-black text-white relative z-10 drop-shadow-[0_6px_20px_rgba(0,0,0,0.8)] leading-none">
                     {category.price}
                   </span>
-                  <span className="text-3xl font-black text-white/90 relative z-10 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+                  <span className="text-3xl font-black text-white relative z-10 drop-shadow-[0_6px_20px_rgba(0,0,0,0.8)] whitespace-nowrap">
                     / شهرياً
                   </span>
                 </div>
