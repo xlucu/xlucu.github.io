@@ -23,8 +23,8 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-[100] glass-effect shadow-[0_10px_40px_rgba(0,0,0,0.1)] border-b border-white/30">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-28">
-          <div className="flex items-center gap-5 cursor-pointer group/logo" onClick={() => scrollToSection('home')}>
-            <div className="relative z-[101]">
+          <div className="flex items-center gap-5 cursor-pointer group/logo admin-trigger">
+            <div className="relative z-[101] admin-trigger">
               <div className="w-20 h-20 flex items-center justify-center">
                 <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover/logo:scale-110 group-hover/logo:rotate-[8deg] group-hover/logo:drop-shadow-[0_12px_40px_rgba(34,197,94,0.8)]" xmlns="http://www.w3.org/2000/svg">
                   <defs>

@@ -33,7 +33,7 @@ export default function Footer() {
 
           <div className="flex justify-center gap-8">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/share/1UKZp4i4W3/"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative w-24 h-24 glass-effect rounded-[1.5rem] flex items-center justify-center hover:scale-125 transition-all duration-500 hover:bg-blue-500 border-3 border-white/30 hover:border-blue-400 shadow-2xl"

@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { X, FloppyDisk, Trash, Plus, Image as ImageIcon } from '@phosphor-icons/react'
 import { toast } from 'sonner'
+import AnalyticsPanel from './AnalyticsPanel'
 
 interface AdminPanelProps {
   onClose: () => void
@@ -387,8 +388,9 @@ export default function AdminPanel({ onClose }: AdminPanelProps) {
         </div>
 
         <div className="p-6 space-y-6">
-          <Tabs defaultValue="hero" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-9 mb-6">
+          <Tabs defaultValue="analytics" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-10 mb-6">
+              <TabsTrigger value="analytics">الإحصائيات</TabsTrigger>
               <TabsTrigger value="hero">البطل</TabsTrigger>
               <TabsTrigger value="achievements">الإنجازات</TabsTrigger>
               <TabsTrigger value="categories">الفئات</TabsTrigger>
@@ -399,6 +401,10 @@ export default function AdminPanel({ onClose }: AdminPanelProps) {
               <TabsTrigger value="contact">التواصل</TabsTrigger>
               <TabsTrigger value="social">السوشيال</TabsTrigger>
             </TabsList>
+
+            <TabsContent value="analytics" className="space-y-4">
+              <AnalyticsPanel />
+            </TabsContent>
 
             <TabsContent value="hero" className="space-y-4">
               <Card>

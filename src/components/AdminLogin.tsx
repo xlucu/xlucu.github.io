@@ -7,7 +7,7 @@ import { Lock, Eye, EyeSlash } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 import AdminPanel from './AdminPanel'
 
-const ADMIN_EMAIL = 'mohamadyahia209@gmail.com'
+const ADMIN_EMAIL = 'mawahib.ac.f@gmail.com'
 const ADMIN_PASSWORD = 'Mm12345#'
 
 export default function AdminLogin() {
@@ -30,8 +30,19 @@ export default function AdminLogin() {
       })
     }
 
+    const handleLogoClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      if (target.closest('.admin-trigger')) {
+        setIsOpen(true)
+      }
+    }
+
     window.addEventListener('keydown', handleKeyPress)
-    return () => window.removeEventListener('keydown', handleKeyPress)
+    window.addEventListener('click', handleLogoClick)
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress)
+      window.removeEventListener('click', handleLogoClick)
+    }
   }, [])
 
   const handleLogin = (e: React.FormEvent) => {
