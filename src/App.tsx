@@ -8,6 +8,7 @@ import OurStars from "@/components/OurStars"
 import TestimonialsSection from "@/components/TestimonialsSection"
 import ContactSection from "@/components/ContactSection"
 import Footer from "@/components/Footer"
+import { Toaster } from "@/components/ui/sonner"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <TestimonialsSection />
       <ContactSection />
       <Footer />
+      <Toaster position="top-center" richColors />
     </div>
   )
 }
