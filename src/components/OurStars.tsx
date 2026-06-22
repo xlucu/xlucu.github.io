@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Star, Trophy, Sparkle } from "@phosphor-icons/react"
+import LazyImage from "@/components/LazyImage"
 
 interface Player {
   name: string

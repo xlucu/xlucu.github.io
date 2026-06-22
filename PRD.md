@@ -96,6 +96,56 @@
 - **الجوال الصغير**: تصميم responsive يعيد ترتيب العناصر بشكل عمودي
 - **بطء الاتصال**: استخدام صور محسّنة وخلفيات CSS بدلاً من الصور الثقيلة
 
+## Performance Optimizations - تحسينات الأداء
+لضمان أسرع وقت تحميل وأفضل تجربة مستخدم، تم تطبيق التحسينات التالية:
+
+**Lazy Loading للصور**
+- Functionality: تحميل الصور فقط عند اقتراب المستخدم من رؤيتها في الشاشة
+- Purpose: تقليل وقت التحميل الأولي وتوفير عرض النطاق الترددي
+- Implementation: 
+  - مكون LazyImage مخصص يستخدم Intersection Observer API
+  - تحميل الصور بـ 50px قبل ظهورها في viewport
+  - placeholder مع تأثير animate-pulse أثناء التحميل
+  - تأثير fade-in سلس عند اكتمال تحميل الصورة
+- Success criteria: الصور تظهر بسلاسة فقط عند الحاجة، الصفحة الأولية تحمل بسرعة أكبر
+
+**Code Splitting بـ React.lazy**
+- Functionality: تقسيم كود المكونات وتحميلها عند الطلب
+- Purpose: تقليل حجم الحزمة الأولية (initial bundle) وتسريع التحميل الأول
+- Implementation:
+  - استخدام React.lazy() لتحميل المكونات الكبيرة بشكل منفصل
+  - Suspense مع fallback جميل (spinner مع ألوان الموقع)
+  - المكونات المقسمة: AchievementsSection, TrainingCategories, WhatWeOffer, Gallery, OurStars, TestimonialsSection, ContactSection, AdminLogin
+  - المكونات الأساسية (Navbar, HeroSection, Footer) تحمل مباشرة
+- Success criteria: تحميل أسرع للصفحة الأولى، المكونات تظهر تدريجياً أثناء التمرير
+
+**Font Preloading**
+- Functionality: تحميل الخطوط بشكل مسبق لتجنب التأخير
+- Purpose: القضاء على Flash of Unstyled Text (FOUT)
+- Implementation:
+  - preconnect لـ Google Fonts CDN
+  - preload للخط Tajawal
+  - display=swap في رابط الخط
+- Success criteria: الخطوط تظهر فوراً بدون وميض أو تأخير
+
+**HTML Meta Optimization**
+- Functionality: تحسين metadata للصفحة
+- Purpose: تحسين SEO وسرعة التحميل
+- Implementation:
+  - إضافة meta description
+  - تعيين lang="ar" و dir="rtl"
+  - تحسين title للـ SEO
+- Success criteria: الموقع محسّن لمحركات البحث والأداء
+
+**Image Format Optimization**
+- Functionality: استخدام WebP و lazy loading للصور الخارجية
+- Purpose: تقليل حجم الصور وزمن التحميل
+- Implementation:
+  - استخدام Unsplash مع معاملات التحسين (w=800&h=600&fit=crop)
+  - lazy loading="lazy" على جميع صور المعرض
+  - LazyImage component مع Intersection Observer
+- Success criteria: الصور محمّلة بأحجام مناسبة وبسرعة عالية
+
 ## Design Direction
 تصميم عصري وأنيق فخم يجمع بين الاحترافية العالية والرقي المطلق، مع لمسات حديثة جريئة ومبتكرة تعكس التميز والطموح والقوة.
 

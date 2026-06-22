@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Camera, X, ArrowLeft, ArrowRight } from "@phosphor-icons/react"
+import LazyImage from "@/components/LazyImage"
 
 interface GalleryImage {
   id: number
@@ -151,11 +152,10 @@ export default function Gallery() {
               }}
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                <img
+                <LazyImage
                   src={image.src}
                   alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
                 />
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">

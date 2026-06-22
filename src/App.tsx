@@ -1,30 +1,49 @@
+import { lazy, Suspense } from "react"
 import Navbar from "@/components/Navbar"
 import HeroSection from "@/components/HeroSection"
-import AchievementsSection from "@/components/AchievementsSection"
-import TrainingCategories from "@/components/TrainingCategories"
-import WhatWeOffer from "@/components/WhatWeOffer"
-import Gallery from "@/components/Gallery"
-import OurStars from "@/components/OurStars"
-import TestimonialsSection from "@/components/TestimonialsSection"
-import ContactSection from "@/components/ContactSection"
 import Footer from "@/components/Footer"
-import AdminLogin from "@/components/AdminLogin"
+import LoadingSpinner from "@/components/LoadingSpinner"
 import { Toaster } from "@/components/ui/sonner"
+
+const AchievementsSection = lazy(() => import("@/components/AchievementsSection"))
+const TrainingCategories = lazy(() => import("@/components/TrainingCategories"))
+const WhatWeOffer = lazy(() => import("@/components/WhatWeOffer"))
+const Gallery = lazy(() => import("@/components/Gallery"))
+const OurStars = lazy(() => import("@/components/OurStars"))
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"))
+const ContactSection = lazy(() => import("@/components/ContactSection"))
+const AdminLogin = lazy(() => import("@/components/AdminLogin"))
 
 function App() {
   return (
     <div className="min-h-screen">
       <Navbar />
       <HeroSection />
-      <AchievementsSection />
-      <TrainingCategories />
-      <WhatWeOffer />
-      <Gallery />
-      <OurStars />
-      <TestimonialsSection />
-      <ContactSection />
+      <Suspense fallback={<LoadingSpinner />}>
+        <AchievementsSection />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <TrainingCategories />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <WhatWeOffer />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Gallery />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <OurStars />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <TestimonialsSection />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <ContactSection />
+      </Suspense>
       <Footer />
-      <AdminLogin />
+      <Suspense fallback={null}>
+        <AdminLogin />
+      </Suspense>
       <Toaster position="top-center" richColors />
     </div>
   )
