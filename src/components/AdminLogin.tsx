@@ -7,7 +7,7 @@ import { Lock, Eye, EyeSlash } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 import AdminPanel from './AdminPanel'
 
-const ADMIN_EMAIL = 'mawahib.ac.f@gmail.com'
+const ADMIN_EMAIL = 'mohamadyahia209@gmail.com'
 const ADMIN_PASSWORD = 'Mm12345#'
 
 export default function AdminLogin() {
