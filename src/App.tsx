@@ -71,39 +71,69 @@ function App() {
     },
     {
       url: "https://images.unsplash.com/photo-1577223625816-7546f73e8b5b?q=80&w=2400&auto=format&fit=crop",
-      position: 800,
-      speed: 0.45,
+      position: 1000,
+      speed: 0.48,
       overlay: "from-accent/88 via-primary/83 to-secondary/85"
     },
     {
       url: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=2400&auto=format&fit=crop",
-      position: 1800,
-      speed: 0.4,
+      position: 2000,
+      speed: 0.46,
       overlay: "from-secondary/90 via-accent/84 to-primary/86"
     },
     {
       url: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=2400&auto=format&fit=crop",
-      position: 2800,
-      speed: 0.42,
+      position: 3000,
+      speed: 0.44,
       overlay: "from-primary/87 via-secondary/82 to-accent/83"
     },
     {
       url: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=2400&auto=format&fit=crop",
-      position: 3800,
-      speed: 0.38,
+      position: 4000,
+      speed: 0.42,
       overlay: "from-accent/85 via-primary/80 to-secondary/87"
     },
     {
       url: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2400&auto=format&fit=crop",
-      position: 4800,
-      speed: 0.35,
+      position: 5000,
+      speed: 0.40,
       overlay: "from-secondary/88 via-accent/81 to-primary/84"
     },
     {
       url: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=2400&auto=format&fit=crop",
-      position: 5800,
-      speed: 0.32,
+      position: 6000,
+      speed: 0.38,
       overlay: "from-primary/85 via-secondary/79 to-accent/82"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=2400&auto=format&fit=crop",
+      position: 7000,
+      speed: 0.36,
+      overlay: "from-accent/87 via-primary/81 to-secondary/83"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=2400&auto=format&fit=crop",
+      position: 8000,
+      speed: 0.34,
+      overlay: "from-secondary/86 via-accent/80 to-primary/85"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2400&auto=format&fit=crop",
+      position: 9000,
+      speed: 0.32,
+      overlay: "from-primary/88 via-secondary/82 to-accent/84"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=2400&auto=format&fit=crop",
+      position: 10000,
+      speed: 0.30,
+      overlay: "from-accent/86 via-primary/79 to-secondary/82"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=2400&auto=format&fit=crop",
+      position: 11000,
+      speed: 0.28,
+      overlay: "from-secondary/87 via-accent/78 to-primary/83"
     }
   ]
 
@@ -123,9 +153,14 @@ function App() {
 
   const activeBackground = getActiveBackground()
   const nextBackground = getNextBackground()
+  
   const transitionProgress = nextBackground 
-    ? Math.min((scrollY - activeBackground.position) / (nextBackground.position - activeBackground.position), 1)
+    ? Math.min(Math.max((scrollY - activeBackground.position) / 500, 0), 1)
     : 0
+
+  const getCurrentBackgroundIndex = () => {
+    return backgroundImages.findIndex(bg => bg === activeBackground)
+  }
 
   return (
     <div className="min-h-screen select-none relative">
@@ -151,38 +186,38 @@ function App() {
       
       <div className="fixed inset-0 -z-10">
         <div 
-          className="absolute inset-0 transition-opacity duration-[1200ms] ease-in-out"
+          className="absolute inset-0 transition-opacity duration-[1000ms] ease-out"
           style={{
-            transform: `translateY(${scrollY * activeBackground.speed}px) scale(${1 + scrollY * 0.00005})`,
+            transform: `translateY(${scrollY * activeBackground.speed}px) scale(${1 + scrollY * 0.00004})`,
             opacity: nextBackground ? 1 - transitionProgress : 1,
           }}
         >
           <img 
             src={activeBackground.url}
             alt="Soccer Background"
-            className="w-full h-[140vh] object-cover"
+            className="w-full h-[160vh] object-cover"
             loading="eager"
             decoding="async"
           />
-          <div className={`absolute inset-0 bg-gradient-to-br ${activeBackground.overlay} transition-all duration-[1200ms]`}></div>
+          <div className={`absolute inset-0 bg-gradient-to-br ${activeBackground.overlay} transition-all duration-[1000ms]`}></div>
         </div>
 
         {nextBackground && (
           <div 
-            className="absolute inset-0 transition-opacity duration-[1200ms] ease-in-out"
+            className="absolute inset-0 transition-opacity duration-[1000ms] ease-out"
             style={{
-              transform: `translateY(${scrollY * nextBackground.speed}px) scale(${1 + scrollY * 0.00005})`,
+              transform: `translateY(${scrollY * nextBackground.speed}px) scale(${1 + scrollY * 0.00004})`,
               opacity: transitionProgress,
             }}
           >
             <img 
               src={nextBackground.url}
               alt="Soccer Background"
-              className="w-full h-[140vh] object-cover"
+              className="w-full h-[160vh] object-cover"
               loading="eager"
               decoding="async"
             />
-            <div className={`absolute inset-0 bg-gradient-to-br ${nextBackground.overlay} transition-all duration-[1200ms]`}></div>
+            <div className={`absolute inset-0 bg-gradient-to-br ${nextBackground.overlay} transition-all duration-[1000ms]`}></div>
           </div>
         )}
 
@@ -190,25 +225,43 @@ function App() {
       </div>
 
       <div 
-        className="fixed inset-0 -z-10 pointer-events-none opacity-60"
+        className="fixed inset-0 -z-10 pointer-events-none opacity-50"
         style={{
-          transform: `translateY(${scrollY * 0.2}px) rotate(${scrollY * 0.02}deg)`,
+          transform: `translateY(${scrollY * 0.18}px) rotate(${scrollY * 0.015}deg)`,
         }}
       >
-        <div className="absolute top-[8%] right-[12%] w-[600px] h-[600px] bg-accent/25 rounded-full blur-[140px] animate-pulse"></div>
-        <div className="absolute bottom-[12%] left-[8%] w-[700px] h-[700px] bg-primary/25 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-[45%] left-[50%] w-[650px] h-[650px] bg-secondary/20 rounded-full blur-[160px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-[8%] right-[12%] w-[700px] h-[700px] bg-accent/20 rounded-full blur-[160px] animate-pulse"></div>
+        <div className="absolute bottom-[12%] left-[8%] w-[800px] h-[800px] bg-primary/20 rounded-full blur-[170px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-[45%] left-[50%] w-[750px] h-[750px] bg-secondary/18 rounded-full blur-[180px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-[120%] right-[25%] w-[650px] h-[650px] bg-primary/22 rounded-full blur-[170px] animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute top-[180%] left-[18%] w-[720px] h-[720px] bg-accent/19 rounded-full blur-[175px] animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-[240%] right-[15%] w-[680px] h-[680px] bg-secondary/21 rounded-full blur-[165px] animate-pulse" style={{ animationDelay: '2.5s' }}></div>
       </div>
       
       <div 
-        className="fixed inset-0 -z-10 pointer-events-none opacity-50"
+        className="fixed inset-0 -z-10 pointer-events-none opacity-40"
         style={{
-          transform: `translateY(${scrollY * 0.12}px) scale(${1 + scrollY * 0.00008})`,
+          transform: `translateY(${scrollY * 0.10}px) scale(${1 + scrollY * 0.00006})`,
         }}
       >
-        <div className="absolute top-[55%] right-[20%] w-[550px] h-[550px] bg-primary/18 rounded-full blur-[130px]"></div>
-        <div className="absolute bottom-[25%] left-[15%] w-[600px] h-[600px] bg-accent/18 rounded-full blur-[140px]"></div>
-        <div className="absolute top-[75%] left-[60%] w-[500px] h-[500px] bg-secondary/16 rounded-full blur-[120px]"></div>
+        <div className="absolute top-[55%] right-[20%] w-[650px] h-[650px] bg-primary/15 rounded-full blur-[150px]"></div>
+        <div className="absolute bottom-[25%] left-[15%] w-[700px] h-[700px] bg-accent/15 rounded-full blur-[160px]"></div>
+        <div className="absolute top-[75%] left-[60%] w-[600px] h-[600px] bg-secondary/14 rounded-full blur-[140px]"></div>
+        <div className="absolute top-[140%] right-[30%] w-[620px] h-[620px] bg-accent/16 rounded-full blur-[155px]"></div>
+        <div className="absolute top-[200%] left-[22%] w-[680px] h-[680px] bg-primary/17 rounded-full blur-[165px]"></div>
+        <div className="absolute top-[260%] right-[12%] w-[640px] h-[640px] bg-secondary/15 rounded-full blur-[150px]"></div>
+      </div>
+      
+      <div 
+        className="fixed inset-0 -z-10 pointer-events-none opacity-30"
+        style={{
+          transform: `translateY(${scrollY * 0.08}px)`,
+        }}
+      >
+        <div className="absolute top-[100%] left-[45%] w-[580px] h-[580px] bg-primary/12 rounded-full blur-[135px]"></div>
+        <div className="absolute top-[160%] right-[35%] w-[600px] h-[600px] bg-secondary/13 rounded-full blur-[145px]"></div>
+        <div className="absolute top-[220%] left-[28%] w-[620px] h-[620px] bg-accent/14 rounded-full blur-[140px]"></div>
+        <div className="absolute top-[280%] right-[20%] w-[590px] h-[590px] bg-primary/13 rounded-full blur-[138px]"></div>
       </div>
 
       <Navbar />
