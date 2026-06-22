@@ -68,7 +68,7 @@ export default function WhatWeOffer() {
           {offers.map((offer, index) => (
             <div 
               key={index}
-              className="group relative bg-white p-12 rounded-[2.5rem] shadow-[0_15px_50px_rgba(0,0,0,0.1)] hover:shadow-[0_25px_80px_rgba(0,0,0,0.18)] transition-all duration-700 hover:-translate-y-10 text-center space-y-10 overflow-hidden hover-lift"
+              className="glass-card-strong group relative p-12 rounded-[2.5rem] text-center space-y-10"
               style={{
                 animationDelay: `${index * 100}ms`
               }}

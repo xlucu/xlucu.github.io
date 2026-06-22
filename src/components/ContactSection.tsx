@@ -44,7 +44,7 @@ export default function ContactSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl">
+          <Card className="glass-card-strong border-2 hover:border-primary transition-all duration-500 hover:shadow-2xl">
             <CardHeader>
               <CardTitle className="text-2xl font-black">معلومات التواصل</CardTitle>
               <CardDescription className="text-lg">تواصل معنا عبر واتساب أو قم بزيارتنا</CardDescription>
@@ -97,7 +97,7 @@ export default function ContactSection() {
             </CardContent>
           </Card>
 
-          <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl bg-gradient-to-br from-card to-muted/20">
+          <Card className="glass-card-strong border-2 hover:border-primary transition-all duration-500 hover:shadow-2xl">
             <CardHeader>
               <CardTitle className="text-2xl font-black">سجل الآن</CardTitle>
               <CardDescription className="text-lg">أرسل بياناتك وسنتواصل معك فوراً</CardDescription>

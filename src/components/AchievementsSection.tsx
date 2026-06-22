@@ -49,8 +49,8 @@ function AchievementCard({ achievement, shouldAnimate }: { achievement: Achievem
   const count = useCountUp(achievement.value, 2500, shouldAnimate)
 
   return (
-    <div className="flex flex-col items-center gap-4 p-8 bg-white/70 backdrop-blur-md rounded-2xl border border-white/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md">
+    <div className="flex flex-col items-center gap-4 p-8 glass-card rounded-2xl hover:shadow-2xl transition-all duration-500">
+      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg">
         <Icon size={32} weight="bold" className="text-white" />
       </div>
       <div className="text-center">

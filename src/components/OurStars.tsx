@@ -61,7 +61,7 @@ export default function OurStars() {
           {players.map((player, index) => (
             <Card 
               key={index}
-              className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-6 border-2 hover:border-transparent bg-white relative"
+              className="glass-card-strong group overflow-hidden hover:border-transparent border-2 relative"
               style={{
                 animationDelay: `${index * 150}ms`
               }}

@@ -146,9 +146,9 @@ export default function Gallery() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {filteredImages.map((image, index) => (
-            <Card
-              key={image.id}
-              className="group overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-accent"
+            <Card 
+              key={index}
+              className="glass-card-strong group overflow-hidden border-2 hover:border-transparent relative"
               onClick={() => openImage(image.id)}
               style={{
                 animationDelay: `${index * 50}ms`

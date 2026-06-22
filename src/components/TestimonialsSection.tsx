@@ -241,7 +241,7 @@ export default function TestimonialsSection() {
           {allTestimonials.map((testimonial, index) => (
             <Card 
               key={testimonial.id}
-              className="relative glass-effect border-2 hover:border-primary/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group overflow-hidden"
+              className="glass-card relative border-2 hover:border-primary/30 group overflow-hidden"
               style={{
                 animationDelay: `${index * 0.1}s`
               }}

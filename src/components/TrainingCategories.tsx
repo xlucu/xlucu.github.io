@@ -74,7 +74,7 @@ export default function TrainingCategories() {
           {categories.map((category, index) => (
             <Card 
               key={index} 
-              className={`group border-0 hover:border-transparent shadow-[0_15px_50px_rgba(0,0,0,0.1)] hover:shadow-[0_25px_80px_rgba(0,0,0,0.18)] transition-all duration-700 hover:-translate-y-8 bg-white overflow-hidden relative hover-lift ${category.featured ? 'md:scale-110 shadow-[0_25px_70px_rgba(132,71,221,0.15)]' : ''}`}
+              className={`glass-card-strong group border-0 overflow-hidden relative ${category.featured ? 'md:scale-110 shadow-[0_30px_90px_rgba(132,71,221,0.2)]' : ''}`}
               style={{
                 animationDelay: `${index * 150}ms`
               }}
