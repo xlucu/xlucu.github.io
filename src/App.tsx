@@ -71,123 +71,153 @@ function App() {
     },
     {
       url: "https://images.unsplash.com/photo-1577223625816-7546f73e8b5b?q=80&w=2400&auto=format&fit=crop",
-      position: 900,
+      position: 800,
       speed: 0.43,
       overlay: "from-accent/83 via-primary/78 to-secondary/80"
     },
     {
       url: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=2400&auto=format&fit=crop",
-      position: 1800,
+      position: 1600,
       speed: 0.41,
       overlay: "from-secondary/85 via-accent/79 to-primary/82"
     },
     {
       url: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=2400&auto=format&fit=crop",
-      position: 2700,
+      position: 2400,
       speed: 0.39,
       overlay: "from-primary/82 via-secondary/77 to-accent/79"
     },
     {
       url: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=2400&auto=format&fit=crop",
-      position: 3600,
+      position: 3200,
       speed: 0.37,
       overlay: "from-accent/80 via-primary/75 to-secondary/82"
     },
     {
       url: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2400&auto=format&fit=crop",
-      position: 4500,
+      position: 4000,
       speed: 0.35,
       overlay: "from-secondary/83 via-accent/76 to-primary/80"
     },
     {
       url: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=2400&auto=format&fit=crop",
-      position: 5400,
+      position: 4800,
       speed: 0.33,
       overlay: "from-primary/80 via-secondary/74 to-accent/78"
     },
     {
       url: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=2400&auto=format&fit=crop",
-      position: 6300,
+      position: 5600,
       speed: 0.31,
       overlay: "from-accent/82 via-primary/76 to-secondary/79"
     },
     {
       url: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=2400&auto=format&fit=crop",
-      position: 7200,
+      position: 6400,
       speed: 0.29,
       overlay: "from-secondary/81 via-accent/75 to-primary/81"
     },
     {
       url: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2400&auto=format&fit=crop",
-      position: 8100,
+      position: 7200,
       speed: 0.27,
       overlay: "from-primary/83 via-secondary/77 to-accent/80"
     },
     {
       url: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=2400&auto=format&fit=crop",
-      position: 9000,
+      position: 8000,
       speed: 0.25,
       overlay: "from-accent/81 via-primary/74 to-secondary/78"
     },
     {
       url: "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=2400&auto=format&fit=crop",
-      position: 9900,
+      position: 8800,
       speed: 0.23,
       overlay: "from-secondary/82 via-accent/73 to-primary/79"
     },
     {
       url: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=2400&auto=format&fit=crop",
-      position: 10800,
+      position: 9600,
       speed: 0.21,
       overlay: "from-primary/84 via-accent/77 to-secondary/81"
     },
     {
       url: "https://images.unsplash.com/photo-1611318418045-b94e4ae6a69b?q=80&w=2400&auto=format&fit=crop",
-      position: 11700,
+      position: 10400,
       speed: 0.19,
       overlay: "from-accent/83 via-secondary/78 to-primary/82"
     },
     {
       url: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2400&auto=format&fit=crop",
-      position: 12600,
+      position: 11200,
       speed: 0.17,
       overlay: "from-secondary/84 via-primary/79 to-accent/81"
     },
     {
       url: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?q=80&w=2400&auto=format&fit=crop",
-      position: 13500,
+      position: 12000,
       speed: 0.15,
       overlay: "from-primary/82 via-accent/76 to-secondary/79"
     },
     {
       url: "https://images.unsplash.com/photo-1600679472829-3044539ce8ed?q=80&w=2400&auto=format&fit=crop",
-      position: 14400,
+      position: 12800,
       speed: 0.13,
       overlay: "from-accent/81 via-primary/75 to-secondary/80"
     },
     {
       url: "https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?q=80&w=2400&auto=format&fit=crop",
-      position: 15300,
+      position: 13600,
       speed: 0.11,
       overlay: "from-secondary/83 via-accent/77 to-primary/81"
     },
     {
       url: "https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?q=80&w=2400&auto=format&fit=crop",
-      position: 16200,
+      position: 14400,
       speed: 0.09,
       overlay: "from-primary/84 via-secondary/78 to-accent/82"
     },
     {
       url: "https://images.unsplash.com/photo-1628779238951-90c8182dc33f?q=80&w=2400&auto=format&fit=crop",
-      position: 17100,
+      position: 15200,
       speed: 0.07,
       overlay: "from-accent/82 via-primary/77 to-secondary/81"
     },
     {
       url: "https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?q=80&w=2400&auto=format&fit=crop",
-      position: 18000,
+      position: 16000,
       speed: 0.05,
       overlay: "from-secondary/85 via-accent/79 to-primary/83"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=2400&auto=format&fit=crop",
+      position: 16800,
+      speed: 0.03,
+      overlay: "from-primary/84 via-secondary/80 to-accent/82"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=2400&auto=format&fit=crop",
+      position: 17600,
+      speed: 0.02,
+      overlay: "from-accent/83 via-primary/79 to-secondary/81"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1624880357913-a8539238245b?q=80&w=2400&auto=format&fit=crop",
+      position: 18400,
+      speed: 0.01,
+      overlay: "from-secondary/84 via-accent/78 to-primary/82"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2400&auto=format&fit=crop",
+      position: 19200,
+      speed: 0.01,
+      overlay: "from-primary/85 via-secondary/79 to-accent/83"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?q=80&w=2400&auto=format&fit=crop",
+      position: 20000,
+      speed: 0.01,
+      overlay: "from-accent/84 via-primary/80 to-secondary/82"
     }
   ]
 
