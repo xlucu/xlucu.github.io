@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { WhatsappLogo } from "@phosphor-icons/react"
+import { WhatsappLogo, ArrowDown } from "@phosphor-icons/react"
 
 export default function HeroSection() {
   const openWhatsApp = () => {
@@ -9,33 +9,38 @@ export default function HeroSection() {
   }
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-primary/70 pt-20">
-      <div className="absolute inset-0 field-pattern opacity-50"></div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-secondary to-accent pt-20">
+      <div className="absolute inset-0 field-pattern opacity-60"></div>
       
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+      <div className="absolute top-20 right-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="max-w-4xl mx-auto text-center text-white space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-          <div className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-4">
-            <p className="text-sm font-bold text-white/90">🏆 الأكاديمية الرائدة في التدريب الكروي</p>
+      <div className="container mx-auto px-4 py-32 relative z-10">
+        <div className="max-w-5xl mx-auto text-center text-white space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <div className="inline-block px-8 py-4 glass-effect rounded-full shadow-2xl mb-6 scale-in">
+            <p className="text-base font-bold text-white/95 flex items-center justify-center gap-2">
+              🏆 الأكاديمية الرائدة في التدريب الكروي الاحترافي
+            </p>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tight">
+          <h1 className="text-6xl md:text-8xl font-black leading-tight tracking-tight drop-shadow-2xl">
             اصنع من موهبتك
-            <span className="block text-accent mt-2">بطل ملعب</span>
+            <span className="block bg-gradient-to-r from-white via-accent to-white bg-clip-text text-transparent mt-4 float-animation">
+              بطل ملعب
+            </span>
           </h1>
           
-          <p className="text-xl md:text-2xl font-semibold text-white/95 max-w-2xl mx-auto leading-relaxed">
-            تدريب كرة قدم احترافي لجميع الأعمار مع مدربين معتمدين
+          <p className="text-2xl md:text-3xl font-bold text-white/95 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
+            تدريب كرة قدم احترافي لجميع الأعمار مع مدربين معتمدين ومنهج تدريبي عالمي
           </p>
           
-          <div className="pt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="pt-8 flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Button 
               size="lg"
               onClick={openWhatsApp}
-              className="bg-accent hover:bg-accent/90 text-foreground font-bold text-xl px-12 py-7 rounded-xl shadow-2xl hover:scale-105 transition-all duration-200 hover:shadow-accent/50"
+              className="bg-white hover:bg-white/90 text-primary font-black text-2xl px-16 py-8 rounded-2xl shadow-2xl hover:scale-110 transition-all duration-300 hover:shadow-white/30"
             >
-              <WhatsappLogo size={32} weight="fill" className="ml-3" />
+              <WhatsappLogo size={36} weight="fill" className="ml-3" />
               سجل الآن
             </Button>
             <Button 
@@ -44,15 +49,21 @@ export default function HeroSection() {
                 const element = document.getElementById('categories')
                 element?.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-xl px-12 py-7 rounded-xl shadow-xl hover:scale-105 transition-all duration-200"
+              className="glass-effect text-white font-black text-2xl px-16 py-8 rounded-2xl shadow-xl hover:scale-110 transition-all duration-300 border-2 border-white/40"
             >
               اكتشف المزيد
             </Button>
           </div>
+
+          <div className="pt-12 flex justify-center">
+            <div className="animate-bounce">
+              <ArrowDown size={40} weight="bold" className="text-white/70" />
+            </div>
+          </div>
         </div>
       </div>
       
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-transparent to-transparent pointer-events-none"></div>
     </section>
   )
 }
