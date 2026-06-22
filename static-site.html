@@ -1,1296 +1,1296 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<head>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="أكاديمية المواهب - تدريب كرة قدم احترافي لجميع الأعمار مع مدربين معتمدين">
     <title>أكاديمية المواهب - تدريب كرة قدم احترافي</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * {
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+           
 
-        :root {
-            --background: #fafcfa;
-            --foreground: #262626;
-            --primary: #22c55e;
-            --secondary: #16a34a;
+            --backgrou
+            --primary: 
             --accent: #4ade80;
-            --muted: #f2f4f2;
-            --border: #e0e0e0;
-            --radius: 1.5rem;
-        }
+         
 
         body {
-            font-family: 'Tajawal', sans-serif;
             direction: rtl;
-            background: var(--background);
-            color: var(--foreground);
-            overflow-x: hidden;
+            color: var(--foregroun
             line-height: 1.6;
-        }
 
-        html {
-            scroll-behavior: smooth;
-        }
+            scroll-behavior: s
 
-        .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
+            padding: 0 1.5rem
 
-        /* Background */
-        .background-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
+
+            to
             width: 100%;
-            height: 100%;
             z-index: -1;
-            background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2070');
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            filter: brightness(0.7);
+            background-attachment: fi
         }
+        .background-layer::af
+         
 
-        .background-layer::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, 
-                rgba(34, 197, 94, 0.15) 0%,
-                rgba(22, 163, 74, 0.25) 50%,
-                rgba(21, 128, 61, 0.2) 100%);
+              
         }
+        /
 
-        /* Interactive Background Pattern */
-        .field-pattern {
-            position: fixed;
-            top: 0;
             left: 0;
-            width: 100%;
             height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            background-image: 
-                radial-gradient(circle at 15% 25%, rgba(34, 197, 94, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 85% 75%, rgba(74, 222, 128, 0.08) 0%, transparent 50%),
-                repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(34, 197, 94, 0.05) 100px, rgba(34, 197, 94, 0.05) 101px),
-                repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(74, 222, 128, 0.05) 100px, rgba(74, 222, 128, 0.05) 101px);
-            animation: field-shift 40s linear infinite;
-        }
+            pointer-events:
+                radial-gradien
+         
 
-        @keyframes field-shift {
+
             0% {
-                background-position: 0% 0%, 100% 100%, 0px 0px, 0px 0px;
             }
-            100% {
-                background-position: 100% 100%, 0% 0%, 0px 100px, 100px 0px;
-            }
+                bac
         }
-
-        /* Glass Effect */
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border: 2px solid rgba(255, 255, 255, 0.35);
+        /* Glass Effect 
+            background: r
+            -webkit-back
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         .glass-card {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(28px) saturate(200%);
-            -webkit-backdrop-filter: blur(28px) saturate(200%);
-            border: 2px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border-radius: var(--radius);
-            padding: 2rem;
-        }
+            backdrop-filter: blur(28px) s
+            border: 2px solid rgba(2
+         
 
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.18);
-            border-color: rgba(255, 255, 255, 0.40);
-            box-shadow: 0 20px 64px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            transform: translateY(-8px) scale(1.01);
-        }
 
+            background: 
+            box-shadow: 0 20px 
+        }
         /* Navbar */
-        nav {
             position: fixed;
-            top: 0;
             left: 0;
-            right: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.30);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
+         
 
+        }
         .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 7rem;
-        }
+            align-items: cen
+            height:
 
-        .logo-container {
-            display: flex;
-            align-items: center;
+            display: fle
             gap: 1.25rem;
-            cursor: pointer;
         }
-
         .logo {
-            width: 5rem;
             height: 5rem;
-            transition: all 0.7s ease-out;
         }
-
         .logo:hover {
-            transform: scale(1.1) rotate(8deg);
             filter: drop-shadow(0 12px 40px rgba(34, 197, 94, 0.8));
-        }
 
-        .logo-text {
             font-size: 1.75rem;
-            font-weight: 800;
-            color: white;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
+         
 
         .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
+            gap:
         }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
+        .nav-
+            text-d
             font-size: 1.125rem;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-        }
+            t
+         
 
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+            background: rg
         }
-
         .btn {
-            padding: 0.75rem 2rem;
             border-radius: 1rem;
-            font-weight: 700;
             font-size: 1.125rem;
-            border: none;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
-            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: white;
-            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+            color: wh
         }
-
         .btn-primary:hover {
-            transform: translateY(-2px);
             box-shadow: 0 6px 30px rgba(34, 197, 94, 0.6);
-        }
 
-        /* Hero Section */
         .hero {
-            min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 8rem 1.5rem 4rem;
-        }
+            padding: 8rem 
 
-        .hero-content {
-            max-width: 800px;
-        }
 
-        .hero-title {
+
             font-size: 4rem;
-            font-weight: 900;
             color: white;
-            text-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             margin-bottom: 1.5rem;
-            line-height: 1.2;
         }
+        .
 
-        .hero-subtitle {
-            font-size: 1.75rem;
-            font-weight: 500;
-            color: white;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            margin-bottom: 3rem;
+            text-sha
         }
-
         .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 4rem;
-        }
+            grid-te
+            margin-t
 
-        .stat-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: var(--radius);
+            background: r
+            border: 2px solid rgba(255, 255, 255, 
             padding: 2rem;
-            text-align: center;
         }
-
         .stat-number {
-            font-size: 3rem;
             font-weight: 900;
-            color: white;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
+         
 
-        .stat-label {
-            font-size: 1.125rem;
-            font-weight: 600;
+            font-
             color: white;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
             margin-top: 0.5rem;
-        }
 
-        /* Sections */
         section {
-            padding: 6rem 1.5rem;
-            position: relative;
-        }
+         
 
-        .section-title {
-            font-size: 3rem;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 1rem;
+            font-size: 3r
+            text-align: ce
             color: white;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
-
         .section-subtitle {
-            font-size: 1.25rem;
-            text-align: center;
-            margin-bottom: 4rem;
-            color: white;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-        }
+         
 
+        }
         /* Categories */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: grid
             gap: 2rem;
-            margin-top: 3rem;
         }
 
-        .category-card {
-            position: relative;
-            overflow: hidden;
-        }
+            overflow:
 
-        .category-icon {
             font-size: 4rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
+         
 
-        .category-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-align: center;
+            font-siz
+            margin-bottom: 1rem
             color: white;
-        }
 
-        .category-info {
             font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-            color: white;
-            text-align: center;
-        }
+         
 
-        .category-price {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #fbbf24;
-            text-align: center;
-            margin: 1.5rem 0;
-            text-shadow: 0 4px 20px rgba(251, 191, 36, 0.6);
-        }
+        .category-pr
+            font-weight: 9
+            text-align
+            text-shadow: 0 4p
 
-        /* Services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
 
+            grid-templ
+        }
         .service-card {
-            text-align: center;
         }
-
         .service-icon {
-            font-size: 4rem;
             margin-bottom: 1.5rem;
-        }
 
-        .service-title {
             font-size: 1.5rem;
-            font-weight: 700;
             margin-bottom: 1rem;
-            color: white;
         }
 
-        .service-desc {
-            color: white;
-            line-height: 1.8;
-        }
+            line-height: 1.8
 
-        /* Gallery */
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
+         
 
-        .gallery-item {
-            border-radius: var(--radius);
+        .galle
             overflow: hidden;
-            aspect-ratio: 4/3;
             cursor: pointer;
-            transition: transform 0.3s;
         }
-
         .gallery-item:hover {
-            transform: scale(1.05);
         }
-
         .gallery-item img {
-            width: 100%;
             height: 100%;
-            object-fit: cover;
         }
-
         /* Stars */
-        .stars-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-        }
 
-        .star-card {
-            text-align: center;
-        }
 
-        .star-image {
+
             width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
+            border-radius
             border: 4px solid rgba(255, 255, 255, 0.5);
-            overflow: hidden;
         }
 
-        .star-image img {
-            width: 100%;
             height: 100%;
-            object-fit: cover;
         }
-
         .star-name {
-            font-size: 1.75rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
+         
 
-        .star-achievement {
-            color: #fbbf24;
-            font-size: 1.125rem;
+
+            col
             font-weight: 600;
-        }
 
-        /* Testimonials */
         .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: r
         }
-
         .testimonial-card {
-            position: relative;
         }
 
-        .testimonial-text {
-            font-size: 1.125rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
+            line-height
             color: white;
-        }
 
-        .testimonial-author {
-            font-weight: 700;
-            color: white;
-            font-size: 1.25rem;
-        }
 
-        .testimonial-rating {
+            font-size
+
             color: #fbbf24;
-            font-size: 1.5rem;
-            margin-top: 0.5rem;
-        }
+            margin-top: 0
 
-        /* Contact */
         .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
+            grid-template-col
+         
 
-        .contact-info {
-            display: flex;
-            flex-direction: column;
+            display: fle
             gap: 2rem;
-        }
 
-        .contact-item {
-            display: flex;
-            align-items: start;
+            display: flex
             gap: 1rem;
-        }
 
-        .contact-icon {
-            font-size: 2rem;
-            color: var(--accent);
-            flex-shrink: 0;
-        }
+         
 
-        .contact-details h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
+
+            font-size: 1.5
             margin-bottom: 0.5rem;
-            color: white;
         }
-
         .contact-details p {
-            color: white;
-            font-size: 1.125rem;
-        }
+         
 
-        .contact-form {
-            display: flex;
-            flex-direction: column;
+            display:
             gap: 1.5rem;
-        }
 
-        .form-group {
             display: flex;
-            flex-direction: column;
             gap: 0.5rem;
-        }
 
-        .form-group label {
             font-weight: 700;
-            color: white;
         }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: 1rem;
-            border-radius: 0.75rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+        .form-group te
+            border-radius: 0
+            background: rgba(
             color: white;
-            font-family: 'Tajawal', sans-serif;
             font-size: 1rem;
-        }
 
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
 
+        }
         .form-group textarea {
-            min-height: 120px;
             resize: vertical;
-        }
 
-        /* Map */
         .map-container {
-            border-radius: var(--radius);
             overflow: hidden;
-            height: 400px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
+         
 
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+            width: 100
+            borde
 
-        /* Footer */
         footer {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(20px);
-            padding: 3rem 1.5rem 1.5rem;
-            margin-top: 4rem;
-        }
+         
 
-        .footer-content {
+
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
-            margin-bottom: 2rem;
         }
-
         .footer-section h3 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
+            font-weight: 
+            color: white;
+
+
+            text-decoration
+            margin-bottom: 0.5r
+
+            display: flex;
+            margin-top: 1
+
+         
+
+            display: fle
+            justify-conten
             color: white;
         }
+        .social-links 
+            transform: transl
 
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
+
+            border-top: 
         }
+        /* Admin Login Modal 
+         
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-4px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Admin Login Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba
             z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
+            justify-content: ce
 
-        .modal.active {
-            display: flex;
-        }
 
-        .modal-content {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(30px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: var(--radius);
+
+            background: rgba
+            border: 2px solid
             padding: 3rem;
-            max-width: 400px;
             width: 90%;
-        }
 
-        .modal-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            text-align: center;
-            color: white;
-        }
+         
 
-        .close-modal {
+            color: white
+
             position: absolute;
-            top: 1rem;
             left: 1rem;
-            background: rgba(255, 255, 255, 0.2);
             border: none;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            cursor: pointer;
-            color: white;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+         
 
+            font-size: 1.
+            align-items: cente
+        }
         /* Mobile Menu */
-        .mobile-menu-btn {
             display: none;
-            background: none;
             border: none;
-            color: white;
             font-size: 2rem;
-            cursor: pointer;
         }
 
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 7rem;
+            position: 
             left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
+            background: rg
             padding: 2rem;
-            z-index: 99;
         }
+        .
 
-        .mobile-menu.active {
-            display: block;
-        }
-
-        .mobile-menu .nav-links {
-            flex-direction: column;
+        .mobile-menu .n
             gap: 1rem;
-        }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
 
-            .hero-subtitle {
-                font-size: 1.25rem;
-            }
+                font-si
 
-            .section-title {
-                font-size: 2rem;
-            }
+                font-size: 1.25rem
 
-            .nav-links {
+
+
                 display: none;
-            }
 
-            .mobile-menu-btn {
                 display: block;
-            }
 
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+         
 
-            .navbar {
-                height: 5rem;
-            }
+                height:
 
-            .hero {
-                padding-top: 6rem;
-            }
+                padding-top: 
         }
 
-        /* Animations */
-        @keyframes fadeIn {
             from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+                transfo
             to {
-                opacity: 1;
                 transform: translateY(0);
-            }
         }
+        .
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        /* WhatsApp Float Button */
-        .whatsapp-float {
+        /* WhatsApp Flo
             position: fixed;
-            bottom: 2rem;
             left: 2rem;
-            width: 4rem;
             height: 4rem;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
+            border-radius: 5
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
-            cursor: pointer;
-            z-index: 99;
-            transition: all 0.3s;
-            text-decoration: none;
-            color: white;
+         
+
+            text-decoration: 
             font-size: 2rem;
-        }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.7);
+
         }
-    </style>
 </head>
-<body>
-    <!-- Background Layers -->
-    <div class="background-layer"></div>
-    <div class="field-pattern"></div>
+    <!-- Background Layer
+    <div class="field-pattern"
+    <!-- 
 
-    <!-- Navbar -->
-    <nav>
-        <div class="container">
-            <div class="navbar">
-                <div class="logo-container" onclick="openAdminModal()">
-                    <svg class="logo" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="shieldGradient" cx="50%" cy="40%">
-                                <stop offset="0%" style="stop-color: #4ade80; stop-opacity: 1" />
-                                <stop offset="60%" style="stop-color: #22c55e; stop-opacity: 1" />
-                                <stop offset="100%" style="stop-color: #15803d; stop-opacity: 1" />
-                            </radialGradient>
-                            <linearGradient id="crownGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color: #fbbf24; stop-opacity: 1" />
-                                <stop offset="50%" style="stop-color: #f59e0b; stop-opacity: 1" />
-                                <stop offset="100%" style="stop-color: #d97706; stop-opacity: 1" />
-                            </linearGradient>
-                        </defs>
-                        <path d="M200 50 L150 90 L125 60 L100 90 L75 60 L75 250 C75 300 137.5 325 200 325 C262.5 325 325 300 325 250 L325 60 L300 90 L275 60 L250 90 L225 60 L200 50 Z" fill="url(#shieldGradient)" stroke="#15803d" stroke-width="4"/>
-                        <circle cx="200" cy="180" r="50" fill="white" opacity="0.9"/>
-                        <path d="M200 145 L195 165 L175 170 L190 182 L186 203 L200 192 L214 203 L210 182 L225 170 L205 165 Z" fill="url(#crownGradient)"/>
-                    </svg>
-                    <span class="logo-text">أكاديمية المواهب</span>
-                </div>
+                <di
+                     
+                          
+                                <stop offset="100%" style="stop-color: #
+                      
+         
 
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+                    
+                        <path d
+         
 
-                <ul class="nav-links">
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#categories">الفئات</a></li>
-                    <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#gallery">معرض الصور</a></li>
-                    <li><a href="#stars">نجومنا</a></li>
-                    <li><a href="#testimonials">التقييمات</a></li>
-                    <li><a href="#contact">تواصل معنا</a></li>
-                </ul>
 
-                <a href="https://wa.me/963982035983?text=مرحباً، أريد الاستفسار عن أكاديمية المواهب" class="btn btn-primary" target="_blank">
-                    <span>📱</span>
-                    تواصل معنا
-                </a>
-            </div>
-        </div>
-    </nav>
+                    <li><
+                    <li><a
+                    <li><a href
+                    <li><a href="#
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <ul class="nav-links">
-            <li><a href="#home" onclick="toggleMobileMenu()">الرئيسية</a></li>
-            <li><a href="#categories" onclick="toggleMobileMenu()">الفئات</a></li>
-            <li><a href="#services" onclick="toggleMobileMenu()">خدماتنا</a></li>
-            <li><a href="#gallery" onclick="toggleMobileMenu()">معرض الصور</a></li>
-            <li><a href="#stars" onclick="toggleMobileMenu()">نجومنا</a></li>
-            <li><a href="#testimonials" onclick="toggleMobileMenu()">التقييمات</a></li>
-            <li><a href="#contact" onclick="toggleMobileMenu()">تواصل معنا</a></li>
-        </ul>
+                    <span>📱<
+         
+
+
+    <div class="mobile-m
+            <li><a href="
+            <li><a href="#serv
+         
+
     </div>
-
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content fade-in">
-                <h1 class="hero-title">اصنع من موهبتك بطل ملعب</h1>
-                <p class="hero-subtitle">تدريب كرة قدم احترافي لجميع الأعمار مع مدربين معتمدين</p>
-                <a href="https://wa.me/963982035983?text=مرحباً، أريد التسجيل في أكاديمية المواهب" class="btn btn-primary" target="_blank">
-                    سجل الآن
-                </a>
+        <div class="container
+                <h1 class="hero-ti
+                <a href="
+         
 
-                <div class="stats-row">
-                    <div class="stat-card glass-effect">
-                        <div class="stat-number" id="studentsCount">500</div>
-                        <div class="stat-label">طالب مسجل</div>
+                        <di
                     </div>
-                    <div class="stat-card glass-effect">
-                        <div class="stat-number">15</div>
-                        <div class="stat-label">بطولة</div>
+                        <div cla
                     </div>
-                    <div class="stat-card glass-effect">
-                        <div class="stat-number">12</div>
-                        <div class="stat-label">مدرب معتمد</div>
+         
+
+                        <d
                     </div>
-                    <div class="stat-card glass-effect">
-                        <div class="stat-number">98%</div>
-                        <div class="stat-label">نسبة الرضا</div>
-                    </div>
-                </div>
             </div>
-        </div>
     </section>
+    <!-- Categories Se
+        <
 
-    <!-- Categories Section -->
-    <section id="categories">
-        <div class="container">
-            <h2 class="section-title">الفئات التدريبية</h2>
-            <p class="section-subtitle">اختر الفئة المناسبة لعمر اللاعب</p>
+            <div class="cat
+                    <div class=
+         
 
-            <div class="categories-grid">
-                <div class="category-card glass-card">
-                    <div class="category-icon">⚽</div>
-                    <h3 class="category-title">فئة البراعم</h3>
-                    <p class="category-info">🎯 العمر: 6-10 سنوات</p>
-                    <p class="category-info">📅 التدريب: 3 أيام بالأسبوع</p>
-                    <p class="category-info">⏰ المدة: ساعة ونصف يومياً</p>
-                    <div class="category-price">40$ / شهر</div>
-                    <a href="https://wa.me/963982035983?text=أريد حجز تجربة مجانية لفئة البراعم" class="btn btn-primary" target="_blank" style="width: 100%; justify-content: center;">احجز تجربة مجانية</a>
-                </div>
+                    <a href
 
-                <div class="category-card glass-card">
-                    <div class="category-icon">⚡</div>
-                    <h3 class="category-title">فئة الناشئين</h3>
-                    <p class="category-info">🎯 العمر: 11-15 سنة</p>
-                    <p class="category-info">📅 التدريب: 4 أيام بالأسبوع</p>
-                    <p class="category-info">⏰ المدة: ساعتين يومياً</p>
-                    <div class="category-price">50$ / شهر</div>
-                    <a href="https://wa.me/963982035983?text=أريد حجز تجربة مجانية لفئة الناشئين" class="btn btn-primary" target="_blank" style="width: 100%; justify-content: center;">احجز تجربة مجانية</a>
-                </div>
+                    <div clas
+                    <p class="cate
+                    <p cl
+         
 
-                <div class="category-card glass-card">
-                    <div class="category-icon">🏆</div>
-                    <h3 class="category-title">فئة الشباب</h3>
-                    <p class="category-info">🎯 العمر: 16+ سنة</p>
-                    <p class="category-info">📅 التدريب: 4 أيام بالأسبوع</p>
-                    <p class="category-info">⏰ المدة: ساعتين ونصف يومياً</p>
-                    <div class="category-price">60$ / شهر</div>
-                    <a href="https://wa.me/963982035983?text=أريد حجز تجربة مجانية لفئة الشباب" class="btn btn-primary" target="_blank" style="width: 100%; justify-content: center;">احجز تجربة مجانية</a>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div clas
+                    <p class=
+                    <p cl
+                    <a href="ht
+         
 
     <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <h2 class="section-title">ماذا نقدم</h2>
-            <p class="section-subtitle">برامج تدريبية متكاملة لتطوير مهارات اللاعبين</p>
+        <div class="contain
+            <p class="section-
+            <div class="service
+         
 
-            <div class="services-grid">
-                <div class="service-card glass-card">
-                    <div class="service-icon">💪</div>
-                    <h3 class="service-title">تدريب مهارات + لياقة</h3>
-                    <p class="service-desc">برنامج تدريبي شامل لتطوير المهارات الفنية واللياقة البدنية</p>
-                </div>
 
-                <div class="service-card glass-card">
-                    <div class="service-icon">⚽</div>
-                    <h3 class="service-title">مباريات ودية أسبوعية</h3>
-                    <p class="service-desc">فرصة للتطبيق العملي من خلال مباريات منظمة كل أسبوع</p>
-                </div>
+                    <di
+                    <p cla
 
-                <div class="service-card glass-card">
-                    <div class="service-icon">📊</div>
-                    <h3 class="service-title">تقييم شهري</h3>
-                    <p class="service-desc">متابعة دقيقة لتطور مستوى كل لاعب مع تقارير مفصلة</p>
-                </div>
+                    <d
+                    <p class="s
 
-                <div class="service-card glass-card">
-                    <div class="service-icon">🌿</div>
-                    <h3 class="service-title">ملعب عشبي طبيعي</h3>
-                    <p class="service-desc">ملاعب حديثة بعشب طبيعي ومعايير احترافية</p>
-                </div>
+
+                    <p 
             </div>
-        </div>
     </section>
+    <!-- Gallery Secti
+        <
 
-    <!-- Gallery Section -->
-    <section id="gallery">
-        <div class="container">
-            <h2 class="section-title">معرض الصور</h2>
-            <p class="section-subtitle">لحظات من تدريبات ومباريات الأكاديمية</p>
+            <div class=
+                    <img s
+                <div class="gal
+                </div>
+         
 
-            <div class="gallery-grid">
-                <div class="gallery-item glass-card">
-                    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1470" alt="تدريب الأكاديمية" loading="lazy">
                 </div>
-                <div class="gallery-item glass-card">
-                    <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=1503" alt="الملاعب" loading="lazy">
+                    <img src
+                <div class="galle
                 </div>
-                <div class="gallery-item glass-card">
-                    <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=1549" alt="مباراة" loading="lazy">
-                </div>
-                <div class="gallery-item glass-card">
-                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1470" alt="تدريب جماعي" loading="lazy">
-                </div>
-                <div class="gallery-item glass-card">
-                    <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=1471" alt="لاعبون" loading="lazy">
-                </div>
-                <div class="gallery-item glass-card">
-                    <img src="https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=1480" alt="احتفال" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
+        <
 
-    <!-- Stars Section -->
     <section id="stars">
-        <div class="container">
-            <h2 class="section-title">نجومنا</h2>
-            <p class="section-subtitle">لاعبون تخرجوا من أكاديميتنا وانتقلوا للاحتراف</p>
+            <h2 class="section
 
-            <div class="stars-grid">
-                <div class="star-card glass-card">
-                    <div class="star-image">
-                        <img src="https://images.unsplash.com/photo-1534519143716-32d249e3f540?q=80&w=1374" alt="أحمد الشامي" loading="lazy">
-                    </div>
-                    <h3 class="star-name">أحمد الشامي</h3>
-                    <p class="star-achievement">انتقل للعب في نادي الوحدة</p>
-                </div>
+                <div class="star-c
+                        <
+         
 
-                <div class="star-card glass-card">
-                    <div class="star-image">
-                        <img src="https://images.unsplash.com/photo-1552072805-2a9039d00e57?q=80&w=1374" alt="محمد العلي" loading="lazy">
-                    </div>
-                    <h3 class="star-name">محمد العلي</h3>
-                    <p class="star-achievement">انتقل للعب في نادي الجيش</p>
-                </div>
+                <div class="
+                        <
+                    <h3 class="s
+         
 
-                <div class="star-card glass-card">
-                    <div class="star-image">
-                        <img src="https://images.unsplash.com/photo-1547347298-4074acea62f6?q=80&w=1374" alt="يوسف الحمصي" loading="lazy">
-                    </div>
-                    <h3 class="star-name">يوسف الحمصي</h3>
-                    <p class="star-achievement">انتقل للعب في نادي الاتحاد</p>
+                       
+                    <h3 cl
                 </div>
-            </div>
         </div>
-    </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials">
-        <div class="container">
-            <h2 class="section-title">ماذا يقول الأهالي</h2>
-            <p class="section-subtitle">تقييمات وآراء أولياء الأمور عن الأكاديمية</p>
 
-            <div class="testimonials-grid">
-                <div class="testimonial-card glass-card">
-                    <p class="testimonial-text">"أكاديمية ممتازة، ابني تطور كثيراً في المهارات واللياقة. المدربون محترفون جداً والمتابعة مستمرة."</p>
-                    <div class="testimonial-author">أبو خالد - والد لاعب</div>
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <h2 class
+
+                <div class="testimo
+                    <div
+         
+
+                    <div cl
                 </div>
+                <div clas
+         
 
-                <div class="testimonial-card glass-card">
-                    <p class="testimonial-text">"الملاعب ممتازة والأسعار معقولة. ابني أصبح أكثر انضباطاً وثقة بنفسه بعد انضمامه للأكاديمية."</p>
-                    <div class="testimonial-author">أم أحمد - والدة لاعب</div>
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                </div>
-
-                <div class="testimonial-card glass-card">
-                    <p class="testimonial-text">"تجربة رائعة لأولادي الثلاثة. كل واحد في فئته العمرية ويتلقى التدريب المناسب له. شكراً لفريق العمل."</p>
-                    <div class="testimonial-author">أبو عمر - والد ثلاثة لاعبين</div>
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                </div>
-            </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
     <section id="contact">
-        <div class="container">
-            <h2 class="section-title">تواصل معنا</h2>
-            <p class="section-subtitle">نحن في خدمتك للإجابة على جميع استفساراتك</p>
+            <h2 class="sec
 
-            <div class="contact-grid">
                 <div class="contact-info">
-                    <div class="glass-card">
                         <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div class="contact-details">
-                                <h3>واتساب</h3>
-                                <p>الكابتن فراس حجو</p>
-                                <p>0982035983</p>
+                            <div class="
+                         
                             </div>
-                        </div>
                     </div>
+         
 
-                    <div class="glass-card">
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div class="contact-details">
-                                <h3>الموقع</h3>
-                                <p>Maarret el Mesrine, Idlib</p>
+                                <h3>الم
                             </div>
-                        </div>
                     </div>
+         
 
-                    <div class="glass-card">
-                        <div class="contact-item">
-                            <div class="contact-icon">⏰</div>
-                            <div class="contact-details">
-                                <h3>أوقات التدريب</h3>
-                                <p>4 العصر لـ 8 بالليل</p>
-                                <p>كل الأيام عدا الجمعة</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                              
+                              
+                        </div
+         
 
-                <div class="glass-card">
-                    <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                 
+                        
+
+                            <
+                        </
                         <div class="form-group">
-                            <label>اسم اللاعب</label>
-                            <input type="text" id="playerName" placeholder="أدخل اسم اللاعب" required>
-                        </div>
+         
 
-                        <div class="form-group">
-                            <label>العمر</label>
-                            <input type="number" id="playerAge" placeholder="أدخل عمر اللاعب" required min="6" max="25">
-                        </div>
+                               
+                        
+                        <
+                         
 
-                        <div class="form-group">
-                            <label>الفئة العمرية</label>
-                            <select id="ageCategory" required>
-                                <option value="">اختر الفئة</option>
-                                <option value="براعم">فئة البراعم (6-10 سنوات)</option>
-                                <option value="ناشئين">فئة الناشئين (11-15 سنة)</option>
-                                <option value="شباب">فئة الشباب (16+ سنة)</option>
-                            </select>
-                        </div>
 
-                        <div class="form-group">
-                            <label>رقم ولي الأمر</label>
-                            <input type="tel" id="parentPhone" placeholder="أدخل رقم الهاتف" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">إرسال الطلب</button>
-                    </form>
-                </div>
             </div>
-
-            <div class="map-container glass-card" style="margin-top: 3rem;">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52234.89445286653!2d36.64788!3d35.64738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1524f9e0e8e0e0e1%3A0x1e0e0e0e0e0e0e0!2sMaarrat%20al-Nu'man%2C%20Syria!5e0!3m2!1sen!2s!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+            <div
             </div>
-        </div>
     </section>
-
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>أكاديمية المواهب</h3>
-                    <p>تدريب كرة قدم احترافي لجميع الأعمار مع مدربين معتمدين</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/share/1UKZp4i4W3/" target="_blank" title="فيسبوك">📘</a>
-                        <a href="#" target="_blank" title="انستغرام">📸</a>
-                        <a href="#" target="_blank" title="تيك توك">🎵</a>
-                    </div>
-                </div>
+        <div class="container
+         
 
-                <div class="footer-section">
-                    <h3>روابط سريعة</h3>
-                    <a href="#home">الرئيسية</a>
-                    <a href="#categories">الفئات التدريبية</a>
-                    <a href="#services">خدماتنا</a>
-                    <a href="#gallery">معرض الصور</a>
+                        <
+                        <a
                 </div>
+                <div c
+                    <a href="#ho
+         
 
-                <div class="footer-section">
-                    <h3>تواصل معنا</h3>
-                    <p>📱 الكابتن فراس حجو: 0982035983</p>
-                    <p>📧 mawahib.ac.f@gmail.com</p>
-                    <p>📍 Maarret el Mesrine, Idlib</p>
-                </div>
+                <div class="
+                    <p>📱 الكا
+                    <p>📍 Maa
             </div>
+            <div class="f
+         
 
-            <div class="footer-bottom">
-                <p>© 2024 أكاديمية المواهب. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/963982035983?text=مرحباً، أريد الاستفسار عن أكاديمية المواهب" class="whatsapp-float" target="_blank" title="تواصل معنا عبر واتساب">
+    <!-- WhatsApp Float Bu
         💬
-    </a>
 
-    <!-- Admin Login Modal -->
-    <div class="modal" id="adminModal">
-        <div class="modal-content" style="position: relative;">
-            <button class="close-modal" onclick="closeAdminModal()">✕</button>
-            <h2 class="modal-title">تسجيل دخول الإدارة</h2>
-            <form class="contact-form" onsubmit="handleAdminLogin(event)">
-                <div class="form-group">
-                    <label>البريد الإلكتروني</label>
-                    <input type="email" id="adminEmail" placeholder="أدخل البريد الإلكتروني" required>
+    <div class="modal" id="adminMo
+            <button class="
+            <form class="contact-f
+         
+
+                    <la
                 </div>
-                <div class="form-group">
-                    <label>كلمة المرور</label>
-                    <input type="password" id="adminPassword" placeholder="أدخل كلمة المرور" required>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">تسجيل الدخول</button>
             </form>
-        </div>
     </div>
+    <scri
 
-    <script>
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('active');
+            menu.classLis
+
+        function openAdmi
+            modal.classList.add
+
+            const modal = 
         }
+        function handleAdminLogin(ev
+            const email = documen
 
-        // Admin Modal
-        function openAdminModal() {
-            const modal = document.getElementById('adminModal');
-            modal.classList.add('active');
-        }
+                alert('مرحباً 
+         
 
-        function closeAdminModal() {
-            const modal = document.getElementById('adminModal');
-            modal.classList.remove('active');
-        }
 
-        function handleAdminLogin(event) {
-            event.preventDefault();
-            const email = document.getElementById('adminEmail').value;
-            const password = document.getElementById('adminPassword').value;
-
-            if (email === 'mohamadyahia209@gmail.com' && password === 'Mm12345#') {
-                alert('مرحباً بك في لوحة التحكم! \n\nملاحظة: هذه نسخة HTML ثابتة. للحصول على لوحة تحكم كاملة، يُفضل استخدام نظام إدارة محتوى (CMS) أو قاعدة بيانات.');
-                closeAdminModal();
-            } else {
-                alert('البريد الإلكتروني أو كلمة المرور غير صحيحة');
-            }
-        }
-
-        // Contact Form Submit
-        function handleFormSubmit(event) {
-            event.preventDefault();
+        function handleFormSubmit(event
             
-            const playerName = document.getElementById('playerName').value;
-            const playerAge = document.getElementById('playerAge').value;
-            const ageCategory = document.getElementById('ageCategory').value;
-            const parentPhone = document.getElementById('parentPhone').value;
+         
 
-            const message = `مرحباً، أريد التسجيل في أكاديمية المواهب
-            
+            const messag
 الاسم: ${playerName}
-العمر: ${playerAge} سنة
 الفئة: ${ageCategory}
-رقم ولي الأمر: ${parentPhone}`;
 
-            const whatsappUrl = `https://wa.me/963982035983?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        }
+            window.open(whatsappUrl, '_blank
 
-        // Counter Animation
-        function animateCounter(id, target) {
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
+
+            const increment = t
+                
+                    curren
                 }
-                document.getElementById(id).textContent = Math.floor(current);
             }, 30);
-        }
 
-        // Start counter animation when page loads
-        window.addEventListener('load', () => {
-            animateCounter('studentsCount', 500);
+        window.addEventL
         });
-
         // Close modal on outside click
-        window.onclick = function(event) {
-            const modal = document.getElementById('adminModal');
-            if (event.target === modal) {
-                closeAdminModal();
-            }
+            const modal = document.getEl
+                closeAdmin
+        }
+        // Smooth scroll for navigat
+         
+
+                    tar
+                        bl
+         
+
+        // Add fade-in a
+            threshold: 0.1,
+        };
+        const observer = new IntersectionObserver((entr
+                if (entry.isIntersecting)
+                }
+        }, observerOptions);
+        document.queryS
         }
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
 
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
 
-        document.querySelectorAll('.glass-card').forEach(card => {
-            observer.observe(card);
-        });
-    </script>
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
