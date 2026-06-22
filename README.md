@@ -38,18 +38,28 @@ npm run preview
 
 ## 📦 النشر والتصدير
 
-### 🎯 ابدأ من هنا:
-👉 **[START_HERE.md](./START_HERE.md)** - كل ما تحتاج معرفته!
+### 🚀 ابدأ النشر الآن (3 خطوات):
+👉 **[START_DEPLOY.md](./START_DEPLOY.md)** - البدء الفوري!
 
-### 📚 أدلة التصدير الكاملة:
+### 📚 أدلة النشر الكاملة:
 
-- 📚 **[DEPLOYMENT_INDEX.md](./DEPLOYMENT_INDEX.md)** - الفهرس الشامل
-- ⚡ **[QUICK_DEPLOY.md](./QUICK_DEPLOY.md)** - النشر السريع (5 دقائق)
-- 📘 **[EXPORT_GUIDE.md](./EXPORT_GUIDE.md)** - الدليل الكامل
-- 🌐 **[HOSTING_GUIDE.md](./HOSTING_GUIDE.md)** - مقارنة المنصات
+#### للمبتدئين:
+- ⚡ **[README_DEPLOYMENT.md](./README_DEPLOYMENT.md)** - ملخص سريع (دقيقة واحدة)
+- 🖨️ **[PRINT_DEPLOY_GUIDE.md](./PRINT_DEPLOY_GUIDE.md)** - دليل للطباعة
+- 📖 **[DEPLOY_NOW.md](./DEPLOY_NOW.md)** - دليل شامل بالعربية
+- 🎯 **[STEP_BY_STEP_DEPLOY.md](./STEP_BY_STEP_DEPLOY.md)** - خطوة بخطوة مع صور
+
+#### للمتقدمين:
+- 🚀 **[QUICK_DEPLOY.md](./QUICK_DEPLOY.md)** - النشر السريع (5 دقائق)
+- 🌐 **[HOSTING_GUIDE.md](./HOSTING_GUIDE.md)** - جميع خيارات الاستضافة (9 منصات)
+- 🇬🇧 **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** - English version
+
+#### موارد إضافية:
+- 📚 **[DEPLOYMENT_INDEX.md](./DEPLOYMENT_INDEX.md)** - الفهرس الشامل لجميع الأدلة
+- 🎬 **[VIDEO_SCRIPT.md](./VIDEO_SCRIPT.md)** - سيناريو فيديو تعليمي
+- 📘 **[EXPORT_GUIDE.md](./EXPORT_GUIDE.md)** - دليل التصدير الكامل
 - 📊 **[POST_DEPLOYMENT.md](./POST_DEPLOYMENT.md)** - ما بعد النشر
 - 🔧 **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)** - حل المشاكل
-- ✅ **[FILES_READY.md](./FILES_READY.md)** - الملفات الجاهزة
 
 ### نشر سريع على Vercel (الأسهل):
 
@@ -57,6 +67,8 @@ npm run preview
 npm i -g vercel
 vercel --prod
 ```
+
+أو من الموقع: https://vercel.com → Sign Up → Add New → Project → Deploy
 
 ## 🏗️ الهيكل
 
