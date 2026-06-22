@@ -28,8 +28,20 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-muted/30 to-background">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-48 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=2400&auto=format&fit=crop"
+          alt="Soccer Background"
+          className="w-full h-full object-cover opacity-13"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/96 via-muted/92 to-background/96"></div>
+        <div className="absolute inset-0 field-pattern opacity-15"></div>
+      </div>
+      <div className="absolute top-0 left-1/3 w-[42rem] h-[42rem] bg-accent/15 rounded-full blur-[135px]"></div>
+      <div className="absolute bottom-0 right-1/3 w-[42rem] h-[42rem] bg-primary/15 rounded-full blur-[135px]"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 mb-2">
             <WhatsappLogo size={20} weight="fill" className="text-primary" />

@@ -131,8 +131,20 @@ export default function TestimonialsSection() {
   const totalFamilies = 150 + (userTestimonials || []).length
 
   return (
-    <section id="testimonials" className="py-28 px-4 field-pattern">
-      <div className="container mx-auto max-w-7xl">
+    <section id="testimonials" className="py-48 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1589487391730-58f20eb2c308?q=80&w=2400&auto=format&fit=crop"
+          alt="Soccer Background"
+          className="w-full h-full object-cover opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/97 via-muted/94 to-background/97"></div>
+        <div className="absolute inset-0 field-pattern opacity-20"></div>
+      </div>
+      <div className="absolute top-0 right-1/3 w-[45rem] h-[45rem] bg-secondary/15 rounded-full blur-[140px]"></div>
+      <div className="absolute bottom-0 left-1/3 w-[45rem] h-[45rem] bg-primary/15 rounded-full blur-[140px]"></div>
+      
+      <div className="container mx-auto max-w-7xl px-4 relative z-10">
         <div className="text-center mb-20 reveal-up">
           <h2 className="text-6xl md:text-8xl font-black mb-6 bg-gradient-to-l from-primary via-secondary to-accent bg-clip-text text-transparent">
             شهادات الأهالي

@@ -37,10 +37,18 @@ const players: Player[] = [
 
 export default function OurStars() {
   return (
-    <section id="stars" className="py-32 bg-gradient-to-b from-muted/30 via-background to-background relative overflow-hidden">
-      <div className="absolute inset-0 field-pattern opacity-10"></div>
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+    <section id="stars" className="py-48 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?q=80&w=2400&auto=format&fit=crop"
+          alt="Soccer Background"
+          className="w-full h-full object-cover opacity-12"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/97 via-muted/94 to-background/97"></div>
+        <div className="absolute inset-0 field-pattern opacity-15"></div>
+      </div>
+      <div className="absolute top-0 right-1/4 w-[40rem] h-[40rem] bg-yellow-400/15 rounded-full blur-[130px]"></div>
+      <div className="absolute bottom-0 left-1/4 w-[40rem] h-[40rem] bg-accent/15 rounded-full blur-[130px]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20 space-y-6">

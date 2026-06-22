@@ -52,9 +52,18 @@ export default function TrainingCategories() {
   }
 
   return (
-    <section id="categories" className="py-48 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden">
-      <div className="absolute top-20 left-10 w-[35rem] h-[35rem] bg-primary/15 rounded-full blur-[120px]"></div>
-      <div className="absolute bottom-20 right-10 w-[35rem] h-[35rem] bg-accent/15 rounded-full blur-[120px]"></div>
+    <section id="categories" className="py-48 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=2400&auto=format&fit=crop"
+          alt="Soccer Background"
+          className="w-full h-full object-cover opacity-11"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/97 via-muted/94 to-background/97"></div>
+        <div className="absolute inset-0 field-pattern opacity-15"></div>
+      </div>
+      <div className="absolute top-20 left-10 w-[38rem] h-[38rem] bg-primary/15 rounded-full blur-[125px]"></div>
+      <div className="absolute bottom-20 right-10 w-[38rem] h-[38rem] bg-accent/15 rounded-full blur-[125px]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-28 space-y-10 reveal-up">
