@@ -21,80 +21,81 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-effect shadow-lg border-b border-white/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-effect shadow-[0_10px_40px_rgba(0,0,0,0.1)] border-b border-white/30">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-24">
-          <div className="flex items-center gap-4 group cursor-pointer" onClick={() => scrollToSection('home')}>
+        <div className="flex items-center justify-between h-28">
+          <div className="flex items-center gap-5 group cursor-pointer" onClick={() => scrollToSection('home')}>
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-2xl blur-md opacity-50 group-hover:opacity-100 transition-opacity"></div>
-              <Avatar className="w-16 h-16 border-2 border-white shadow-2xl ring-4 ring-primary/20 relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-accent rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition-all duration-500 scale-110"></div>
+              <Avatar className="w-20 h-20 border-3 border-white shadow-2xl ring-4 ring-primary/30 relative group-hover:scale-110 transition-all duration-500">
                 <AvatarImage 
                   src="https://api.dicebear.com/7.x/identicon/svg?seed=TalentAcademy&backgroundColor=8b5cf6,ec4899&scale=90" 
                   alt="أكاديمية المواهب"
                 />
-                <AvatarFallback className="bg-gradient-to-br from-primary via-secondary to-accent text-white font-black text-2xl">
+                <AvatarFallback className="bg-gradient-to-br from-primary via-secondary to-accent text-white font-black text-3xl">
                   أم
                 </AvatarFallback>
               </Avatar>
             </div>
             
             <div>
-              <h1 className="text-2xl md:text-3xl font-black bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-none">
+              <h1 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-none">
                 أكاديمية المواهب
               </h1>
-              <p className="text-sm text-muted-foreground font-bold mt-1">اصنع من موهبتك بطل ملعب</p>
+              <p className="text-base text-muted-foreground font-black mt-1.5">اصنع من موهبتك بطل ملعب</p>
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             <button 
               onClick={() => scrollToSection('home')}
-              className="text-foreground font-bold hover:text-primary transition-all hover:scale-110 relative group/link"
+              className="text-foreground font-black text-lg hover:text-primary transition-all hover:scale-110 relative group/link"
             >
               الرئيسية
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover/link:w-full transition-all duration-300"></span>
+              <span className="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full group-hover/link:w-full transition-all duration-500"></span>
             </button>
             <button 
               onClick={() => scrollToSection('categories')}
-              className="text-foreground font-bold hover:text-primary transition-all hover:scale-110 relative group/link"
+              className="text-foreground font-black text-lg hover:text-primary transition-all hover:scale-110 relative group/link"
             >
               الفئات
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover/link:w-full transition-all duration-300"></span>
+              <span className="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full group-hover/link:w-full transition-all duration-500"></span>
             </button>
             <button 
               onClick={() => scrollToSection('offers')}
-              className="text-foreground font-bold hover:text-primary transition-all hover:scale-110 relative group/link"
+              className="text-foreground font-black text-lg hover:text-primary transition-all hover:scale-110 relative group/link"
             >
               خدماتنا
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover/link:w-full transition-all duration-300"></span>
+              <span className="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full group-hover/link:w-full transition-all duration-500"></span>
             </button>
             <button 
               onClick={() => scrollToSection('gallery')}
-              className="text-foreground font-bold hover:text-primary transition-all hover:scale-110 relative group/link"
+              className="text-foreground font-black text-lg hover:text-primary transition-all hover:scale-110 relative group/link"
             >
               المعرض
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover/link:w-full transition-all duration-300"></span>
+              <span className="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full group-hover/link:w-full transition-all duration-500"></span>
             </button>
             <button 
               onClick={() => scrollToSection('testimonials')}
-              className="text-foreground font-bold hover:text-primary transition-all hover:scale-110 relative group/link"
+              className="text-foreground font-black text-lg hover:text-primary transition-all hover:scale-110 relative group/link"
             >
               آراء الأهالي
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover/link:w-full transition-all duration-300"></span>
+              <span className="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full group-hover/link:w-full transition-all duration-500"></span>
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-foreground font-bold hover:text-primary transition-all hover:scale-110 relative group/link"
+              className="text-foreground font-black text-lg hover:text-primary transition-all hover:scale-110 relative group/link"
             >
               تواصل معنا
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover/link:w-full transition-all duration-300"></span>
+              <span className="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full group-hover/link:w-full transition-all duration-500"></span>
             </button>
             <Button 
               onClick={openWhatsApp}
-              className="bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 font-black text-lg px-8 py-6 rounded-2xl shadow-xl hover:scale-110 transition-all duration-300"
+              className="bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-95 font-black text-xl px-10 py-7 rounded-[1.5rem] shadow-[0_10px_40px_rgba(132,71,221,0.4)] hover:shadow-[0_15px_50px_rgba(132,71,221,0.5)] hover:scale-110 transition-all duration-500 relative overflow-hidden group"
             >
-              <WhatsappLogo size={24} weight="fill" className="ml-2" />
-              احجز الآن
+              <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+              <WhatsappLogo size={28} weight="fill" className="ml-3 relative z-10" />
+              <span className="relative z-10">احجز الآن</span>
             </Button>
           </div>
 
