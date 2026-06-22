@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState, useRef } from "react"
+import { lazy, Suspense, useEffect, useState } from "react"
 import Navbar from "@/components/Navbar"
 import HeroSection from "@/components/HeroSection"
 import Footer from "@/components/Footer"
@@ -18,8 +18,6 @@ function App() {
   const [scrollY, setScrollY] = useState(0)
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const [loadingProgress, setLoadingProgress] = useState(0)
-  const [documentHeight, setDocumentHeight] = useState(typeof window !== 'undefined' ? window.innerHeight * 3 : 5000)
-  const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     let ticking = false
@@ -34,47 +32,10 @@ function App() {
       }
     }
 
-    const updateHeight = () => {
-      const newHeight = Math.max(
-        document.documentElement.scrollHeight,
-        document.body.scrollHeight,
-        contentRef.current?.scrollHeight || 0
-      )
-      setDocumentHeight(newHeight)
-    }
-
     window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', updateHeight)
-    window.addEventListener('load', updateHeight)
-    
-    const observer = new ResizeObserver(() => {
-      window.requestAnimationFrame(updateHeight)
-    })
-    
-    if (contentRef.current) {
-      observer.observe(contentRef.current)
-    }
-    
-    document.body.childNodes.forEach((node) => {
-      if (node.nodeType === 1) {
-        observer.observe(node as Element)
-      }
-    })
-
-    updateHeight()
-    
-    setTimeout(updateHeight, 50)
-    setTimeout(updateHeight, 100)
-    setTimeout(updateHeight, 300)
-    setTimeout(updateHeight, 500)
-    setTimeout(updateHeight, 1000)
-    setTimeout(updateHeight, 2000)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', updateHeight)
-      window.removeEventListener('load', updateHeight)
-      observer.disconnect()
     }
   }, [])
 
@@ -116,50 +77,38 @@ function App() {
     {
       url: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1920&auto=format&fit=crop",
       position: 0,
-      speed: 0.3,
+      speed: 0.15,
       overlay: "from-primary/85 via-secondary/80 to-accent/75"
     },
     {
       url: "https://images.unsplash.com/photo-1577223625816-7546f73e8b5b?q=80&w=1920&auto=format&fit=crop",
-      position: 1200,
-      speed: 0.28,
+      position: 1400,
+      speed: 0.14,
       overlay: "from-accent/83 via-primary/78 to-secondary/80"
     },
     {
       url: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1920&auto=format&fit=crop",
-      position: 2400,
-      speed: 0.26,
+      position: 2800,
+      speed: 0.13,
       overlay: "from-secondary/85 via-accent/79 to-primary/82"
     },
     {
       url: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=1920&auto=format&fit=crop",
-      position: 3600,
-      speed: 0.24,
+      position: 4200,
+      speed: 0.12,
       overlay: "from-primary/82 via-secondary/77 to-accent/79"
     },
     {
       url: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=1920&auto=format&fit=crop",
-      position: 4800,
-      speed: 0.22,
+      position: 5600,
+      speed: 0.11,
       overlay: "from-accent/80 via-primary/75 to-secondary/82"
     },
     {
       url: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1920&auto=format&fit=crop",
-      position: 6000,
-      speed: 0.20,
+      position: 7000,
+      speed: 0.10,
       overlay: "from-secondary/83 via-accent/76 to-primary/80"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=1920&auto=format&fit=crop",
-      position: 7200,
-      speed: 0.18,
-      overlay: "from-primary/80 via-secondary/74 to-accent/78"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop",
-      position: 8400,
-      speed: 0.16,
-      overlay: "from-accent/82 via-primary/76 to-secondary/79"
     }
   ]
 
@@ -185,7 +134,7 @@ function App() {
     : 0
 
   return (
-    <div ref={contentRef} className="min-h-screen select-none relative">
+    <div className="min-h-screen select-none relative">
       {!imagesLoaded && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent transition-opacity duration-500">
           <div className="text-center space-y-6">
@@ -207,13 +156,16 @@ function App() {
       )}
       
       <div 
-        className="fixed top-0 left-0 w-full h-screen -z-10 overflow-hidden"
+        className="fixed top-0 left-0 w-full -z-10 overflow-hidden"
+        style={{
+          height: '100vh',
+        }}
       >
         <div 
-          className="absolute top-0 left-0 w-full min-h-screen will-change-transform"
+          className="absolute top-0 left-0 w-full will-change-transform"
           style={{
-            height: `${Math.max(documentHeight, window.innerHeight)}px`,
-            transform: `translateY(${scrollY * activeBackground.speed}px) scale(${1 + scrollY * 0.00003})`,
+            height: '150vh',
+            transform: `translateY(${scrollY * activeBackground.speed}px)`,
             opacity: nextBackground ? 1 - transitionProgress : 1,
             transition: 'opacity 600ms ease-out',
           }}
@@ -230,10 +182,10 @@ function App() {
 
         {nextBackground && (
           <div 
-            className="absolute top-0 left-0 w-full min-h-screen will-change-transform"
+            className="absolute top-0 left-0 w-full will-change-transform"
             style={{
-              height: `${Math.max(documentHeight, window.innerHeight)}px`,
-              transform: `translateY(${scrollY * nextBackground.speed}px) scale(${1 + scrollY * 0.00003})`,
+              height: '150vh',
+              transform: `translateY(${scrollY * nextBackground.speed}px)`,
               opacity: transitionProgress,
               transition: 'opacity 600ms ease-out',
             }}
@@ -252,7 +204,7 @@ function App() {
         <div 
           className="absolute inset-0 field-pattern opacity-12"
           style={{
-            height: `${Math.max(documentHeight, window.innerHeight)}px`,
+            height: '150vh',
           }}
         ></div>
       </div>
@@ -260,8 +212,8 @@ function App() {
       <div 
         className="fixed inset-0 -z-10 pointer-events-none opacity-30"
         style={{
-          height: `${Math.max(documentHeight, window.innerHeight)}px`,
-          transform: `translateY(${scrollY * 0.12}px)`,
+          height: '100vh',
+          transform: `translateY(${scrollY * 0.08}px)`,
         }}
       >
         <div className="absolute top-[10%] right-[15%] w-[600px] h-[600px] bg-accent/15 rounded-full blur-[140px] animate-pulse"></div>
