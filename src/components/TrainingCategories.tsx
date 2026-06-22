@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { WhatsappLogo, Users, Calendar, CurrencyCircleDollar, Sparkle } from "@phosphor-icons/react"
+import { WhatsappLogo, Users, Calendar, CurrencyCircleDollar, Sparkle, Baby, UsersFour, UsersThree } from "@phosphor-icons/react"
 
 interface Category {
   title: string
@@ -11,6 +11,7 @@ interface Category {
   color: string
   featured?: boolean
   image?: string
+  icon: 'baby' | 'users-four' | 'users-three'
 }
 
 const categories: Category[] = [
@@ -21,7 +22,8 @@ const categories: Category[] = [
     price: "40$ بالشهر",
     description: "تدريب أساسي للمهارات الحركية والتحكم بالكرة",
     color: "from-green-500 via-emerald-500 to-teal-600",
-    image: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=800&auto=format&fit=crop",
+    icon: 'baby'
   },
   {
     title: "فئة الناشئين",
@@ -31,7 +33,8 @@ const categories: Category[] = [
     description: "تطوير المهارات التكتيكية والعمل الجماعي",
     color: "from-primary via-secondary to-accent",
     featured: true,
-    image: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=800&auto=format&fit=crop",
+    icon: 'users-four'
   },
   {
     title: "فئة الشباب",
@@ -40,7 +43,8 @@ const categories: Category[] = [
     price: "60$ بالشهر",
     description: "تدريب احترافي متقدم للوصول للمستوى الاحترافي",
     color: "from-blue-500 via-indigo-500 to-violet-600",
-    image: "https://images.unsplash.com/photo-1577223625816-7546f73e8b5b?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=800&auto=format&fit=crop",
+    icon: 'users-three'
   }
 ]
 
@@ -49,6 +53,17 @@ export default function TrainingCategories() {
     const phoneNumber = "963982035983"
     const message = encodeURIComponent(`مرحباً، أريد حجز تجربة مجانية لـ ${category}`)
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
+  }
+
+  const getCategoryIcon = (iconType: 'baby' | 'users-four' | 'users-three') => {
+    switch (iconType) {
+      case 'baby':
+        return <Baby size={80} weight="bold" className="text-white relative z-10" />
+      case 'users-four':
+        return <UsersFour size={80} weight="bold" className="text-white relative z-10" />
+      case 'users-three':
+        return <UsersThree size={80} weight="bold" className="text-white relative z-10" />
+    }
   }
 
   return (
@@ -111,7 +126,7 @@ export default function TrainingCategories() {
               <CardHeader className="text-center space-y-8 pb-12 pt-12 relative">
                 <div className={`w-40 h-40 bg-gradient-to-br ${category.color} rounded-[2.5rem] flex items-center justify-center mx-auto shadow-[0_25px_70px_rgba(0,0,0,0.25)] group-hover:scale-125 group-hover:rotate-12 transition-all duration-700 relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-white/20 group-hover:bg-white/30 transition-all duration-700"></div>
-                  <Users size={80} weight="bold" className="text-white relative z-10" />
+                  {getCategoryIcon(category.icon)}
                 </div>
                 <CardTitle className="text-5xl font-black bg-gradient-to-r from-foreground via-foreground to-foreground/80 bg-clip-text text-transparent leading-tight">
                   {category.title}
@@ -128,9 +143,9 @@ export default function TrainingCategories() {
                 </div>
                 
                 <div className={`flex items-center justify-center gap-5 py-8 px-10 rounded-[2rem] shadow-2xl group-hover:shadow-[0_30px_100px_rgba(0,0,0,0.2)] transition-all duration-500 relative overflow-hidden`}>
-                  <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-90`}></div>
-                  <CurrencyCircleDollar size={52} weight="bold" className="text-white relative z-10 drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]" />
-                  <span className="text-6xl font-black text-white relative z-10 drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
+                  <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-100`}></div>
+                  <CurrencyCircleDollar size={52} weight="bold" className="text-white relative z-10 drop-shadow-[0_6px_16px_rgba(0,0,0,0.6)]" />
+                  <span className="text-6xl font-black text-white relative z-10 drop-shadow-[0_6px_16px_rgba(0,0,0,0.6)]">
                     {category.price}
                   </span>
                 </div>
