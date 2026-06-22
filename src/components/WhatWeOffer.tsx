@@ -12,13 +12,13 @@ const offers: Offer[] = [
     icon: <Trophy size={64} weight="bold" className="text-white" />,
     title: "تدريب مهارات + لياقة بدنية",
     description: "برامج تدريبية شاملة تطور المهارات الفنية واللياقة البدنية",
-    gradient: "from-blue-500 via-indigo-500 to-purple-600"
+    gradient: "from-green-500 via-emerald-500 to-teal-600"
   },
   {
     icon: <Heart size={64} weight="bold" className="text-white" />,
     title: "مباريات ودية كل أسبوع",
     description: "فرصة للتطبيق العملي والتنافس الشريف مع فرق أخرى",
-    gradient: "from-rose-500 via-pink-500 to-fuchsia-600"
+    gradient: "from-blue-500 via-indigo-500 to-violet-600"
   },
   {
     icon: <ChartLine size={64} weight="bold" className="text-white" />,
@@ -30,15 +30,25 @@ const offers: Offer[] = [
     icon: <Park size={64} weight="bold" className="text-white" />,
     title: "ملعب عشبي طبيعي",
     description: "ملعب بمواصفات عالمية يوفر بيئة تدريب احترافية",
-    gradient: "from-emerald-500 via-teal-500 to-cyan-600"
+    gradient: "from-lime-500 via-green-500 to-emerald-600"
   }
 ]
 
 export default function WhatWeOffer() {
   return (
-    <section id="offers" className="py-48 bg-gradient-to-br from-background via-muted/40 to-background relative overflow-hidden">
-      <div className="absolute top-0 left-1/4 w-[35rem] h-[35rem] bg-accent/15 rounded-full blur-[120px]"></div>
-      <div className="absolute bottom-0 right-1/4 w-[35rem] h-[35rem] bg-primary/15 rounded-full blur-[120px]"></div>
+    <section id="offers" className="py-48 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=2000&auto=format&fit=crop"
+          alt="Soccer Field"
+          className="w-full h-full object-cover opacity-15"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/98 via-muted/95 to-background/98"></div>
+        <div className="absolute inset-0 field-pattern opacity-20"></div>
+      </div>
+      
+      <div className="absolute top-0 left-1/4 w-[35rem] h-[35rem] bg-accent/10 rounded-full blur-[120px]"></div>
+      <div className="absolute bottom-0 right-1/4 w-[35rem] h-[35rem] bg-primary/10 rounded-full blur-[120px]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-28 space-y-10">

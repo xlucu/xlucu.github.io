@@ -10,6 +10,7 @@ interface Category {
   description: string
   color: string
   featured?: boolean
+  image?: string
 }
 
 const categories: Category[] = [
@@ -19,7 +20,8 @@ const categories: Category[] = [
     days: "3 أيام بالأسبوع",
     price: "40$ بالشهر",
     description: "تدريب أساسي للمهارات الحركية والتحكم بالكرة",
-    color: "from-purple-500 via-purple-600 to-indigo-600"
+    color: "from-green-500 via-emerald-500 to-teal-600",
+    image: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=800&auto=format&fit=crop"
   },
   {
     title: "فئة الناشئين",
@@ -28,7 +30,8 @@ const categories: Category[] = [
     price: "50$ بالشهر",
     description: "تطوير المهارات التكتيكية والعمل الجماعي",
     color: "from-primary via-secondary to-accent",
-    featured: true
+    featured: true,
+    image: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=800&auto=format&fit=crop"
   },
   {
     title: "فئة الشباب",
@@ -36,7 +39,8 @@ const categories: Category[] = [
     days: "4 أيام بالأسبوع",
     price: "60$ بالشهر",
     description: "تدريب احترافي متقدم للوصول للمستوى الاحترافي",
-    color: "from-pink-500 via-rose-500 to-fuchsia-600"
+    color: "from-blue-500 via-indigo-500 to-violet-600",
+    image: "https://images.unsplash.com/photo-1577223625816-7546f73e8b5b?q=80&w=800&auto=format&fit=crop"
   }
 ]
 
@@ -82,7 +86,18 @@ export default function TrainingCategories() {
                 </div>
               )}
               
-              <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-20 transition-all duration-700`}></div>
+              {category.image && (
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src={category.image} 
+                    alt={category.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-b ${category.color} opacity-60 group-hover:opacity-50 transition-opacity duration-700`}></div>
+                </div>
+              )}
+              
+              <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-all duration-700`}></div>
               
               <CardHeader className="text-center space-y-8 pb-12 pt-12 relative">
                 <div className={`w-40 h-40 bg-gradient-to-br ${category.color} rounded-[2.5rem] flex items-center justify-center mx-auto shadow-[0_25px_70px_rgba(0,0,0,0.25)] group-hover:scale-125 group-hover:rotate-12 transition-all duration-700 relative overflow-hidden`}>

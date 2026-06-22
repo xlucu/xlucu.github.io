@@ -95,9 +95,17 @@ export default function AchievementsSection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-20 relative overflow-hidden"
+      className="py-32 relative overflow-hidden"
     >
-      <div className="absolute inset-0 field-pattern opacity-50"></div>
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000&auto=format&fit=crop"
+          alt="Soccer Field Background"
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95"></div>
+        <div className="absolute inset-0 field-pattern opacity-30"></div>
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 fade-in">

@@ -80,14 +80,21 @@ export default function HeroSection() {
   }
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-secondary to-accent gradient-animate pt-20">
-      <div className="absolute inset-0 field-pattern opacity-30"></div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=2000&auto=format&fit=crop"
+          alt="Soccer Training Background"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-secondary/90 to-accent/85"></div>
+        <div className="absolute inset-0 field-pattern opacity-20"></div>
+      </div>
       
       <div className="absolute inset-0">
-        <div className="absolute top-[10%] right-[15%] w-[500px] h-[500px] bg-accent/30 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-[15%] left-[10%] w-[600px] h-[600px] bg-primary/30 rounded-full blur-[130px] animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-[40%] left-[45%] w-[550px] h-[550px] bg-secondary/25 rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-[60%] right-[20%] w-[400px] h-[400px] bg-accent/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-[10%] right-[15%] w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-[15%] left-[10%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[130px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-[40%] left-[45%] w-[550px] h-[550px] bg-secondary/15 rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
       
       <div className="container mx-auto px-4 py-32 relative z-10">
