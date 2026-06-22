@@ -61,6 +61,12 @@ export default function Navbar() {
               خدماتنا
             </button>
             <button 
+              onClick={() => scrollToSection('gallery')}
+              className="text-foreground font-bold hover:text-primary transition-colors"
+            >
+              المعرض
+            </button>
+            <button 
               onClick={() => scrollToSection('stars')}
               className="text-foreground font-bold hover:text-primary transition-colors"
             >
@@ -110,6 +116,12 @@ export default function Navbar() {
               className="block w-full text-right py-3 px-4 text-foreground font-bold hover:bg-muted rounded-lg transition-colors"
             >
               خدماتنا
+            </button>
+            <button 
+              onClick={() => scrollToSection('gallery')}
+              className="block w-full text-right py-3 px-4 text-foreground font-bold hover:bg-muted rounded-lg transition-colors"
+            >
+              المعرض
             </button>
             <button 
               onClick={() => scrollToSection('stars')}
