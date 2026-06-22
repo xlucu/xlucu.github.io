@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react"
+import { lazy, Suspense, useEffect, useState, useRef } from "react"
 import Navbar from "@/components/Navbar"
 import HeroSection from "@/components/HeroSection"
 import Footer from "@/components/Footer"
@@ -18,14 +18,35 @@ function App() {
   const [scrollY, setScrollY] = useState(0)
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const [loadingProgress, setLoadingProgress] = useState(0)
+  const [documentHeight, setDocumentHeight] = useState(0)
+  const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY)
     }
 
+    const updateHeight = () => {
+      if (contentRef.current) {
+        setDocumentHeight(contentRef.current.scrollHeight)
+      }
+    }
+
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('resize', updateHeight)
+    
+    const observer = new ResizeObserver(updateHeight)
+    if (contentRef.current) {
+      observer.observe(contentRef.current)
+    }
+
+    updateHeight()
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', updateHeight)
+      observer.disconnect()
+    }
   }, [])
 
   useEffect(() => {
@@ -183,7 +204,7 @@ function App() {
     : 0
 
   return (
-    <div className="min-h-screen select-none relative">
+    <div ref={contentRef} className="min-h-screen select-none relative">
       {!imagesLoaded && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent transition-opacity duration-500">
           <div className="text-center space-y-6">
@@ -204,9 +225,12 @@ function App() {
         </div>
       )}
       
-      <div className="fixed inset-0 -z-10">
+      <div 
+        className="absolute top-0 left-0 w-full -z-10"
+        style={{ height: documentHeight > 0 ? `${documentHeight}px` : '100%' }}
+      >
         <div 
-          className="absolute inset-0 transition-opacity duration-[800ms] ease-out"
+          className="absolute top-0 left-0 w-full h-full transition-opacity duration-[800ms] ease-out"
           style={{
             transform: `translateY(${scrollY * activeBackground.speed}px) scale(${1 + scrollY * 0.00003})`,
             opacity: nextBackground ? 1 - transitionProgress : 1,
@@ -215,7 +239,7 @@ function App() {
           <img 
             src={activeBackground.url}
             alt="Soccer Background"
-            className="w-full h-[150vh] object-cover"
+            className="w-full h-full object-cover"
             loading="eager"
             decoding="async"
           />
@@ -224,7 +248,7 @@ function App() {
 
         {nextBackground && (
           <div 
-            className="absolute inset-0 transition-opacity duration-[800ms] ease-out"
+            className="absolute top-0 left-0 w-full h-full transition-opacity duration-[800ms] ease-out"
             style={{
               transform: `translateY(${scrollY * nextBackground.speed}px) scale(${1 + scrollY * 0.00003})`,
               opacity: transitionProgress,
@@ -233,7 +257,7 @@ function App() {
             <img 
               src={nextBackground.url}
               alt="Soccer Background"
-              className="w-full h-[150vh] object-cover"
+              className="w-full h-full object-cover"
               loading="eager"
               decoding="async"
             />
