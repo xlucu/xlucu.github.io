@@ -25,9 +25,13 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="py-20 bg-background">
+    <section id="contact" className="py-24 bg-gradient-to-b from-muted/30 to-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 mb-2">
+            <WhatsappLogo size={20} weight="fill" className="text-primary" />
+            <span className="text-sm font-bold text-primary">ابدأ رحلتك معنا</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-black text-foreground">
             تواصل معنا
           </h2>
@@ -37,31 +41,37 @@ export default function ContactSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          <Card className="border-2">
+          <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl">
             <CardHeader>
               <CardTitle className="text-2xl font-black">معلومات التواصل</CardTitle>
               <CardDescription className="text-lg">تواصل معنا عبر واتساب أو قم بزيارتنا</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-4">
-                <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-lg">
-                  <WhatsappLogo size={32} weight="fill" className="text-primary flex-shrink-0" />
+                <div className="group flex items-start gap-4 p-5 bg-gradient-to-br from-primary/5 to-primary/10 hover:from-primary/10 hover:to-primary/15 rounded-xl transition-all duration-300 hover:scale-105 border border-primary/10">
+                  <div className="p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-colors">
+                    <WhatsappLogo size={28} weight="fill" className="text-primary" />
+                  </div>
                   <div>
                     <h4 className="font-bold text-lg mb-1">رقم واتساب</h4>
                     <p className="text-muted-foreground font-semibold" dir="ltr">+963 982 035 983</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-lg">
-                  <MapPin size={32} weight="fill" className="text-primary flex-shrink-0" />
+                <div className="group flex items-start gap-4 p-5 bg-gradient-to-br from-accent/5 to-accent/10 hover:from-accent/10 hover:to-accent/15 rounded-xl transition-all duration-300 hover:scale-105 border border-accent/10">
+                  <div className="p-3 bg-accent/20 rounded-lg group-hover:bg-accent/30 transition-colors">
+                    <MapPin size={28} weight="fill" className="text-accent" />
+                  </div>
                   <div>
                     <h4 className="font-bold text-lg mb-1">الموقع</h4>
                     <p className="text-muted-foreground">معرة مصرين، إدلب</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-lg">
-                  <Clock size={32} weight="fill" className="text-primary flex-shrink-0" />
+                <div className="group flex items-start gap-4 p-5 bg-gradient-to-br from-primary/5 to-accent/10 hover:from-primary/10 hover:to-accent/15 rounded-xl transition-all duration-300 hover:scale-105 border border-primary/10">
+                  <div className="p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-colors">
+                    <Clock size={28} weight="fill" className="text-primary" />
+                  </div>
                   <div>
                     <h4 className="font-bold text-lg mb-1">مواعيد التدريب</h4>
                     <p className="text-muted-foreground">4 العصر - 8 المساء</p>
@@ -70,7 +80,7 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="rounded-lg overflow-hidden border-2 h-64">
+              <div className="rounded-xl overflow-hidden border-2 border-border h-64 shadow-lg">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102841.24!2d36.65!3d35.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDU3JzAwLjAiTiAzNsKwMzknMDAuMCJF!5e0!3m2!1sar!2s!4v1234567890"
                   width="100%"
@@ -84,7 +94,7 @@ export default function ContactSection() {
             </CardContent>
           </Card>
 
-          <Card className="border-2">
+          <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl bg-gradient-to-br from-card to-muted/20">
             <CardHeader>
               <CardTitle className="text-2xl font-black">سجل الآن</CardTitle>
               <CardDescription className="text-lg">أرسل بياناتك وسنتواصل معك فوراً</CardDescription>
@@ -99,7 +109,7 @@ export default function ContactSection() {
                     onChange={(e) => setPlayerName(e.target.value)}
                     placeholder="أدخل اسم اللاعب"
                     required
-                    className="text-lg py-6"
+                    className="text-lg py-6 border-2 focus:border-primary transition-colors"
                   />
                 </div>
 
@@ -114,7 +124,7 @@ export default function ContactSection() {
                     required
                     min="6"
                     max="99"
-                    className="text-lg py-6"
+                    className="text-lg py-6 border-2 focus:border-primary transition-colors"
                   />
                 </div>
 
@@ -127,13 +137,13 @@ export default function ContactSection() {
                     onChange={(e) => setParentPhone(e.target.value)}
                     placeholder="أدخل رقم الهاتف"
                     required
-                    className="text-lg py-6"
+                    className="text-lg py-6 border-2 focus:border-primary transition-colors"
                   />
                 </div>
 
                 <Button 
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 font-bold text-xl py-7 rounded-lg hover:scale-105 transition-transform"
+                  className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary font-bold text-xl py-7 rounded-xl hover:scale-105 transition-all shadow-lg hover:shadow-xl"
                 >
                   <WhatsappLogo size={28} weight="fill" className="ml-2" />
                   أرسل عبر واتساب
