@@ -18,7 +18,7 @@ function App() {
   const [scrollY, setScrollY] = useState(0)
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const [loadingProgress, setLoadingProgress] = useState(0)
-  const [documentHeight, setDocumentHeight] = useState(0)
+  const [documentHeight, setDocumentHeight] = useState(typeof window !== 'undefined' ? window.innerHeight * 3 : 5000)
   const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -35,18 +35,17 @@ function App() {
     }
 
     const updateHeight = () => {
-      if (contentRef.current) {
-        const newHeight = Math.max(
-          contentRef.current.scrollHeight,
-          document.documentElement.scrollHeight,
-          document.body.scrollHeight
-        )
-        setDocumentHeight(newHeight)
-      }
+      const newHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight,
+        contentRef.current?.scrollHeight || 0
+      )
+      setDocumentHeight(newHeight)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', updateHeight)
+    window.addEventListener('load', updateHeight)
     
     const observer = new ResizeObserver(() => {
       window.requestAnimationFrame(updateHeight)
@@ -55,16 +54,26 @@ function App() {
     if (contentRef.current) {
       observer.observe(contentRef.current)
     }
+    
+    document.body.childNodes.forEach((node) => {
+      if (node.nodeType === 1) {
+        observer.observe(node as Element)
+      }
+    })
 
     updateHeight()
     
+    setTimeout(updateHeight, 50)
     setTimeout(updateHeight, 100)
+    setTimeout(updateHeight, 300)
     setTimeout(updateHeight, 500)
     setTimeout(updateHeight, 1000)
+    setTimeout(updateHeight, 2000)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', updateHeight)
+      window.removeEventListener('load', updateHeight)
       observer.disconnect()
     }
   }, [])
@@ -198,11 +207,12 @@ function App() {
       )}
       
       <div 
-        className="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden"
+        className="fixed top-0 left-0 w-full h-screen -z-10 overflow-hidden"
       >
         <div 
-          className="absolute top-0 left-0 w-full h-full will-change-transform"
+          className="absolute top-0 left-0 w-full min-h-screen will-change-transform"
           style={{
+            height: `${Math.max(documentHeight, window.innerHeight)}px`,
             transform: `translateY(${scrollY * activeBackground.speed}px) scale(${1 + scrollY * 0.00003})`,
             opacity: nextBackground ? 1 - transitionProgress : 1,
             transition: 'opacity 600ms ease-out',
@@ -220,8 +230,9 @@ function App() {
 
         {nextBackground && (
           <div 
-            className="absolute top-0 left-0 w-full h-full will-change-transform"
+            className="absolute top-0 left-0 w-full min-h-screen will-change-transform"
             style={{
+              height: `${Math.max(documentHeight, window.innerHeight)}px`,
               transform: `translateY(${scrollY * nextBackground.speed}px) scale(${1 + scrollY * 0.00003})`,
               opacity: transitionProgress,
               transition: 'opacity 600ms ease-out',
@@ -238,12 +249,18 @@ function App() {
           </div>
         )}
 
-        <div className="absolute inset-0 field-pattern opacity-12"></div>
+        <div 
+          className="absolute inset-0 field-pattern opacity-12"
+          style={{
+            height: `${Math.max(documentHeight, window.innerHeight)}px`,
+          }}
+        ></div>
       </div>
 
       <div 
         className="fixed inset-0 -z-10 pointer-events-none opacity-30"
         style={{
+          height: `${Math.max(documentHeight, window.innerHeight)}px`,
           transform: `translateY(${scrollY * 0.12}px)`,
         }}
       >
