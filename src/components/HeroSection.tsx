@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { WhatsappLogo, ArrowDown, Users, Clipboard } from "@phosphor-icons/react"
 import { useEffect, useState } from "react"
 import { useKV } from '@github/spark/hooks'
+import { useParallax } from "@/hooks/use-parallax"
 
 type HeroData = {
   title: string
@@ -24,6 +25,8 @@ type ContactData = {
 }
 
 export default function HeroSection() {
+  const parallaxOffset = useParallax()
+  
   const [heroData] = useKV<HeroData>('admin-hero', {
     title: 'اصنع من موهبتك بطل ملعب',
     subtitle: 'تدريب كرة قدم احترافي لجميع الأعمار مع مدربين معتمدين',
@@ -81,7 +84,12 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      <div className="absolute inset-0">
+      <div 
+        className="absolute inset-0 transition-transform duration-100 ease-out"
+        style={{
+          transform: `translate(${parallaxOffset.x * 0.02}px, ${parallaxOffset.y * 0.02}px)`
+        }}
+      >
         <img 
           src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=2000&auto=format&fit=crop"
           alt="Soccer Training Background"
@@ -91,15 +99,20 @@ export default function HeroSection() {
         <div className="absolute inset-0 field-pattern opacity-20"></div>
       </div>
       
-      <div className="absolute inset-0">
-        <div className="absolute top-[10%] right-[15%] w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-[15%] left-[10%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[130px] animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-[40%] left-[45%] w-[550px] h-[550px] bg-secondary/15 rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+      <div 
+        className="absolute inset-0"
+        style={{
+          transform: `translate(${parallaxOffset.x * 0.05}px, ${parallaxOffset.y * 0.05}px)`
+        }}
+      >
+        <div className="absolute top-[10%] right-[15%] w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-[15%] left-[10%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[130px]"></div>
+        <div className="absolute top-[40%] left-[45%] w-[550px] h-[550px] bg-secondary/15 rounded-full blur-[140px]"></div>
       </div>
       
       <div className="container mx-auto px-4 py-32 relative z-10">
         <div className="max-w-5xl mx-auto text-center text-white space-y-12">
-          <div className="inline-block px-12 py-6 glass-effect rounded-full shadow-[0_20px_80px_rgba(132,71,221,0.5)] mb-10 scale-in pulse-glow animate-in">
+          <div className="inline-block px-12 py-6 glass-card rounded-full shadow-[0_20px_80px_rgba(132,71,221,0.3)] mb-10 scale-in animate-in">
             <p className="text-xl font-black text-white/95 flex items-center justify-center gap-3">
               <span className="text-3xl animate-bounce">🏆</span>
               الأكاديمية الرائدة في التدريب الكروي الاحترافي
@@ -107,8 +120,7 @@ export default function HeroSection() {
           </div>
           
           <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-black leading-[0.9] tracking-tighter drop-shadow-[0_10px_50px_rgba(0,0,0,0.5)] text-shimmer relative">
-            <span className="block">{heroData?.title || 'اصنع من موهبتك'}</span>
-            <span className="block text-shadow-glow">بطل ملعب</span>
+            {heroData?.title || 'اصنع من موهبتك بطل ملعب'}
           </h1>
           
           <p className="text-2xl md:text-4xl font-bold text-white/95 max-w-3xl mx-auto leading-relaxed drop-shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
@@ -131,14 +143,14 @@ export default function HeroSection() {
                 const element = document.getElementById('categories')
                 element?.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="glass-effect text-white font-black text-3xl px-24 py-12 rounded-[2rem] shadow-[0_20px_80px_rgba(0,0,0,0.3)] hover:shadow-[0_25px_100px_rgba(255,255,255,0.4)] hover:scale-110 transition-all duration-700 border-4 border-white/50 hover:border-white/80 hover-lift"
+              className="glass-card text-white font-black text-3xl px-24 py-12 rounded-[2rem] shadow-[0_20px_80px_rgba(0,0,0,0.3)] hover:shadow-[0_25px_100px_rgba(255,255,255,0.4)] hover:scale-110 transition-all duration-700 border-4 border-white/50 hover:border-white/80 hover-lift"
             >
               اكتشف المزيد
             </Button>
           </div>
 
           <div className="pt-28 grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            <div className="glass-effect rounded-[2.5rem] p-12 shadow-[0_25px_80px_rgba(0,0,0,0.2)] hover:scale-110 hover:shadow-[0_30px_100px_rgba(132,71,221,0.4)] transition-all duration-700 border-4 border-white/50 group hover-lift">
+            <div className="glass-card rounded-[2.5rem] p-12 shadow-[0_25px_80px_rgba(0,0,0,0.2)] hover:scale-110 hover:shadow-[0_30px_100px_rgba(132,71,221,0.4)] transition-all duration-700 border-4 border-white/50 group">
               <div className="flex flex-col items-center gap-8">
                 <div className="bg-white/40 p-10 rounded-[2rem] backdrop-blur-sm group-hover:rotate-12 group-hover:scale-110 transition-all duration-700">
                   <Users size={72} weight="bold" className="text-white" />
@@ -154,7 +166,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div className="glass-effect rounded-[2.5rem] p-12 shadow-[0_25px_80px_rgba(0,0,0,0.2)] hover:scale-110 hover:shadow-[0_30px_100px_rgba(236,72,153,0.4)] transition-all duration-700 border-4 border-white/50 group hover-lift">
+            <div className="glass-card rounded-[2.5rem] p-12 shadow-[0_25px_80px_rgba(0,0,0,0.2)] hover:scale-110 hover:shadow-[0_30px_100px_rgba(236,72,153,0.4)] transition-all duration-700 border-4 border-white/50 group">
               <div className="flex flex-col items-center gap-8">
                 <div className="bg-white/40 p-10 rounded-[2rem] backdrop-blur-sm group-hover:rotate-12 group-hover:scale-110 transition-all duration-700">
                   <Clipboard size={72} weight="bold" className="text-white" />
@@ -177,6 +189,19 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
+      </div>
+      
+      <div 
+        className="absolute bottom-8 right-8 w-32 h-32 md:w-48 md:h-48 opacity-30 pointer-events-none"
+        style={{
+          transform: `translate(${parallaxOffset.x * -0.1}px, ${parallaxOffset.y * -0.1}px)`
+        }}
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?q=80&w=400&auto=format&fit=crop"
+          alt="Soccer Boot Kicking Ball"
+          className="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.6)] brightness-125 contrast-125"
+        />
       </div>
       
       <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-transparent to-transparent pointer-events-none"></div>

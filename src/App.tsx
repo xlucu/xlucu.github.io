@@ -16,7 +16,7 @@ const AdminLogin = lazy(() => import("@/components/AdminLogin"))
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen select-none">
       <Navbar />
       <HeroSection />
       <Suspense fallback={<LoadingSpinner />}>
