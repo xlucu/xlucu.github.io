@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useMemo, useCallback } from "react"
 import { useKV } from '@github/spark/hooks'
 import { Card } from "@/components/ui/card"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
@@ -74,19 +74,20 @@ export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [filter, setFilter] = useState<"all" | "academy" | "field" | "training">("all")
 
-  const filteredImages = filter === "all" 
-    ? (galleryImages || defaultGalleryImages)
-    : (galleryImages || defaultGalleryImages).filter(img => img.category === filter)
+  const filteredImages = useMemo(() => {
+    const images = galleryImages || defaultGalleryImages
+    return filter === "all" ? images : images.filter(img => img.category === filter)
+  }, [filter, galleryImages])
 
-  const openImage = (id: number) => {
+  const openImage = useCallback((id: number) => {
     setSelectedImage(id)
-  }
+  }, [])
 
-  const closeImage = () => {
+  const closeImage = useCallback(() => {
     setSelectedImage(null)
-  }
+  }, [])
 
-  const navigateImage = (direction: "prev" | "next") => {
+  const navigateImage = useCallback((direction: "prev" | "next") => {
     if (selectedImage === null) return
     
     const currentIndex = filteredImages.findIndex(img => img.id === selectedImage)
@@ -99,9 +100,12 @@ export default function Gallery() {
     }
     
     setSelectedImage(filteredImages[newIndex].id)
-  }
+  }, [selectedImage, filteredImages])
 
-  const currentImage = (galleryImages || defaultGalleryImages).find(img => img.id === selectedImage)
+  const currentImage = useMemo(() => 
+    (galleryImages || defaultGalleryImages).find(img => img.id === selectedImage),
+    [selectedImage, galleryImages]
+  )
 
   const filterButtons = [
     { value: "all" as const, label: "الكل" },
@@ -112,17 +116,6 @@ export default function Gallery() {
 
   return (
     <section id="gallery" className="py-48 relative overflow-hidden">
-      <div className="absolute inset-0">
-        <img 
-          src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=2400&auto=format&fit=crop"
-          alt="Soccer Background"
-          className="w-full h-full object-cover opacity-15"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/98 via-muted/95 to-background/98"></div>
-        <div className="absolute inset-0 field-pattern opacity-10"></div>
-      </div>
-      <div className="absolute top-10 left-1/3 w-[35rem] h-[35rem] bg-accent/15 rounded-full blur-[120px]"></div>
-      <div className="absolute bottom-10 right-1/4 w-[35rem] h-[35rem] bg-primary/15 rounded-full blur-[120px]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 space-y-6 reveal-up">
@@ -154,14 +147,11 @@ export default function Gallery() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {filteredImages.map((image, index) => (
+          {filteredImages.map((image) => (
             <Card 
-              key={index}
-              className="glass-card-strong group overflow-hidden border-2 hover:border-transparent relative"
+              key={image.id}
+              className="glass-card-strong group overflow-hidden border-2 hover:border-transparent relative cursor-pointer"
               onClick={() => openImage(image.id)}
-              style={{
-                animationDelay: `${index * 50}ms`
-              }}
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                 <LazyImage
